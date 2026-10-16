@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ardha Web & VPS | Website, VPS Linux, dan Tools Otomasi</title>
+<meta name="description" content="Pembuatan website, setup dan pengelolaan VPS Linux, tools otomasi laporan, serta pengujian aplikasi untuk UMKM, sekolah, dan bisnis lokal. Dikerjakan oleh Ardha Febrian, staf NOC.">
+<meta property="og:title" content="Ardha Web & VPS">
+<meta property="og:description" content="Website dan server yang dijaga seperti jaringan kantor.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D1B33'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%2322D3EE' text-anchor='middle'%3E%3CA/%3E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D1B33; --ink-soft:#44546F; --paper:#F3F6FA; --white:#FFFFFF;
+  --line:#D5DDE8; --teal:#0B8FB0; --teal-dark:#086F89; --amber:#F2B01E; --ok:#1E9E5A;
+  --wrap:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(243,246,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:800;font-size:19px;text-decoration:none;letter-spacing:-.01em}
+.brand span{color:var(--teal)}
+nav{display:flex;gap:26px;align-items:center}
+nav a{text-decoration:none;font-weight:500;font-size:16px;color:var(--ink-soft)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:14px 24px;border-radius:10px;transition:background .15s}
+.btn:hover{background:#16305a}
+.btn.wa{background:#128C4A}.btn.wa:hover{background:#0E7640}
+.btn.small{padding:9px 16px;font-size:15px}
+.btn svg{width:20px;height:20px;fill:currentColor}
+
+/* hero */
+.hero{padding:72px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+h1{font-size:clamp(38px,5.6vw,64px);line-height:1.04;letter-spacing:-.025em;font-weight:800;margin:0 0 24px;max-width:13em}
+.lead{font-size:20px;color:var(--ink-soft);max-width:34em;margin:0 0 32px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.cta-note{font-size:15px;color:var(--ink-soft)}
+
+/* status board */
+.board{background:var(--ink);color:#E6EEF9;border-radius:16px;padding:26px 26px 14px;box-shadow:0 18px 40px -22px rgba(13,27,51,.55)}
+.board h2{margin:0 0 4px;font-size:19px;font-weight:700;color:#fff}
+.board p{margin:0 0 14px;font-size:15px;color:#9FB2CF}
+.row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid rgba(255,255,255,.1);font-size:17px}
+.state{display:flex;align-items:center;gap:10px;font-weight:600;color:#fff}
+.dot{width:11px;height:11px;border-radius:50%;background:#3A4A66;transition:background .4s, box-shadow .4s}
+.row.on .dot{background:#38D17D;box-shadow:0 0 0 5px rgba(56,209,125,.18)}
+.row .val{opacity:.35;transition:opacity .4s}
+.row.on .val{opacity:1}
+.board small{display:block;padding:12px 0 6px;font-size:13px;color:#7F94B5}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2.title{font-size:clamp(28px,3.6vw,40px);line-height:1.12;letter-spacing:-.02em;margin:0 0 12px;font-weight:800}
+.sub{color:var(--ink-soft);margin:0 0 40px;max-width:36em}
+
+.pricelist{border-top:2px solid var(--ink)}
+.item{display:grid;grid-template-columns:1fr auto;gap:8px 32px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start}
+.item h3{margin:0 0 6px;font-size:22px;letter-spacing:-.01em}
+.item p{margin:0;color:var(--ink-soft);max-width:38em;font-size:17px}
+.price{font-weight:800;font-size:22px;white-space:nowrap;text-align:right}
+.price em{display:block;font-style:normal;font-weight:500;font-size:14px;color:var(--ink-soft)}
+.price b{background:var(--amber);padding:2px 10px;border-radius:6px;display:inline-block}
+.note{margin-top:22px;font-size:15px;color:var(--ink-soft);max-width:44em}
+
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:2px solid var(--ink)}
+.proj{padding:24px 28px 24px 0;border-bottom:1px solid var(--line)}
+.proj:nth-child(even){padding:24px 0 24px 28px;border-left:1px solid var(--line)}
+.proj h3{margin:0 0 6px;font-size:21px}
+.proj h3 a{text-decoration:none;border-bottom:2px solid var(--teal)}
+.proj h3 a:hover{background:rgba(11,143,176,.1)}
+.proj p{margin:0 0 10px;color:var(--ink-soft);font-size:17px}
+.stack{font-size:15px;font-weight:600;color:var(--teal-dark)}
+
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;counter-reset:s}
+ol.steps li{counter-increment:s;padding-top:16px;border-top:2px solid var(--ink);font-size:16px;color:var(--ink-soft)}
+ol.steps li::before{content:counter(s);display:block;font-weight:800;font-size:30px;color:var(--ink);line-height:1;margin-bottom:8px}
+ol.steps strong{display:block;color:var(--ink);font-size:18px;margin-bottom:2px}
+
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.about p{margin:0 0 16px;max-width:34em}
+.facts{margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.facts li{padding:14px 0;border-bottom:1px solid var(--line);font-size:17px}
+.facts b{display:block;font-size:15px;color:var(--ink-soft);font-weight:500}
+
+.contact{background:var(--ink);color:#fff;border-top:none}
+.contact h2.title{color:#fff}
+.contact .sub{color:#A9BAD4}
+.contact a.mail{color:#fff}
+footer{padding:28px 0 40px;font-size:15px;color:var(--ink-soft)}
+
+.fab{position:fixed;right:18px;bottom:18px;z-index:20;display:none}
+.fab .btn{box-shadow:0 10px 24px -8px rgba(0,0,0,.5)}
+
+@media (max-width:900px){
+  .hero-grid,.about{grid-template-columns:1fr;gap:40px}
+  ol.steps{grid-template-columns:1fr 1fr}
+  .projects{grid-template-columns:1fr}
+  .proj,.proj:nth-child(even){padding:22px 0;border-left:none}
+  nav a:not(.btn){display:none}
+  .fab{display:block}
+}
+@media (max-width:560px){
+  body{font-size:17px}
+  .hero{padding:48px 0 56px}
+  section{padding:56px 0}
+  .item{grid-template-columns:1fr}
+  .price{text-align:left}
+  ol.steps{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .dot,.row .val{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">Ardha <span>Web & VPS</span></a>
+    <nav aria-label="Menu utama">
+      <a href="#layanan">Layanan</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#proses">Cara kerja</a>
+      <a href="#tentang">Tentang</a>
+      <a class="btn small wa" href="https://wa.me/6281217529861?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." rel="noopener">Chat WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap hero">
+  <div class="hero-grid">
+    <div>
+      <h1>Website dan server yang dijaga seperti jaringan kantor</h1>
+      <p class="lead">Saya Ardha, pembuat website dan pengelola VPS Linux untuk UMKM, sekolah, dan bisnis lokal. Sehari-hari saya bekerja di NOC, pusat pemantauan jaringan, jadi menjaga sistem tetap hidup sudah jadi kebiasaan.</p>
+      <div class="cta-row">
+        <a class="btn wa" href="https://wa.me/6281217529861?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS.">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.51-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg>
+          Konsultasi gratis lewat WhatsApp
+        </a>
+        <span class="cta-note">Dibalas setiap hari, di luar jam shift saya.</span>
+      </div>
+    </div>
+
+    <aside class="board" aria-label="Contoh yang saya jaga untuk klien">
+      <h2>Yang saya jaga untuk Anda</h2>
+      <p>Ilustrasi pemeriksaan rutin pada website klien.</p>
+      <div class="row"><span class="state"><i class="dot"></i>Website</span><span class="val">Online</span></div>
+      <div class="row"><span class="state"><i class="dot"></i>Sertifikat SSL</span><span class="val">Valid</span></div>
+      <div class="row"><span class="state"><i class="dot"></i>Backup data</span><span class="val">Terjadwal</span></div>
+      <div class="row"><span class="state"><i class="dot"></i>Firewall</span><span class="val">Aktif</span></div>
+      <div class="row"><span class="state"><i class="dot"></i>Pembaruan keamanan</span><span class="val">Dipantau</span></div>
+      <small>Contoh tampilan, bukan data langsung.</small>
+    </aside>
+  </div>
+</div>
+
+<section id="layanan">
+  <div class="wrap">
+    <h2 class="title">Layanan dan harga</h2>
+    <p class="sub">Harga awal, final menyesuaikan kebutuhan. Konsultasi dan penawaran gratis.</p>
+    <div class="pricelist">
+      <div class="item"><div><h3>Setup VPS Linux</h3><p>Install Ubuntu dan aaPanel, pasang SSL, atur firewall dan pengamanan dasar, serta jadwal backup.</p></div><div class="price"><em>mulai dari</em><b>Rp 600.000</b></div></div>
+      <div class="item"><div><h3>Pembuatan website</h3><p>Website Laravel atau Node.js yang tampil baik di HP, sudah termasuk domain dan VPS 1 tahun. Bisa dua bahasa (Indonesia dan Inggris) dan dilengkapi dashboard admin agar Anda bisa mengubah isi halaman sendiri.</p></div><div class="price"><em>mulai dari</em><b>Rp 2.500.000</b></div></div>
+      <div class="item"><div><h3>Tools dan otomasi</h3><p>Aplikasi yang membuat laporan PDF atau Word otomatis, mengolah data, atau bot pengumpul data, dibuat sesuai cara kerja usaha Anda.</p></div><div class="price"><em>mulai dari</em><b>Rp 1.500.000</b></div></div>
+      <div class="item"><div><h3>Pengujian aplikasi dan keamanan</h3><p>Blackbox dan whitebox testing dengan laporan berisi skenario uji, hasil, bukti, dan saran perbaikan. Uji keamanan hanya dilakukan pada sistem yang diizinkan tertulis oleh pemiliknya.</p></div><div class="price"><em>mulai dari</em><b>Rp 500.000</b><em>per aplikasi</em></div></div>
+      <div class="item"><div><h3>Pengelolaan bulanan</h3><p>Pemantauan server, backup rutin, pembaruan keamanan, dan bantuan teknis lewat WhatsApp.</p></div><div class="price"><em>mulai dari</em><b>Rp 300.000</b><em>per bulan</em></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="proyek">
+  <div class="wrap">
+    <h2 class="title">Proyek yang sudah saya kerjakan</h2>
+    <p class="sub">Beberapa bisa dilihat langsung, kodenya terbuka di GitHub.</p>
+    <div class="projects">
+      <div class="proj"><h3><a href="https://djamoemadiun.co.id" rel="noopener">Website djamoemadiun.co.id</a></h3><p>Website bisnis lokal lengkap dengan domain dan VPS, saya kelola sampai produksi.</p><span class="stack">Laravel, Ubuntu, aaPanel</span></div>
+      <div class="proj"><h3><a href="https://github.com/asammanis89/djamoe-multi" rel="noopener">Company profile dua bahasa</a></h3><p>Website Indonesia dan Inggris dengan dashboard admin untuk produk, artikel, outlet, dan pengguna.</p><span class="stack">Laravel 9, AdminLTE, MySQL</span></div>
+      <div class="proj"><h3><a href="https://github.com/asammanis89/proyek_dapur_pintariot" rel="noopener">IoT Dapur AI</a></h3><p>Aplikasi HP yang memantau gas, suhu, dan kelembapan dapur, memberi notifikasi suara, dan analisis dari AI.</p><span class="stack">Flutter, Firebase, Gemini</span></div>
+      <div class="proj"><h3><a href="https://github.com/asammanis89/iot-dashboard-web" rel="noopener">Dashboard IoT web</a></h3><p>Panel web dengan grafik langsung dan catatan kejadian untuk sensor dapur.</p><span class="stack">JavaScript, Chart.js, Firebase</span></div>
+      <div class="proj"><h3>Laporan PDF terenkripsi otomatis</h3><p>Aplikasi yang membaca file teks mentah dengan regex, menyusun laporan PDF, lalu mengunci dengan enkripsi AES-256.</p><span class="stack">Node.js, PDFKit, qpdf</span></div>
+      <div class="proj"><h3><a href="https://github.com/asammanis89/ENKRIP-KELOMPOK4" rel="noopener">Enkripsi berantai</a></h3><p>Aplikasi desktop yang memperlihatkan tiap langkah cipher Playfair, Caesar, dan AES.</p><span class="stack">Python, CustomTkinter</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="proses">
+  <div class="wrap">
+    <h2 class="title">Cara kerja</h2>
+    <p class="sub">Dari pertanyaan pertama sampai selesai, Anda selalu tahu sedang di tahap mana.</p>
+    <ol class="steps">
+      <li><strong>Konsultasi</strong>Ceritakan kebutuhan lewat WhatsApp, gratis.</li>
+      <li><strong>Penawaran</strong>Harga dan jadwal jelas, DP 50%.</li>
+      <li><strong>Pengerjaan</strong>Anda dikabari di setiap tahap penting.</li>
+      <li><strong>Revisi</strong>Perbaikan sampai sesuai kesepakatan.</li>
+      <li><strong>Serah terima</strong>Pelunasan, lalu panduan penggunaan.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="tentang">
+  <div class="wrap about">
+    <div>
+      <h2 class="title">Tentang saya</h2>
+      <p>Saya Ardha Febrian Muqorrobin, lulusan D3 Teknologi Informasi Politeknik Negeri Madiun. Saya membuat website dan tools sebagai freelancer sejak 2024, dan sejak September 2026 bekerja di NOC penyedia internet.</p>
+      <p>Latar belakang jaringan membuat saya terbiasa memikirkan hal yang sering terlewat saat website dibuat: keamanan, backup, dan apa yang terjadi kalau server mati tengah malam.</p>
+    </div>
+    <ul class="facts">
+      <li><b>Teknologi</b>Laravel, Node.js, Python, Flutter</li>
+      <li><b>Server</b>Ubuntu Linux, aaPanel, Nginx, SSL</li>
+      <li><b>Jaringan</b>FTTH, manajemen bandwidth, keamanan jaringan</li>
+      <li><b>Lokasi</b>Ngawi, Jawa Timur, melayani seluruh Indonesia secara jarak jauh</li>
+    </ul>
+  </div>
+</section>
+
+<section id="kontak" class="contact">
+  <div class="wrap">
+    <h2 class="title">Ceritakan kebutuhan Anda</h2>
+    <p class="sub">Cukup satu pesan singkat: usaha Anda apa, dan apa yang ingin dibuat atau diperbaiki. Saya balas dengan saran dan perkiraan biaya.</p>
+    <div class="cta-row">
+      <a class="btn wa" href="https://wa.me/6281217529861?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS.">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.51-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg>
+        Chat WhatsApp 0812-1752-9861
+      </a>
+      <span class="cta-note" style="color:#A9BAD4">atau email <a class="mail" href="mailto:febrianardha24@gmail.com">febrianardha24@gmail.com</a></span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">Ardha Web & VPS, Ngawi, Jawa Timur. <a href="https://www.linkedin.com/in/ardha-febrian-342317289/" rel="noopener">LinkedIn</a> dan <a href="https://github.com/asammanis89" rel="noopener">GitHub</a>.</div>
+</footer>
+
+<div class="fab"><a class="btn wa small" href="https://wa.me/6281217529861?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS.">Chat WhatsApp</a></div>
+
+<script>
+(function(){
+  var rows=[].slice.call(document.querySelectorAll('.board .row'));
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){rows.forEach(function(r){r.classList.add('on')});return;}
+  rows.forEach(function(r,i){setTimeout(function(){r.classList.add('on')},500+i*420)});
+})();
+</script>
+</body>
+</html>
