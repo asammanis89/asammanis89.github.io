@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ardha Web & VPS | Website, VPS Linux, dan Tools Otomasi</title>
-<meta name="description" content="Pembuatan website, setup dan pengelolaan VPS Linux, tools otomasi laporan, serta pengujian aplikasi untuk UMKM, sekolah, dan bisnis lokal. Dikerjakan oleh Ardha Febrian, staf NOC.">
+<meta name="description" content="Pembuatan website, setup dan pengelolaan VPS Linux, tools otomasi laporan, serta pengujian aplikasi untuk UMKM, sekolah, dan bisnis lokal. Juga tools operasional untuk ISP. Dikerjakan oleh Ardha Febrian, staf NOC.">
 <meta property="og:title" content="Ardha Web & VPS">
 <meta property="og:description" content="Website dan server yang dijaga seperti jaringan kantor.">
 <meta property="og:type" content="website">
@@ -204,7 +204,7 @@ footer a{color:var(--ink)}
 <section id="proyek" class="grid-dark">
   <div class="wrap">
     <h2 class="title">Proyek yang sudah saya kerjakan</h2>
-    <p class="sub">Beberapa bisa dilihat langsung, kodenya terbuka di GitHub.</p>
+    <p class="sub">Beberapa bisa dilihat langsung, kodenya terbuka di GitHub. Dashboard Proxmox hanya studi kasus karena dipakai di lingkungan kerja.</p>
     <div class="projects">
       <div class="proj"><img class="shot" src="img/djamoe-beranda.jpg" alt="Beranda website D'jamoe" width="1200" height="755"><h3><a href="https://djamoemadiun.co.id" rel="noopener">Website djamoemadiun.co.id</a></h3><p>Website bisnis lokal lengkap dengan domain dan VPS, saya kelola sampai produksi.</p><span class="stack">Laravel, Ubuntu, aaPanel</span></div>
       <div class="proj"><img class="shot" src="img/djamoe-admin.jpg" alt="Halaman admin kelola produk" width="1200" height="755"><h3><a href="https://github.com/asammanis89/djamoe-multi" rel="noopener">Company profile dua bahasa</a></h3><p>Website Indonesia dan Inggris dengan dashboard admin untuk produk, artikel, outlet, dan pengguna.</p><span class="stack">Laravel 9, AdminLTE, MySQL</span></div>
@@ -214,7 +214,7 @@ footer a{color:var(--ink)}
       <div class="proj"><img class="shot" src="img/fieldops.jpg" alt="Papan dispatch FieldOps: peta site, alarm aktif, dan tiket gangguan" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/FieldOps" rel="noopener">FieldOps: operasional lapangan ISP</a></h3><p>Pemasangan baru, tiket gangguan, alarm jaringan, dan peta lokasi dalam satu papan kerja. Laporan Word dan PDF jadi dengan satu klik.</p><span class="stack">Node.js, SQLite, Leaflet, docx, PDFKit</span></div>
       <div class="proj"><img class="shot" src="img/pingmap.jpg" alt="Peta PingMap dengan router online dan router yang mati" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/PingMap" rel="noopener">PingMap: pantau router di peta</a></h3><p>Cek ping atau port router secara berkala, tampilkan di peta, dan kirim pesan Telegram saat ada yang mati atau sudah pulih.</p><span class="stack">Node.js, SQLite, Leaflet, Telegram Bot API</span></div>
       <div class="proj"><img class="shot" src="img/gadgetbekas.jpg" alt="Katalog GadgetBekas dengan filter dan kartu HP bekas" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/GadgetBekas" rel="noopener">GadgetBekas: toko HP bekas</a></h3><p>Katalog yang bisa difilter dengan grade dan kesehatan baterai, tombol tanya lewat WhatsApp, dan halaman admin untuk stok, foto, dan harga.</p><span class="stack">Laravel 12, SQLite</span></div>
-      <div class="proj"><h3><a href="https://github.com/asammanis89/proyek_dapur_pintariot" rel="noopener">IoT Dapur AI</a></h3><p>Aplikasi HP yang memantau gas, suhu, dan kelembapan dapur, memberi notifikasi suara, dan analisis dari AI.</p><span class="stack">Flutter, Firebase, Gemini</span></div>
+      <div class="proj"><img class="shot" src="img/iot-dapur-ai.jpg" alt="IoT Dapur AI: aplikasi Flutter pemantau gas, suhu, dan kelembapan dapur dengan analisis Gemini" width="1200" height="675" loading="lazy"><h3><a href="https://github.com/asammanis89/proyek_dapur_pintariot" rel="noopener">IoT Dapur AI</a></h3><p>Aplikasi HP yang memantau gas, suhu, dan kelembapan dapur, memberi notifikasi suara, dan analisis dari AI.</p><span class="stack">Flutter, Firebase, Gemini</span></div>
       <div class="proj"><img class="shot" src="img/proxmox-monitor.jpg" alt="Halaman login dan dashboard monitoring Proxmox dalam tema terang dan gelap, dengan data contoh fiktif" width="1200" height="750" loading="lazy"><h3>Dashboard monitoring server Proxmox</h3><p>Tool internal untuk tim NOC: memantau CPU, RAM, disk, dan status VM secara real-time, lebih jelas dari tampilan bawaan.</p><span class="stack">Node.js, Proxmox API</span></div>
     </div>
   </div>
@@ -240,9 +240,11 @@ footer a{color:var(--ink)}
       <h2 class="title">Tentang saya</h2>
       <p>Saya Ardha Febrian Muqorrobin, lulusan D3 Teknologi Informasi Politeknik Negeri Madiun. Saya membuat website dan tools sebagai freelancer sejak 2024, dan sejak September 2026 bekerja di NOC penyedia internet.</p>
       <p>Latar belakang jaringan membuat saya terbiasa memikirkan hal yang sering terlewat saat website dibuat: keamanan, backup, dan apa yang terjadi kalau server mati tengah malam.</p>
+      <p>Dari situ saya juga membuat tools untuk kebutuhan operasional penyedia internet: manajemen RADIUS dan pool IP, pemantau router dengan notifikasi Telegram, pencatatan pekerjaan lapangan beserta laporannya, dan dashboard monitoring Proxmox.</p>
     </div>
     <ul class="facts">
       <li><b>Teknologi</b>Laravel, Node.js, Python, Flutter</li>
+      <li><b>Tools ISP</b>Manajemen RADIUS, pemantau router, operasional lapangan, dashboard Proxmox</li>
       <li><b>Server</b>Ubuntu Linux, aaPanel, Nginx, SSL</li>
       <li><b>Jaringan</b>FTTH, manajemen bandwidth, keamanan jaringan</li>
       <li><b>Lokasi</b>Ngawi, Jawa Timur, melayani seluruh Indonesia secara jarak jauh</li>
