@@ -6,7 +6,7 @@
 <title>Ardha Web & VPS | Website, VPS Linux, dan Tools Otomasi</title>
 <meta name="description" content="Jasa pembuatan website, setup dan pengelolaan VPS Linux, tools otomasi laporan, dan pengujian aplikasi untuk UMKM, sekolah, dan usaha lokal. Ada juga tools operasional ISP dan template admin dashboard. Dikerjakan Ardha Febrian, staf NOC.">
 <meta property="og:title" content="Ardha Web & VPS">
-<meta property="og:description" content="Website dan server yang dijaga seperti jaringan kantor.">
+<meta property="og:description" content="Website dan server yang saya jaga seperti jaringan kantor.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#060913">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D1B33'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%2322D3EE' text-anchor='middle'%3E%3CA/%3E%3C/text%3E%3C/svg%3E">
@@ -158,6 +158,15 @@ footer a{color:var(--cyan-l)}
 .rv.in{opacity:1;transform:none}
 .proj.rv.in{transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
 
+
+/* tombol ganti bahasa */
+.lang{position:relative;display:inline-flex;align-items:center;padding:3px;margin:0;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.14) inset,0 8px 20px -14px rgba(0,0,0,.9);cursor:pointer;font:700 13px/1 var(--mono);color:var(--ink-soft);letter-spacing:.04em}
+.lang::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:linear-gradient(145deg,var(--cyan),var(--purple));box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 6px 16px -6px rgba(34,211,238,.8);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.lang[data-lang="en"]::before{transform:translateX(100%)}
+.lang span{position:relative;z-index:1;min-width:36px;padding:8px 6px;text-align:center;transition:color .25s}
+.lang[data-lang="id"] span:first-child,.lang[data-lang="en"] span:last-child{color:#07101F}
+.lang:hover{border-color:rgba(255,255,255,.34)}
+
 @media (max-width:960px){
   .hero-grid,.about{grid-template-columns:1fr;gap:36px}
   ol.steps{grid-template-columns:1fr 1fr}
@@ -176,11 +185,17 @@ footer a{color:var(--cyan-l)}
   .board{padding:20px 18px 10px}
   .cta-row .btn{width:100%;justify-content:center}
   .brand{font-size:17px}
+  nav{gap:10px}
+  .brand{white-space:nowrap}
+  .bar .btn.small{padding:8px 12px;font-size:14px;white-space:nowrap}
+  .lang{font-size:12px}
+  .lang span{min-width:30px;padding:8px 4px}
 }
+@media (max-width:380px){.brand{font-size:15px}.bar .btn.small{padding:8px 10px}.lang span{min-width:26px}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   body::before,body::after,.glow-text,.row.on .dot{animation:none}
-  .dot,.row .val,.btn,.btn::after,.proj,ol.steps li{transition:none}
+  .dot,.row .val,.btn,.btn::after,.proj,ol.steps li,.lang::before,.lang span{transition:none}
   .rv{opacity:1;transform:none;transition:none}
 }
 </style>
@@ -191,12 +206,13 @@ footer a{color:var(--cyan-l)}
 <header>
   <div class="wrap bar">
     <a class="brand" href="#top">Ardha <span>Web & VPS</span></a>
-    <nav aria-label="Menu utama">
-      <a href="#layanan">Layanan</a>
-      <a href="#proyek">Proyek</a>
-      <a href="#proses">Cara kerja</a>
-      <a href="#tentang">Tentang</a>
-      <a class="btn small wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." rel="noopener">Chat WhatsApp</a>
+    <nav aria-label="Menu utama" data-iaria="a_nav">
+      <a href="#layanan" data-i="n_layanan">Layanan</a>
+      <a href="#proyek" data-i="n_proyek">Proyek</a>
+      <a href="#proses" data-i="n_proses">Cara kerja</a>
+      <a href="#tentang" data-i="n_tentang">Tentang</a>
+      <button class="lang" id="lang" type="button" data-lang="id" aria-label="Switch to English"><span>ID</span><span>EN</span></button>
+      <a class="btn small wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." data-wa="consult" rel="noopener">WhatsApp</a>
     </nav>
   </div>
 </header>
@@ -206,26 +222,24 @@ footer a{color:var(--cyan-l)}
 <div class="wrap hero">
   <div class="hero-grid">
     <div>
-      <h1>Website dan server yang <span class="glow-text">saya jaga seperti jaringan kantor</span></h1>
-      <p class="lead">Saya Ardha. Saya membuat website dan mengurus VPS Linux untuk UMKM, sekolah, dan usaha lokal. Kerja harian saya di NOC, ruang pantau jaringan, jadi menjaga sistem tetap hidup memang sudah jadi kebiasaan.</p>
+      <h1 data-i="h1">Website dan server yang <span class="glow-text">saya jaga seperti jaringan kantor</span></h1>
+      <p class="lead" data-i="lead">Saya Ardha. Saya membuat website dan mengurus VPS Linux untuk UMKM, sekolah, dan usaha lokal. Sehari-hari saya kerja di NOC (ruang pantau jaringan), jadi menjaga sistem tetap hidup sudah jadi kebiasaan.</p>
       <div class="cta-row">
-        <a class="btn wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS.">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.51-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg>
-          Konsultasi gratis lewat WhatsApp
-        </a>
-        <span class="cta-note">Saya balas di sela jam shift.</span>
+        <a class="btn wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." data-wa="consult">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.51-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg><span data-i="cta1">Konsultasi gratis lewat WhatsApp</span></a>
+        <span class="cta-note" data-i="cta_note">Saya balas di sela jam shift.</span>
       </div>
     </div>
 
-    <aside class="board" aria-label="Contoh yang saya jaga untuk klien">
-      <h2>Yang saya jaga untuk Anda</h2>
-      <p>Contoh pengecekan rutin yang saya lakukan di website klien.</p>
+    <aside class="board" aria-label="Contoh yang saya jaga untuk klien" data-iaria="a_board">
+      <h2 data-i="board_h">Yang saya jaga untuk Anda</h2>
+      <p data-i="board_p">Contoh pengecekan rutin yang saya lakukan di website klien.</p>
       <div class="row"><span class="state"><i class="dot"></i>Website</span><span class="val">Online</span></div>
-      <div class="row"><span class="state"><i class="dot"></i>Sertifikat SSL</span><span class="val">Valid</span></div>
-      <div class="row"><span class="state"><i class="dot"></i>Backup data</span><span class="val">Terjadwal</span></div>
-      <div class="row"><span class="state"><i class="dot"></i>Firewall</span><span class="val">Aktif</span></div>
-      <div class="row"><span class="state"><i class="dot"></i>Pembaruan keamanan</span><span class="val">Dipantau</span></div>
-      <small>Ini contoh, bukan data asli.</small>
+      <div class="row"><span class="state"><i class="dot"></i><span data-i="r_ssl">Sertifikat SSL</span></span><span class="val">Valid</span></div>
+      <div class="row"><span class="state"><i class="dot"></i><span data-i="r_backup">Backup data</span></span><span class="val" data-i="v_sched">Terjadwal</span></div>
+      <div class="row"><span class="state"><i class="dot"></i>Firewall</span><span class="val" data-i="v_active">Aktif</span></div>
+      <div class="row"><span class="state"><i class="dot"></i><span data-i="r_update">Pembaruan keamanan</span></span><span class="val" data-i="v_mon">Dipantau</span></div>
+      <small data-i="board_small">Ini contoh, bukan data asli.</small>
     </aside>
   </div>
 </div>
@@ -233,49 +247,49 @@ footer a{color:var(--cyan-l)}
 
 <section id="layanan" class="grid-light">
   <div class="wrap">
-    <h2 class="title">Layanan dan harga</h2>
-    <p class="sub">Ini harga mulai dari, harga akhirnya tergantung kebutuhan. Konsultasi dan penawaran tidak dipungut biaya.</p>
+    <h2 class="title" data-i="t_layanan">Layanan dan harga</h2>
+    <p class="sub" data-i="layanan_sub">Angka di bawah adalah harga awal, harga akhir tergantung kebutuhan. Konsultasi dan penawaran gratis.</p>
     <div class="pricelist">
-      <div class="item" style="--c:var(--cyan)"><div><h3>Setup VPS Linux</h3><p>Saya pasang Ubuntu dan aaPanel, SSL, firewall, dan pengamanan dasar, lalu atur jadwal backup.</p></div><div class="price"><em>mulai dari</em><b>Rp 600.000</b></div></div>
-      <div class="item" style="--c:var(--purple)"><div><h3>Pembuatan website</h3><p>Website Laravel atau Node.js yang enak dibuka di HP, sudah termasuk domain dan VPS satu tahun. Bisa dua bahasa (Indonesia dan Inggris), dan ada dashboard admin supaya Anda bisa mengganti isi halaman sendiri.</p></div><div class="price"><em>mulai dari</em><b>Rp 2.500.000</b></div></div>
-      <div class="item" style="--c:var(--lime)"><div><h3>Tools dan otomasi</h3><p>Aplikasi untuk membuat laporan PDF atau Word otomatis, mengolah data, atau mengumpulkan data lewat bot. Saya buat sesuai cara kerja usaha Anda.</p></div><div class="price"><em>mulai dari</em><b>Rp 1.500.000</b></div></div>
-      <div class="item" style="--c:#F472B6"><div><h3>Pengujian aplikasi dan keamanan</h3><p>Blackbox dan whitebox testing. Laporannya berisi skenario uji, hasil, bukti, dan saran perbaikan. Uji keamanan hanya saya lakukan pada sistem yang pemiliknya sudah mengizinkan secara tertulis.</p></div><div class="price"><em>mulai dari</em><b>Rp 500.000</b><em>per aplikasi</em></div></div>
-      <div class="item" style="--c:#F2602A"><div><h3>Template admin dashboard siap pakai</h3><p>Jalur: template dashboard admin dengan tampilan kaca (glassmorphism), animasi halus, dan mode gelap. Murni HTML, CSS, dan JS, jadi gampang dipasang di Laravel atau Node.js. <a href="https://github.com/asammanis89/DEMOV1" rel="noopener">Lihat demo</a>.</p></div><div class="price"><em>produk digital</em><b><a href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20tertarik%20template%20Jalur%20Admin%20Dashboard." rel="noopener" style="text-decoration:none">Tanya harga</a></b></div></div>
-      <div class="item" style="--c:#38BDF8"><div><h3>Pengelolaan bulanan</h3><p>Server saya pantau, backup jalan rutin, update keamanan saya pasang, dan kalau ada masalah Anda bisa langsung tanya lewat WhatsApp.</p></div><div class="price"><em>mulai dari</em><b>Rp 300.000</b><em>per bulan</em></div></div>
+      <div class="item" style="--c:var(--cyan)"><div><h3 data-i="s1_h">Setup VPS Linux</h3><p data-i="s1_p">Saya pasang Ubuntu dan aaPanel, SSL, firewall, dan pengamanan dasar, lalu atur jadwal backup.</p></div><div class="price"><em data-i="from">mulai dari</em><b data-i="p1">Rp 600.000</b></div></div>
+      <div class="item" style="--c:var(--purple)"><div><h3 data-i="s2_h">Pembuatan website</h3><p data-i="s2_p">Website Laravel atau Node.js yang enak dibuka di HP, sudah termasuk domain dan VPS satu tahun. Bisa dua bahasa (Indonesia dan Inggris), dan ada dashboard admin supaya Anda bisa mengganti isi halaman sendiri.</p></div><div class="price"><em data-i="from">mulai dari</em><b data-i="p2">Rp 2.500.000</b></div></div>
+      <div class="item" style="--c:var(--lime)"><div><h3 data-i="s3_h">Tools dan otomasi</h3><p data-i="s3_p">Aplikasi untuk membuat laporan PDF atau Word otomatis, mengolah data, atau mengumpulkan data lewat bot. Saya buat sesuai cara kerja usaha Anda.</p></div><div class="price"><em data-i="from">mulai dari</em><b data-i="p3">Rp 1.500.000</b></div></div>
+      <div class="item" style="--c:#F472B6"><div><h3 data-i="s4_h">Pengujian aplikasi dan keamanan</h3><p data-i="s4_p">Blackbox dan whitebox testing. Laporannya berisi skenario uji, hasil, bukti, dan saran perbaikan. Uji keamanan hanya saya lakukan pada sistem yang pemiliknya sudah mengizinkan secara tertulis.</p></div><div class="price"><em data-i="from">mulai dari</em><b data-i="p4">Rp 500.000</b><em data-i="per_app">per aplikasi</em></div></div>
+      <div class="item" style="--c:#F2602A"><div><h3 data-i="s5_h">Template admin dashboard siap pakai</h3><p data-i="s5_p">Jalur: template dashboard admin dengan tampilan kaca (glassmorphism), animasi halus, dan mode gelap. Murni HTML, CSS, dan JS, jadi gampang dipasang di Laravel atau Node.js. <a href="https://github.com/asammanis89/DEMOV1" rel="noopener">Lihat demo</a>.</p></div><div class="price"><em data-i="digital">produk digital</em><b><a href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20tertarik%20template%20Jalur%20Admin%20Dashboard." data-wa="jalur" rel="noopener" style="text-decoration:none" data-i="ask">Tanya harga</a></b></div></div>
+      <div class="item" style="--c:#38BDF8"><div><h3 data-i="s6_h">Pengelolaan bulanan</h3><p data-i="s6_p">Server saya pantau, backup jalan rutin, update keamanan saya pasang, dan kalau ada masalah Anda bisa langsung tanya lewat WhatsApp.</p></div><div class="price"><em data-i="from">mulai dari</em><b data-i="p5">Rp 300.000</b><em data-i="per_month">per bulan</em></div></div>
     </div>
   </div>
 </section>
 
 <section id="proyek" class="grid-dark">
   <div class="wrap">
-    <h2 class="title">Proyek yang sudah saya kerjakan</h2>
-    <p class="sub">Sebagian bisa dibuka langsung dan kodenya ada di GitHub. Jalur itu template yang saya jual, jadi repo-nya hanya demo dan source code diberikan setelah pembelian. Dashboard Proxmox, Radiusin, FieldOps, dan Djamoe Multi saya tampilkan sebagai studi kasus: repo-nya berisi tangkapan layar dan penjelasan cara kerjanya, tanpa kode.</p>
+    <h2 class="title" data-i="t_proyek">Proyek yang sudah saya kerjakan</h2>
+    <p class="sub" data-i="proyek_sub">Sebagian bisa dibuka langsung, kodenya ada di GitHub. Jalur adalah template yang saya jual, jadi repo-nya hanya berisi demo dan source code diberikan setelah pembelian. Dashboard Proxmox, Radiusin, FieldOps, dan Djamoe Multi saya tampilkan sebagai studi kasus, jadi repo-nya hanya berisi tangkapan layar dan penjelasan cara kerja, tanpa kode.</p>
     <div class="projects">
-      <div class="proj"><video class="shot" src="video/jalur-promo.mp4" poster="img/jalur-dashboard.jpg" width="1200" height="675" autoplay muted loop playsinline controls preload="metadata" aria-label="Video promo Jalur Admin Dashboard"></video><h3><a href="https://github.com/asammanis89/DEMOV1" rel="noopener">Jalur: template admin dashboard</a></h3><p>Template yang saya jual. Isinya 4 halaman siap pakai, transisi antar halaman, efek ganti tema yang merambat, dan tampilan kaca. <a href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20tertarik%20template%20Jalur%20Admin%20Dashboard." rel="noopener">Beli lewat WhatsApp</a>.</p><span class="stack">HTML, CSS, JavaScript</span></div>
-      <div class="proj"><img class="shot" src="img/djamoe-beranda.jpg" alt="Beranda website D'jamoe" width="1200" height="755"><h3><a href="https://djamoemadiun.co.id" rel="noopener">Website djamoemadiun.co.id</a></h3><p>Website usaha lokal lengkap dengan domain dan VPS. Saya yang mengerjakan dan mengelolanya sampai tayang.</p><span class="stack">Laravel, Ubuntu, aaPanel</span></div>
-      <div class="proj"><img class="shot" src="img/djamoe-admin.jpg" alt="Halaman admin kelola produk" width="1200" height="755"><h3><a href="https://github.com/asammanis89/djamoe-multi" rel="noopener">Company profile dua bahasa</a></h3><p>Website dua bahasa (Indonesia dan Inggris) dengan dashboard admin untuk mengelola produk, artikel, outlet, dan pengguna.</p><span class="stack">Laravel 9, AdminLTE, MySQL</span></div>
-      <div class="proj"><img class="shot" src="img/olt-secure.jpg" alt="Tabel hasil pembacaan data OLT" width="1200" height="744"><h3><a href="https://github.com/asammanis89/OLT-SECURE" rel="noopener">Laporan PDF terenkripsi otomatis</a></h3><p>Program ini membaca file konfigurasi OLT pakai regex, merangkum jumlah pelanggan per status, lalu mengunci laporan PDF-nya dengan AES-256.</p><span class="stack">Node.js, PDFKit, qpdf</span></div>
-      <div class="proj"><img class="shot" src="img/iot-dashboard.jpg" alt="Dashboard web sensor dapur" width="1200" height="790"><h3><a href="https://github.com/asammanis89/iot-dashboard-web" rel="noopener">Dashboard IoT web</a></h3><p>Panel web dengan grafik real-time dan riwayat kejadian untuk sensor gas, suhu, dan kelembapan.</p><span class="stack">JavaScript, Chart.js, Firebase</span></div>
-      <div class="proj"><img class="shot" src="img/radiusin.jpg" alt="Ringkasan panel Radiusin: pelanggan, sesi online, dan pemakaian pool IP" width="1200" height="862" loading="lazy"><h3><a href="https://github.com/asammanis89/Radiusin" rel="noopener">Radiusin: manajemen RADIUS untuk ISP</a></h3><p>Untuk mengelola router, pool IP (dibagi otomatis), profil kecepatan, pelanggan, dan sesi online, plus impor CSV. Datanya langsung dipakai FreeRADIUS.</p><span class="stack">Node.js, PostgreSQL, FreeRADIUS, Docker</span></div>
-      <div class="proj"><img class="shot" src="img/fieldops.jpg" alt="Papan dispatch FieldOps: peta site, alarm aktif, dan tiket gangguan" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/FieldOps" rel="noopener">FieldOps: operasional lapangan ISP</a></h3><p>Pemasangan baru, tiket gangguan, alarm jaringan, dan peta lokasi ada di satu papan kerja. Laporan Word dan PDF bisa dibuat dengan sekali klik.</p><span class="stack">Node.js, SQLite, Leaflet, docx, PDFKit</span></div>
-      <div class="proj"><img class="shot" src="img/pingmap.jpg" alt="Peta PingMap dengan router online dan router yang mati" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/PingMap" rel="noopener">PingMap: pantau router di peta</a></h3><p>Mengecek ping atau port router secara berkala, menampilkannya di peta, dan mengirim pesan Telegram saat ada router yang mati atau sudah hidup lagi.</p><span class="stack">Node.js, SQLite, Leaflet, Telegram Bot API</span></div>
-      <div class="proj"><img class="shot" src="img/gadgetbekas.jpg" alt="Katalog GadgetBekas dengan filter dan kartu HP bekas" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/GadgetBekas" rel="noopener">GadgetBekas: toko HP bekas</a></h3><p>Katalog HP bekas yang bisa difilter berdasarkan grade dan kesehatan baterai, ada tombol tanya lewat WhatsApp, dan halaman admin untuk mengatur stok, foto, dan harga.</p><span class="stack">Laravel 12, SQLite</span></div>
-      <div class="proj"><img class="shot" src="img/iot-dapur-ai.jpg" alt="IoT Dapur AI: aplikasi Flutter pemantau gas, suhu, dan kelembapan dapur dengan analisis Gemini" width="1200" height="675" loading="lazy"><h3><a href="https://github.com/asammanis89/proyek_dapur_pintariot" rel="noopener">IoT Dapur AI</a></h3><p>Aplikasi HP untuk memantau gas, suhu, dan kelembapan dapur. Ada notifikasi suara dan analisis dari AI.</p><span class="stack">Flutter, Firebase, Gemini</span></div>
-      <div class="proj"><img class="shot" src="img/proxmox-monitor.jpg" alt="Halaman login dan dashboard monitoring Proxmox dalam tema terang dan gelap, dengan data contoh fiktif" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/ProxmoxMonitor" rel="noopener">Dashboard monitoring server Proxmox</a></h3><p>Alat internal untuk tim NOC. Memantau CPU, RAM, disk, dan status VM secara real-time dengan tampilan yang lebih mudah dibaca daripada bawaan Proxmox.</p><span class="stack">Node.js, Proxmox API</span></div>
+      <div class="proj"><video class="shot" src="video/jalur-promo.mp4" poster="img/jalur-dashboard.jpg" width="1200" height="675" autoplay muted loop playsinline controls preload="metadata" aria-label="Video promo Jalur Admin Dashboard" data-iaria="a_video"></video><h3><a href="https://github.com/asammanis89/DEMOV1" rel="noopener" data-i="j_h">Jalur: template admin dashboard</a></h3><p data-i="j_p">Template yang saya jual. Isinya 4 halaman siap pakai, transisi antar halaman, efek ganti tema yang merambat, dan tampilan kaca. <a href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20tertarik%20template%20Jalur%20Admin%20Dashboard." data-wa="jalur" rel="noopener">Beli lewat WhatsApp</a>.</p><span class="stack">HTML, CSS, JavaScript</span></div>
+      <div class="proj"><img class="shot" src="img/djamoe-beranda.jpg" alt="Beranda website D'jamoe" width="1200" height="755" data-ialt="i_dj"><h3><a href="https://djamoemadiun.co.id" rel="noopener" data-i="dj_h">Website djamoemadiun.co.id</a></h3><p data-i="dj_p">Website usaha lokal lengkap dengan domain dan VPS. Saya yang mengerjakan dan mengelolanya sampai tayang.</p><span class="stack">Laravel, Ubuntu, aaPanel</span></div>
+      <div class="proj"><img class="shot" src="img/djamoe-admin.jpg" alt="Halaman admin kelola produk" width="1200" height="755" data-ialt="i_dja"><h3><a href="https://github.com/asammanis89/djamoe-multi" rel="noopener" data-i="cp_h">Company profile dua bahasa</a></h3><p data-i="cp_p">Website dua bahasa (Indonesia dan Inggris) dengan dashboard admin untuk mengelola produk, artikel, outlet, dan pengguna.</p><span class="stack">Laravel 9, AdminLTE, MySQL</span></div>
+      <div class="proj"><img class="shot" src="img/olt-secure.jpg" alt="Tabel hasil pembacaan data OLT" width="1200" height="744" data-ialt="i_olt"><h3><a href="https://github.com/asammanis89/OLT-SECURE" rel="noopener" data-i="olt_h">Laporan PDF terenkripsi otomatis</a></h3><p data-i="olt_p">Program ini membaca file konfigurasi OLT pakai regex, merangkum jumlah pelanggan per status, lalu mengunci laporan PDF-nya dengan AES-256.</p><span class="stack">Node.js, PDFKit, qpdf</span></div>
+      <div class="proj"><img class="shot" src="img/iot-dashboard.jpg" alt="Dashboard web sensor dapur" width="1200" height="790" data-ialt="i_iot"><h3><a href="https://github.com/asammanis89/iot-dashboard-web" rel="noopener" data-i="iot_h">Dashboard IoT web</a></h3><p data-i="iot_p">Panel web dengan grafik real-time dan riwayat kejadian untuk sensor gas, suhu, dan kelembapan.</p><span class="stack">JavaScript, Chart.js, Firebase</span></div>
+      <div class="proj"><img class="shot" src="img/radiusin.jpg" alt="Ringkasan panel Radiusin: pelanggan, sesi online, dan pemakaian pool IP" width="1200" height="862" loading="lazy" data-ialt="i_rad"><h3><a href="https://github.com/asammanis89/Radiusin" rel="noopener" data-i="rad_h">Radiusin: manajemen RADIUS untuk ISP</a></h3><p data-i="radiusin_p">Mengelola router, pool IP yang dibagi otomatis, profil kecepatan, pelanggan, dan sesi online, plus impor CSV. Datanya langsung dipakai FreeRADIUS.</p><span class="stack">Node.js, PostgreSQL, FreeRADIUS, Docker</span></div>
+      <div class="proj"><img class="shot" src="img/fieldops.jpg" alt="Papan dispatch FieldOps: peta site, alarm aktif, dan tiket gangguan" width="1200" height="750" loading="lazy" data-ialt="i_fo"><h3><a href="https://github.com/asammanis89/FieldOps" rel="noopener" data-i="fo_h">FieldOps: operasional lapangan ISP</a></h3><p data-i="fo_p">Pemasangan baru, tiket gangguan, alarm jaringan, dan peta lokasi ada di satu papan kerja. Laporan Word dan PDF bisa dibuat dengan sekali klik.</p><span class="stack">Node.js, SQLite, Leaflet, docx, PDFKit</span></div>
+      <div class="proj"><img class="shot" src="img/pingmap.jpg" alt="Peta PingMap dengan router online dan router yang mati" width="1200" height="750" loading="lazy" data-ialt="i_pm"><h3><a href="https://github.com/asammanis89/PingMap" rel="noopener" data-i="pm_h">PingMap: pantau router di peta</a></h3><p data-i="pm_p">Mengecek ping atau port router secara berkala, menampilkannya di peta, dan mengirim pesan Telegram saat ada router yang mati atau sudah hidup lagi.</p><span class="stack">Node.js, SQLite, Leaflet, Telegram Bot API</span></div>
+      <div class="proj"><img class="shot" src="img/gadgetbekas.jpg" alt="Katalog GadgetBekas dengan filter dan kartu HP bekas" width="1200" height="750" loading="lazy" data-ialt="i_gb"><h3><a href="https://github.com/asammanis89/GadgetBekas" rel="noopener" data-i="gb_h">GadgetBekas: toko HP bekas</a></h3><p data-i="gb_p">Katalog HP bekas yang bisa difilter berdasarkan grade dan kesehatan baterai, ada tombol tanya lewat WhatsApp, dan halaman admin untuk mengatur stok, foto, dan harga.</p><span class="stack">Laravel 12, SQLite</span></div>
+      <div class="proj"><img class="shot" src="img/iot-dapur-ai.jpg" alt="IoT Dapur AI: aplikasi Flutter pemantau gas, suhu, dan kelembapan dapur dengan analisis Gemini" width="1200" height="675" loading="lazy" data-ialt="i_dapur"><h3><a href="https://github.com/asammanis89/proyek_dapur_pintariot" rel="noopener">IoT Dapur AI</a></h3><p data-i="dapur_p">Aplikasi HP untuk memantau gas, suhu, dan kelembapan dapur. Ada notifikasi suara dan analisis dari AI.</p><span class="stack">Flutter, Firebase, Gemini</span></div>
+      <div class="proj"><img class="shot" src="img/proxmox-monitor.jpg" alt="Halaman login dan dashboard monitoring Proxmox dalam tema terang dan gelap, dengan data contoh fiktif" width="1200" height="750" loading="lazy" data-ialt="i_px"><h3><a href="https://github.com/asammanis89/ProxmoxMonitor" rel="noopener" data-i="px_h">Dashboard monitoring server Proxmox</a></h3><p data-i="px_p">Alat internal untuk tim NOC. Memantau CPU, RAM, disk, dan status VM secara real-time dengan tampilan yang lebih mudah dibaca daripada bawaan Proxmox.</p><span class="stack">Node.js, Proxmox API</span></div>
     </div>
   </div>
 </section>
 
 <section id="proses" class="grid-light">
   <div class="wrap">
-    <h2 class="title">Cara kerja</h2>
-    <p class="sub">Dari pertanyaan pertama sampai selesai, Anda selalu tahu sedang di tahap mana.</p>
+    <h2 class="title" data-i="n_proses">Cara kerja</h2>
+    <p class="sub" data-i="proses_sub">Dari pertanyaan pertama sampai selesai, Anda selalu tahu pekerjaan sudah sampai mana.</p>
     <ol class="steps">
-      <li><strong>Konsultasi</strong>Ceritakan kebutuhan lewat WhatsApp, gratis.</li>
-      <li><strong>Penawaran</strong>Harga dan jadwal jelas, DP 50%.</li>
-      <li><strong>Pengerjaan</strong>Anda dikabari di setiap tahap penting.</li>
-      <li><strong>Revisi</strong>Perbaikan sampai sesuai kesepakatan.</li>
-      <li><strong>Serah terima</strong>Pelunasan, lalu panduan penggunaan.</li>
+      <li data-i="st1"><strong>Konsultasi</strong>Ceritakan kebutuhan lewat WhatsApp, gratis.</li>
+      <li data-i="st2"><strong>Penawaran</strong>Harga dan jadwal jelas, DP 50%.</li>
+      <li data-i="st3"><strong>Pengerjaan</strong>Anda dikabari di setiap tahap penting.</li>
+      <li data-i="st4"><strong>Revisi</strong>Perbaikan sampai sesuai kesepakatan.</li>
+      <li data-i="st5"><strong>Serah terima</strong>Pelunasan, lalu panduan penggunaan.</li>
     </ol>
   </div>
 </section>
@@ -283,41 +297,39 @@ footer a{color:var(--cyan-l)}
 <section id="tentang">
   <div class="wrap about">
     <div>
-      <h2 class="title">Tentang saya</h2>
-      <p>Saya Ardha Febrian Muqorrobin, lulusan D3 Teknologi Informasi Politeknik Negeri Madiun. Saya membuat website dan tools sebagai freelancer sejak 2024, dan sejak September 2026 bekerja di NOC penyedia internet.</p>
-      <p>Karena berlatar belakang jaringan, saya terbiasa memikirkan hal yang sering terlewat saat website dibuat: keamanan, backup, dan apa yang terjadi kalau server mati tengah malam.</p>
-      <p>Dari kerjaan itu saya juga membuat alat bantu untuk operasional penyedia internet: manajemen RADIUS dan pool IP, pemantau router yang kirim notifikasi Telegram, pencatatan kerja lapangan beserta laporannya, dan dashboard monitoring Proxmox.</p>
+      <h2 class="title" data-i="t_tentang">Tentang saya</h2>
+      <p data-i="ab1">Saya Ardha Febrian Muqorrobin, lulusan D3 Teknologi Informasi Politeknik Negeri Madiun. Saya membuat website dan tools sebagai freelancer sejak 2024, dan sejak September 2026 bekerja di NOC penyedia internet.</p>
+      <p data-i="ab2">Karena berlatar belakang jaringan, saya terbiasa memikirkan hal yang sering terlewat saat website dibuat: keamanan, backup, dan apa yang terjadi kalau server mati tengah malam.</p>
+      <p data-i="ab3">Dari kerjaan itu saya juga membuat alat bantu untuk operasional penyedia internet: manajemen RADIUS dan pool IP, pemantau router yang kirim notifikasi Telegram, pencatatan kerja lapangan beserta laporannya, dan dashboard monitoring Proxmox.</p>
     </div>
     <ul class="facts">
-      <li><b>Teknologi</b>Laravel, Node.js, Python, Flutter</li>
-      <li><b>Tools ISP</b>Manajemen RADIUS, pemantau router, operasional lapangan, dashboard Proxmox</li>
+      <li data-i="f1"><b>Teknologi</b>Laravel, Node.js, Python, Flutter</li>
+      <li data-i="f2"><b>Tools ISP</b>Manajemen RADIUS, pemantau router, operasional lapangan, dashboard Proxmox</li>
       <li><b>Server</b>Ubuntu Linux, aaPanel, Nginx, SSL</li>
-      <li><b>Jaringan</b>FTTH, manajemen bandwidth, keamanan jaringan</li>
-      <li><b>Lokasi</b>Ngawi, Jawa Timur. Bisa dikerjakan jarak jauh untuk seluruh Indonesia</li>
+      <li data-i="f4"><b>Jaringan</b>FTTH, manajemen bandwidth, keamanan jaringan</li>
+      <li data-i="f5"><b>Lokasi</b>Ngawi, Jawa Timur. Bisa dikerjakan jarak jauh untuk seluruh Indonesia</li>
     </ul>
   </div>
 </section>
 
 <section id="kontak" class="contact">
   <div class="wrap">
-    <h2 class="title">Ceritakan kebutuhan Anda</h2>
-    <p class="sub">Cukup satu pesan singkat: usaha Anda bergerak di bidang apa, dan apa yang ingin dibuat atau diperbaiki. Nanti saya balas dengan saran dan perkiraan biaya.</p>
+    <h2 class="title" data-i="t_kontak">Ceritakan kebutuhan Anda</h2>
+    <p class="sub" data-i="k_sub">Cukup satu pesan singkat: usaha Anda bergerak di bidang apa, dan apa yang ingin dibuat atau diperbaiki. Nanti saya balas dengan saran dan perkiraan biaya.</p>
     <div class="cta-row">
-      <a class="btn wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS.">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.51-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg>
-        Chat WhatsApp 0857-5517-1491
-      </a>
-      <span class="cta-note">atau email <a class="mail" href="mailto:febrianardha24@gmail.com">febrianardha24@gmail.com</a></span>
+      <a class="btn wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." data-wa="consult">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.51-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg><span data-i="cta2">Chat WhatsApp 0857-5517-1491</span></a>
+      <span class="cta-note" data-i="k_note">atau email <a class="mail" href="mailto:febrianardha24@gmail.com">febrianardha24@gmail.com</a></span>
     </div>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap">Ardha Web & VPS, Ngawi, Jawa Timur. <a href="https://www.linkedin.com/in/ardha-febrian-342317289/" rel="noopener">LinkedIn</a> dan <a href="https://github.com/asammanis89" rel="noopener">GitHub</a>.</div>
+  <div class="wrap" data-i="foot">Ardha Web & VPS, Ngawi, Jawa Timur. <a href="https://www.linkedin.com/in/ardha-febrian-342317289/" rel="noopener">LinkedIn</a> dan <a href="https://github.com/asammanis89" rel="noopener">GitHub</a>.</div>
 </footer>
 
-<div class="fab"><a class="btn wa small" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS.">Chat WhatsApp</a></div>
+<div class="fab"><a class="btn wa small" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." data-wa="consult" data-i="wa_btn">Chat WhatsApp</a></div>
 
 <script>
 (function(){
@@ -341,6 +353,42 @@ footer a{color:var(--cyan-l)}
   var els=[].slice.call(document.querySelectorAll('h2.title,.sub,.pricelist,.proj,ol.steps li,.about>div,.facts,.contact .cta-row'));
   var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var t=en.target;t.classList.add('in');io.unobserve(t);setTimeout(function(){t.style.transitionDelay=''},1100)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   els.forEach(function(el,i){var sib=el.parentNode?[].indexOf.call(el.parentNode.children,el):0;el.style.transitionDelay=(Math.min(sib%4,3)*70)+'ms';el.classList.add('rv');io.observe(el)});
+})();
+</script>
+<script>
+(function(){
+  var EN={"lead":"I'm Ardha. I build websites and look after Linux VPSs for small businesses, schools, and local shops. By day I work in a NOC (a network operations center), so keeping systems up has become second nature.","layanan_sub":"These are starting prices. The final price depends on what you need. Consultation and quotes are free.","proyek_sub":"Some can be opened live, and the code is on GitHub. Jalur is a template I sell, so its repo only has the demo and the source code comes with purchase. The Proxmox dashboard, Radiusin, FieldOps, and Djamoe Multi are case studies: their repos hold screenshots and an explanation of how they work, but no code.","proses_sub":"From your first question to handover, you always know where the work stands.","radiusin_p":"Manages routers, automatically allocated IP pools, speed profiles, customers, and online sessions, plus CSV import. FreeRADIUS uses the data directly.","n_layanan":"Services","n_proyek":"Projects","n_proses":"How I work","n_tentang":"About","wa_btn":"Chat on WhatsApp","h1":"Websites and servers that I <span class=\"glow-text\">look after like an office network</span>","cta1":"Free consultation on WhatsApp","cta_note":"I reply in between my shifts.","board_h":"What I look after for you","board_p":"Examples of routine checks I run on client websites.","r_ssl":"SSL certificate","r_backup":"Data backup","r_update":"Security updates","v_sched":"Scheduled","v_active":"Active","v_mon":"Monitored","board_small":"This is an example, not live data.","t_layanan":"Services and pricing","s1_h":"Linux VPS setup","s1_p":"I install Ubuntu and aaPanel, set up SSL, the firewall, and basic hardening, then schedule backups.","s2_h":"Website development","s2_p":"A Laravel or Node.js website that works well on phones, with a domain and one year of VPS included. It can be bilingual (Indonesian and English), and comes with an admin dashboard so you can edit page content yourself.","s3_h":"Tools and automation","s3_p":"Apps that generate PDF or Word reports automatically, process data, or collect data through bots. I build them around how your business already works.","s4_h":"Application and security testing","s4_p":"Blackbox and whitebox testing. The report includes test scenarios, results, evidence, and fix recommendations. I only run security tests on systems whose owner has given written permission.","s5_h":"Ready-made admin dashboard template","s5_p":"Jalur: an admin dashboard template with a glass look (glassmorphism), smooth animation, and dark mode. Plain HTML, CSS, and JS, so it drops easily into Laravel or Node.js. <a href=\"https://github.com/asammanis89/DEMOV1\" rel=\"noopener\">See the demo</a>.","s6_h":"Monthly maintenance","s6_p":"I monitor the server, run regular backups, install security updates, and you can message me on WhatsApp whenever something goes wrong.","from":"from","per_app":"per app","per_month":"per month","digital":"digital product","p1":"IDR 600,000","p2":"IDR 2,500,000","p3":"IDR 1,500,000","p4":"IDR 500,000","p5":"IDR 300,000","ask":"Ask for price","t_proyek":"Projects I've built","j_h":"Jalur: admin dashboard template","j_p":"A template I sell. It has 4 ready-to-use pages, page transitions, a theme switch that ripples across the screen, and a glass look. <a href=\"https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20tertarik%20template%20Jalur%20Admin%20Dashboard.\" data-wa=\"jalur\" rel=\"noopener\">Buy on WhatsApp</a>.","dj_h":"djamoemadiun.co.id website","dj_p":"A local business website with its own domain and VPS. I built it and managed it through to launch.","cp_h":"Bilingual company profile","cp_p":"A website in Indonesian and English with an admin dashboard for managing products, articles, outlets, and users.","olt_h":"Automatic encrypted PDF reports","olt_p":"This program reads OLT config files with regex, summarizes the number of customers per status, then locks the PDF report with AES-256.","iot_h":"IoT web dashboard","iot_p":"A web panel with real-time charts and an event history for gas, temperature, and humidity sensors.","rad_h":"Radiusin: RADIUS management for ISPs","fo_h":"FieldOps: ISP field operations","fo_p":"New installations, fault tickets, network alarms, and a site map on one work board. Word and PDF reports are one click away.","pm_h":"PingMap: watch your routers on a map","pm_p":"Checks router ping or ports on a schedule, shows them on a map, and sends a Telegram message when a router goes down or comes back up.","gb_h":"GadgetBekas: used phone shop","gb_p":"A used-phone catalog you can filter by grade and battery health, with a WhatsApp inquiry button and an admin page for stock, photos, and prices.","dapur_p":"A phone app for monitoring kitchen gas, temperature, and humidity. It has voice notifications and analysis from AI.","px_h":"Proxmox server monitoring dashboard","px_p":"An internal tool for the NOC team. It watches CPU, RAM, disk, and VM status in real time, and is easier to read than the built-in Proxmox view.","st1":"<strong>Consultation</strong>Tell me what you need on WhatsApp. It's free.","st2":"<strong>Quote</strong>A clear price and schedule, 50% down payment.","st3":"<strong>Build</strong>I update you at every major stage.","st4":"<strong>Revisions</strong>Changes until it matches what we agreed.","st5":"<strong>Handover</strong>Final payment, then a usage guide.","t_tentang":"About me","ab1":"I'm Ardha Febrian Muqorrobin, a graduate of the D3 Information Technology program at Politeknik Negeri Madiun. I've built websites and tools as a freelancer since 2024, and since September 2026 I've worked in the NOC of an internet provider.","ab2":"Because I come from a networking background, I tend to think about what often gets forgotten when a website is built: security, backups, and what happens when the server goes down in the middle of the night.","ab3":"That work led me to build tools for internet provider operations too: RADIUS and IP pool management, a router monitor that sends Telegram notifications, field work records with their reports, and a Proxmox monitoring dashboard.","f1":"<b>Tech</b>Laravel, Node.js, Python, Flutter","f2":"<b>ISP tools</b>RADIUS management, router monitoring, field operations, Proxmox dashboard","f4":"<b>Networking</b>FTTH, bandwidth management, network security","f5":"<b>Location</b>Ngawi, East Java. Remote work available across Indonesia","t_kontak":"Tell me what you need","k_sub":"Just one short message: what your business does, and what you'd like built or fixed. I'll reply with advice and a cost estimate.","cta2":"Chat on WhatsApp 0857-5517-1491","k_note":"or email <a class=\"mail\" href=\"mailto:febrianardha24@gmail.com\">febrianardha24@gmail.com</a>","foot":"Ardha Web &amp; VPS, Ngawi, East Java. <a href=\"https://www.linkedin.com/in/ardha-febrian-342317289/\" rel=\"noopener\">LinkedIn</a> and <a href=\"https://github.com/asammanis89\" rel=\"noopener\">GitHub</a>."},ALT={"i_dj":"D'jamoe website homepage","i_dja":"Admin page for managing products","i_olt":"Table of parsed OLT data","i_iot":"Web dashboard for kitchen sensors","i_rad":"Radiusin panel overview: customers, online sessions, and IP pool usage","i_fo":"FieldOps dispatch board: site map, active alarms, and fault tickets","i_pm":"PingMap map showing online and offline routers","i_gb":"GadgetBekas catalog with filters and used-phone cards","i_dapur":"IoT Dapur AI: a Flutter app monitoring kitchen gas, temperature, and humidity, with Gemini analysis","i_px":"Proxmox monitoring login page and dashboard in light and dark themes, with fictional sample data"},ARIA={"a_nav":"Main menu","a_board":"Examples of what I look after for clients","a_video":"Jalur Admin Dashboard promo video"},META={"id":{"title":"Ardha Web & VPS | Website, VPS Linux, dan Tools Otomasi","desc":"Jasa pembuatan website, setup dan pengelolaan VPS Linux, tools otomasi laporan, dan pengujian aplikasi untuk UMKM, sekolah, dan usaha lokal. Ada juga tools operasional ISP dan template admin dashboard. Dikerjakan Ardha Febrian, staf NOC.","ogd":"Website dan server yang saya jaga seperti jaringan kantor."},"en":{"title":"Ardha Web & VPS | Websites, Linux VPS, and Automation Tools","desc":"Website development, Linux VPS setup and management, report automation tools, and application testing for small businesses, schools, and local shops. Also ISP operations tools and an admin dashboard template. Built by Ardha Febrian, NOC staff.","ogd":"Websites and servers looked after like an office network."}},WA={"id":{"consult":"Halo Ardha, saya ingin konsultasi soal website/VPS.","jalur":"Halo Ardha, saya tertarik template Jalur Admin Dashboard."},"en":{"consult":"Hi Ardha, I'd like to talk about a website/VPS.","jalur":"Hi Ardha, I'm interested in the Jalur Admin Dashboard template."}};
+  var btn=document.getElementById('lang'),cur='id';
+  var tx=[].slice.call(document.querySelectorAll('[data-i]')),
+      al=[].slice.call(document.querySelectorAll('[data-ialt]')),
+      ar=[].slice.call(document.querySelectorAll('[data-iaria]')),
+      wa=null;
+  tx.forEach(function(e){e._id=e.innerHTML});
+  al.forEach(function(e){e._id=e.getAttribute('alt')});
+  ar.forEach(function(e){e._id=e.getAttribute('aria-label')});
+  function meta(sel,v){var m=document.querySelector(sel);if(m)m.setAttribute('content',v)}
+  function set(l){
+    cur=l;var en=l==='en';
+    document.documentElement.lang=l;
+    tx.forEach(function(e){e.innerHTML=en?EN[e.getAttribute('data-i')]:e._id});
+    al.forEach(function(e){e.setAttribute('alt',en?ALT[e.getAttribute('data-ialt')]:e._id)});
+    ar.forEach(function(e){e.setAttribute('aria-label',en?ARIA[e.getAttribute('data-iaria')]:e._id)});
+    [].slice.call(document.querySelectorAll('[data-wa]')).forEach(function(e){e.href='https://wa.me/6285755171491?text='+encodeURIComponent(WA[l][e.getAttribute('data-wa')])});
+    document.title=META[l].title;
+    meta('meta[name="description"]',META[l].desc);
+    meta('meta[property="og:title"]','Ardha Web & VPS');
+    meta('meta[property="og:description"]',META[l].ogd);
+    btn.setAttribute('data-lang',l);
+    btn.setAttribute('aria-label',en?'Ganti ke Bahasa Indonesia':'Switch to English');
+    btn.title=en?'Ganti ke Bahasa Indonesia':'Switch to English';
+  }
+  var start='id';
+  try{var q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='id')start=q;else{var sv=localStorage.getItem('lang');if(sv==='en'||sv==='id')start=sv}}catch(e){}
+  if(start==='en')set('en');
+  btn.addEventListener('click',function(){
+    var n=cur==='id'?'en':'id';set(n);
+    try{localStorage.setItem('lang',n)}catch(e){}
+  });
 })();
 </script>
 </body>
