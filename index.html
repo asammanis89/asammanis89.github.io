@@ -12,243 +12,336 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D1B33'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%2322D3EE' text-anchor='middle'%3E%3CA/%3E%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:dark;
-  --bg:#060913; --bg2:#0A1126;
+  --bg:#060913;
   --ink:#EAF0FF; --ink-soft:#A9B7D3; --line:rgba(255,255,255,.10);
-  --glass:rgba(255,255,255,.055); --glass-hi:rgba(255,255,255,.09);
   --cyan:#22D3EE; --cyan-l:#67E8F9; --purple:#A78BFA; --purple-l:#C4B5FD; --lime:#A3E635; --pink:#F472B6; --wa:#16A34A;
   --wrap:1100px; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
+button{font:inherit;color:inherit}
 ::selection{background:rgba(34,211,238,.35);color:#fff}
-:focus-visible{outline:3px solid var(--cyan-l);outline-offset:3px;border-radius:6px}
+:focus-visible{outline:3px solid var(--cyan-l);outline-offset:3px;border-radius:8px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
 img{max-width:100%;display:block}
-section{scroll-margin-top:72px}
 
-/* aurora latar, tetap di belakang semua konten */
+/* aurora di belakang semua konten */
 body::before,body::after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%;will-change:transform}
-body::before{width:70vmax;height:70vmax;left:-25vmax;top:-30vmax;background:radial-gradient(closest-side,rgba(34,211,238,.26),transparent 70%);animation:drift1 22s ease-in-out infinite alternate}
-body::after{width:75vmax;height:75vmax;right:-30vmax;top:10vmax;background:radial-gradient(closest-side,rgba(139,92,246,.30),transparent 70%);animation:drift2 28s ease-in-out infinite alternate}
+body::before{width:70vmax;height:70vmax;left:-25vmax;top:-30vmax;background:radial-gradient(closest-side,rgba(34,211,238,.22),transparent 70%);animation:drift1 22s ease-in-out infinite alternate}
+body::after{width:75vmax;height:75vmax;right:-30vmax;top:10vmax;background:radial-gradient(closest-side,rgba(139,92,246,.26),transparent 70%);animation:drift2 28s ease-in-out infinite alternate}
 @keyframes drift1{to{transform:translate3d(14vmax,10vmax,0) scale(1.1)}}
 @keyframes drift2{to{transform:translate3d(-12vmax,12vmax,0) scale(1.08)}}
 
-/* bar progres gulir */
-.progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:30;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));box-shadow:0 0 14px rgba(34,211,238,.7)}
+/* butiran halus di atas segalanya */
+.grain{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
 
-/* pola grid halus */
-.grid-light{background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:36px 36px}
-.grid-dark{background-color:rgba(255,255,255,.018);background-image:linear-gradient(rgba(34,211,238,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.05) 1px,transparent 1px);background-size:44px 44px;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:50;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));box-shadow:0 0 14px rgba(34,211,238,.7)}
 
-/* header kaca */
-header{position:sticky;top:0;z-index:20;background:rgba(7,11,24,.55);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 12px 30px -22px rgba(0,0,0,.8)}
-.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{font-weight:800;font-size:19px;text-decoration:none;color:var(--ink);letter-spacing:-.01em}
+/* ===== header kaca melayang ===== */
+header.island{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:30;width:min(var(--wrap),calc(100% - 24px));border-radius:999px;background:rgba(9,14,30,.58);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);border:1px solid rgba(255,255,255,.12);box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 18px 40px -22px rgba(0,0,0,.9)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:14px;height:58px;padding:0 9px 0 24px}
+.brand{font-weight:800;font-size:19px;text-decoration:none;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
 .brand span{background:linear-gradient(100deg,var(--cyan-l),var(--purple));-webkit-background-clip:text;background-clip:text;color:var(--cyan-l);-webkit-text-fill-color:transparent}
-nav{display:flex;gap:26px;align-items:center}
-nav a{text-decoration:none;font-weight:500;font-size:16px;color:var(--ink-soft);transition:color .2s}
-nav a:hover{color:#fff}
-
-/* tombol glossy */
-.btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:14px 24px;border-radius:12px;border:1px solid rgba(255,255,255,.28);background:linear-gradient(180deg,#22B455 0%,#15803D 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -3px 8px rgba(0,0,0,.25),0 14px 30px -12px rgba(34,197,94,.75),0 0 0 1px rgba(21,128,61,.6);text-shadow:0 1px 1px rgba(0,0,0,.35);transition:transform .18s,box-shadow .25s,filter .25s}
-.btn::before{content:"";position:absolute;z-index:-1;left:0;right:0;top:0;height:52%;background:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,.04));border-radius:12px 12px 40% 40%/12px 12px 14px 14px}
-.btn::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;width:46%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .7s ease}
-.btn:hover{transform:translateY(-2px);filter:saturate(1.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -3px 8px rgba(0,0,0,.25),0 20px 40px -12px rgba(34,197,94,.95),0 0 0 1px rgba(21,128,61,.6)}
-.btn:hover::after{left:120%}
-.btn:active{transform:translateY(0)}
-.btn.small{padding:9px 16px;font-size:15px;border-radius:10px}
-.btn svg{width:20px;height:20px;fill:currentColor}
-
-/* tepi kaca bergradasi + sorotan mengikuti kursor */
-.board,.pricelist,.proj,.facts{position:relative}
-.board::before,.pricelist::before,.proj::before,.facts::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:linear-gradient(145deg,rgba(255,255,255,.38),rgba(255,255,255,.05) 35%,rgba(255,255,255,.05) 65%,rgba(34,211,238,.38));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
-.board::after,.proj::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.12),transparent 62%)}
-.board:hover::after,.proj:hover::after{opacity:1}
-
-/* hero */
-.hero-band{position:relative;overflow:hidden}
-.hero-band::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 340px at 90% 0%,rgba(167,139,250,.22),transparent 70%),radial-gradient(520px 360px at 0% 100%,rgba(34,211,238,.20),transparent 70%),radial-gradient(360px 240px at 55% 112%,rgba(163,230,53,.12),transparent 70%);pointer-events:none}
-.hero{position:relative;padding-top:84px;padding-bottom:92px}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
-h1{font-size:clamp(36px,5.4vw,62px);line-height:1.05;letter-spacing:-.025em;font-weight:800;margin:0 0 22px;max-width:13em;color:#fff}
-.glow-text{color:var(--cyan-l);background:linear-gradient(100deg,#67E8F9 0%,#A78BFA 45%,#F0ABFC 70%,#67E8F9 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 7s linear infinite;filter:drop-shadow(0 0 22px rgba(139,92,246,.35))}
-@keyframes shine{to{background-position:-220% 0}}
-.lead{font-size:19px;color:var(--ink-soft);max-width:34em;margin:0 0 30px}
-.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.cta-note{font-size:15px;color:var(--ink-soft)}
-
-/* papan status */
-.board{background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.035));-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);border-radius:20px;padding:24px 24px 12px;box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 40px 80px -40px rgba(34,211,238,.45),0 20px 40px -30px rgba(0,0,0,.9)}
-.board h2{margin:0 0 4px;font-size:18px;font-weight:700;color:#fff}
-.board p{margin:0 0 12px;font-size:14px;color:var(--ink-soft)}
-.row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;border-top:1px solid var(--line);font-size:16px}
-.state{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink)}
-.dot{width:10px;height:10px;border-radius:50%;background:#475569;transition:background .4s,box-shadow .4s;flex:none}
-.row.on .dot{background:var(--lime);box-shadow:0 0 0 4px rgba(163,230,53,.18),0 0 14px rgba(163,230,53,.9);animation:pulse 2.6s ease-in-out infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(163,230,53,.06),0 0 20px rgba(163,230,53,1)}}
-.row .val{font-family:var(--mono);font-size:13px;color:var(--cyan-l);background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.35);padding:2px 9px;border-radius:7px;opacity:.35;transition:opacity .4s;box-shadow:0 1px 0 rgba(255,255,255,.12) inset}
-.row.on .val{opacity:1}
-.board small{display:block;padding:10px 0 6px;font-size:12px;color:#8FA0BF}
-
-/* section umum */
-section{padding:80px 0}
-h2.title{font-size:clamp(28px,3.6vw,40px);line-height:1.12;letter-spacing:-.02em;margin:0 0 12px;font-weight:800;color:#fff}
-.sub{color:var(--ink-soft);margin:0 0 38px;max-width:38em}
-.sub a,.item p a,.proj p a{color:var(--cyan-l);text-underline-offset:3px}
-
-/* harga */
-.pricelist{background:linear-gradient(160deg,rgba(255,255,255,.075),rgba(255,255,255,.028));-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-radius:20px;padding:6px 30px;box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 40px 70px -46px rgba(0,0,0,.9)}
-.item{display:grid;grid-template-columns:1fr auto;gap:8px 32px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start}
-.item:last-child{border-bottom:none}
-.item h3{margin:0 0 6px;font-size:21px;letter-spacing:-.01em;display:flex;align-items:center;gap:12px;color:#fff}
-.item h3::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c,var(--cyan));box-shadow:0 0 14px var(--c,var(--cyan)),inset 0 1px 0 rgba(255,255,255,.6);flex:none}
-.item p{margin:0;color:var(--ink-soft);max-width:38em;font-size:17px}
-.price{font-weight:800;font-size:21px;white-space:nowrap;text-align:right;color:#fff}
-.price em{display:block;font-style:normal;font-weight:500;font-size:13px;color:var(--ink-soft)}
-.price b{position:relative;background:linear-gradient(180deg,#D9F99D,#A3E635);color:#1A2E05;padding:3px 13px;border-radius:9px;display:inline-block;border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 8px 22px -10px rgba(163,230,53,.85)}
-.note{margin-top:20px;font-size:15px;color:var(--ink-soft);max-width:46em}
-
-/* proyek */
-.projects{align-items:start;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.proj{background:linear-gradient(160deg,rgba(255,255,255,.085),rgba(255,255,255,.03));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:18px;padding:22px;box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 30px 60px -44px rgba(0,0,0,.95);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
-.proj:hover{transform:translateY(-6px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 36px 70px -34px rgba(34,211,238,.5),0 18px 40px -30px rgba(139,92,246,.6)}
-.proj video.shot{background:#05070D;object-fit:contain}
-.proj .shot{border-radius:11px;border:1px solid rgba(255,255,255,.14);margin:-4px 0 16px;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:top left;box-shadow:0 14px 30px -18px rgba(0,0,0,.9)}
-.proj h3{margin:0 0 6px;font-size:20px;color:#fff}
-.proj h3 a{text-decoration:none;background:linear-gradient(90deg,var(--cyan),var(--purple)) 0 100%/100% 2px no-repeat;padding-bottom:2px;transition:background-size .3s,color .2s}
-.proj h3 a:hover{color:var(--cyan-l);background-size:100% 100%;background-image:linear-gradient(90deg,rgba(34,211,238,.18),rgba(167,139,250,.18))}
-.proj p{margin:0 0 12px;color:var(--ink-soft);font-size:16px}
-.stack{font-family:var(--mono);font-size:13px;color:var(--purple-l)}
-
-/* langkah */
-ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;counter-reset:s}
-ol.steps li{counter-increment:s;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.025));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.11);border-radius:16px;padding:18px 16px;font-size:15px;color:var(--ink-soft);box-shadow:0 1px 0 rgba(255,255,255,.14) inset;transition:transform .25s,border-color .25s}
-ol.steps li:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.4)}
-ol.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(145deg,var(--cyan),var(--purple));color:#07101F;font-family:var(--mono);font-weight:700;font-size:16px;margin-bottom:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 8px 20px -8px rgba(34,211,238,.8)}
-ol.steps strong{display:block;color:#fff;font-size:17px;margin-bottom:2px}
-
-/* tentang */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.about p{margin:0 0 16px;max-width:34em;color:var(--ink-soft)}
-.facts{margin:0;padding:6px 24px;list-style:none;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.028));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:18px;box-shadow:0 1px 0 rgba(255,255,255,.16) inset}
-.facts li{padding:15px 0;border-bottom:1px solid var(--line);font-size:17px;color:var(--ink)}
-.facts li:last-child{border-bottom:none}
-.facts b{display:block;font-size:13px;color:var(--purple-l);font-weight:600;font-family:var(--mono)}
-#tentang{background:linear-gradient(180deg,transparent,rgba(255,255,255,.02))}
-
-/* kontak */
-.contact{position:relative;overflow:hidden;background-image:linear-gradient(rgba(167,139,250,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(167,139,250,.06) 1px,transparent 1px);background-size:44px 44px;border-top:1px solid rgba(255,255,255,.06)}
-.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(620px 320px at 92% 108%,rgba(34,211,238,.24),transparent 70%),radial-gradient(520px 260px at 5% 0%,rgba(139,92,246,.22),transparent 70%);pointer-events:none}
-.contact .wrap{position:relative}
-.contact a.mail{color:var(--cyan-l)}
-footer{background:rgba(3,6,14,.6);color:var(--ink-soft);padding:26px 0 40px;font-size:15px;border-top:1px solid rgba(255,255,255,.08)}
-footer a{color:var(--cyan-l)}
-
-.fab{position:fixed;right:16px;bottom:16px;z-index:20;display:none}
-.fab .btn{box-shadow:0 10px 24px -8px rgba(0,0,0,.6)}
-
-/* muncul saat digulir (hanya aktif jika JS jalan) */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
-.rv.in{opacity:1;transform:none}
-.proj.rv.in{transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
-
+.right{display:flex;align-items:center;gap:12px}
+.links{position:relative;display:flex;align-items:center;gap:2px}
+.links a{position:relative;z-index:1;text-decoration:none;font-weight:500;font-size:15.5px;color:var(--ink-soft);padding:8px 15px;border-radius:999px;transition:color .2s}
+.links a:hover,.links a.active{color:#fff}
+.pill{position:absolute;left:0;top:0;bottom:0;width:0;z-index:0;border-radius:999px;opacity:0;pointer-events:none;background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 1px 0 rgba(255,255,255,.2) inset,0 8px 20px -10px rgba(34,211,238,.7);transition:transform .35s cubic-bezier(.2,.8,.2,1),width .35s cubic-bezier(.2,.8,.2,1),opacity .2s}
 
 /* tombol ganti bahasa */
-.lang{position:relative;display:inline-flex;align-items:center;padding:3px;margin:0;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.14) inset,0 8px 20px -14px rgba(0,0,0,.9);cursor:pointer;font:700 13px/1 var(--mono);color:var(--ink-soft);letter-spacing:.04em}
+.lang{position:relative;display:inline-flex;align-items:center;padding:3px;margin:0;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);box-shadow:0 1px 0 rgba(255,255,255,.14) inset;cursor:pointer;font:700 13px/1 var(--mono);color:var(--ink-soft);letter-spacing:.04em}
 .lang::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:linear-gradient(145deg,var(--cyan),var(--purple));box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 6px 16px -6px rgba(34,211,238,.8);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
 .lang[data-lang="en"]::before{transform:translateX(100%)}
 .lang span{position:relative;z-index:1;min-width:36px;padding:8px 6px;text-align:center;transition:color .25s}
 .lang[data-lang="id"] span:first-child,.lang[data-lang="en"] span:last-child{color:#07101F}
 .lang:hover{border-color:rgba(255,255,255,.34)}
 
-@media (max-width:960px){
-  .hero-grid,.about{grid-template-columns:1fr;gap:36px}
+/* ===== tombol gloss (kilau mengikuti kursor) ===== */
+.btn{--bx:50%;--by:0%;position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:10px;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:14px 24px;border-radius:14px;border:1px solid rgba(255,255,255,.28);background:radial-gradient(130px circle at var(--bx) var(--by),rgba(255,255,255,.4),transparent 65%),linear-gradient(180deg,#22B455 0%,#15803D 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -3px 8px rgba(0,0,0,.25),0 14px 30px -12px rgba(34,197,94,.75),0 0 0 1px rgba(21,128,61,.6);text-shadow:0 1px 1px rgba(0,0,0,.35);cursor:pointer;transition:transform .18s,box-shadow .25s,filter .25s}
+.btn::before{content:"";position:absolute;z-index:-1;left:0;right:0;top:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,.02));border-radius:14px 14px 40% 40%/14px 14px 14px 14px}
+.btn::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;width:46%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);transition:left .7s ease}
+.btn:hover{transform:translateY(-2px);filter:saturate(1.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -3px 8px rgba(0,0,0,.25),0 20px 40px -12px rgba(34,197,94,.95),0 0 0 1px rgba(21,128,61,.6)}
+.btn:hover::after{left:120%}
+.btn:active{transform:translateY(0) scale(.97,.94)}
+.btn.small{padding:9px 18px;font-size:15px;border-radius:999px}
+.btn svg{width:20px;height:20px;fill:currentColor;flex:none}
+.btn.ghost{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.55);box-shadow:none;text-shadow:none}
+.btn.ghost::before,.btn.ghost::after{display:none}
+.btn.ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;box-shadow:0 0 30px -8px rgba(103,232,249,.7)}
+
+/* ===== tepi kaca bergradasi ===== */
+.stage,.stat,.inc,.item,.proj,.facts,.panel,.steps li{position:relative}
+.stage::before,.stat::before,.item::before,.proj::before,.facts::before,.panel::before,.steps li::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:5;background:linear-gradient(145deg,rgba(255,255,255,.36),rgba(255,255,255,.05) 35%,rgba(255,255,255,.05) 65%,rgba(34,211,238,.36));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.proj::after,.item::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.11),transparent 62%)}
+.proj:hover::after,.item:hover::after{opacity:1}
+
+/* ===== hero ===== */
+.hero-wrap{padding:84px 0 0}
+.stage{overflow:hidden;isolation:isolate;border-radius:32px;min-height:clamp(600px,calc(100svh - 112px),800px);padding:56px 56px 52px;display:flex;align-items:center;background:radial-gradient(900px 520px at 72% 22%,rgba(88,112,210,.20),transparent 70%),radial-gradient(600px 400px at 8% 0%,rgba(34,211,238,.10),transparent 70%),linear-gradient(180deg,#0d1427 0%,#080c19 58%,#05080f 100%);box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 60px 120px -70px rgba(34,211,238,.4);transition:box-shadow 1.2s}
+.stage.on{box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 60px 140px -50px rgba(34,211,238,.6)}
+.stars{position:absolute;inset:0;z-index:0;pointer-events:none}
+.stars i{position:absolute;border-radius:50%;background:#d7e6ff;animation:tw 4.5s ease-in-out infinite}
+@keyframes tw{50%{opacity:.08}}
+.scene{position:absolute;left:-24px;right:-24px;bottom:0;height:72%;z-index:1;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 24%,#000 58%);mask-image:linear-gradient(90deg,transparent 24%,#000 58%);transform:translate3d(calc(var(--px,0)*-12px),calc(var(--py,0)*-6px),0);transition:transform .5s ease-out}
+.scene svg{width:100%;height:100%;display:block}
+.lit{position:absolute;inset:0;z-index:2;pointer-events:none;clip-path:circle(0 at var(--tx,50%) var(--ty,50%));transition:clip-path 1.4s cubic-bezier(.22,.7,.12,1)}
+.stage.on .lit{clip-path:circle(150% at var(--tx,50%) var(--ty,50%))}
+.stage.instant .lit{transition:none}
+.lit .glow{position:absolute;inset:0;background:radial-gradient(520px 380px at 84% 46%,rgba(34,211,238,.30),transparent 70%),radial-gradient(560px 400px at 62% 74%,rgba(139,92,246,.28),transparent 70%)}
+.link{fill:none;stroke:url(#lk);stroke-width:1.6;stroke-dasharray:5 9;animation:march 1.4s linear infinite;filter:drop-shadow(0 0 5px rgba(103,232,249,.9))}
+@keyframes march{to{stroke-dashoffset:-28}}
+.ring{fill:none;stroke:#67E8F9;stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:ping 2.6s ease-out infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.8}100%{transform:scale(5);opacity:0}}
+.codeline{font:500 12px/1.5 var(--mono);color:rgba(190,205,235,.42);letter-spacing:.08em}
+.copy{position:relative;z-index:3;max-width:640px}
+.codeline.c2{padding-left:14px}.codeline.c3{padding-left:28px}
+.codeline.c4{padding-left:12em}
+.codeline.c5{padding-left:14px;margin-top:14px}
+.codeline.c6{padding-left:11em}
+h1{font-size:clamp(44px,5.5vw,76px);line-height:1.02;letter-spacing:-.03em;font-weight:800;margin:6px 0 4px 28px;color:#fff;text-shadow:0 10px 40px rgba(0,0,0,.5)}
+h1 .name{color:var(--cyan-l);background:linear-gradient(100deg,#67E8F9 0%,#A78BFA 50%,#F0ABFC 75%,#67E8F9 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 7s linear infinite;transition:filter 1s}
+.stage.on h1 .name{filter:drop-shadow(0 0 22px rgba(34,211,238,.6))}
+@keyframes shine{to{background-position:-220% 0}}
+.role{margin:0 0 0 14px;font:600 15px/1.4 var(--mono);color:var(--cyan-l);letter-spacing:.02em}
+.lead{font-size:18px;color:var(--ink-soft);max-width:31em;margin:16px 0 24px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.cta-note{font-size:15px;color:var(--ink-soft);margin-top:14px;display:block}
+
+/* saklar "nyalakan jaringan" */
+.power{position:absolute;z-index:4;left:57%;top:27%;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.power-label{font:500 13px/1.3 var(--mono);color:rgba(210,222,245,.75);letter-spacing:.04em}
+.power-label .on-txt{display:none;color:var(--cyan-l)}
+.stage.on .power-label .off-txt{display:none}
+.stage.on .power-label .on-txt{display:inline}
+.switch{position:relative;width:58px;height:32px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);cursor:pointer;padding:0;box-shadow:0 1px 0 rgba(255,255,255,.14) inset,0 10px 24px -12px rgba(0,0,0,.9);transition:background .4s,box-shadow .4s,border-color .4s}
+.switch i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:linear-gradient(180deg,#fff,#c9d6f2);box-shadow:0 2px 6px rgba(0,0,0,.5);transition:transform .35s cubic-bezier(.3,1.4,.4,1),background .35s}
+.switch[aria-checked="true"]{background:linear-gradient(90deg,rgba(34,211,238,.45),rgba(167,139,250,.45));border-color:rgba(103,232,249,.7);box-shadow:0 0 28px -4px rgba(34,211,238,.8),0 1px 0 rgba(255,255,255,.2) inset}
+.switch[aria-checked="true"] i{transform:translateX(26px);background:linear-gradient(180deg,#fff,#aef3ff)}
+.switch:active i{width:28px}
+.switch[aria-checked="true"]:active i{transform:translateX(22px)}
+.hint{width:120px;height:56px;margin:-2px 0 0 36px;overflow:visible;opacity:1;transition:opacity .5s;animation:bob 2.4s ease-in-out infinite}
+.hint path{fill:none;stroke:rgba(210,222,245,.7);stroke-width:1.4;stroke-linecap:round}
+.stage.on .hint{opacity:0}
+@keyframes bob{50%{transform:translate(4px,3px)}}
+.scroll{position:absolute;z-index:3;left:50%;bottom:16px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font:500 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:rgba(210,222,245,.55)}
+.scroll i{display:block;width:1px;height:34px;background:linear-gradient(180deg,rgba(255,255,255,.7),transparent);position:relative;overflow:hidden}
+.scroll i::after{content:"";position:absolute;left:0;top:-10px;width:1px;height:12px;background:#fff;animation:drip 1.8s ease-in infinite}
+@keyframes drip{to{top:36px}}
+
+/* ===== statistik ===== */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.stat{padding:20px 26px;border-radius:20px;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.025));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(255,255,255,.14) inset;display:flex;align-items:baseline;gap:14px}
+.stat b{font-size:clamp(34px,4vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1;background:linear-gradient(120deg,#fff,var(--cyan-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-variant-numeric:tabular-nums}
+.stat span{font-size:15px;color:var(--ink-soft);line-height:1.3}
+
+/* ===== section umum ===== */
+section{padding:84px 0}
+.grid-light{background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:38px 38px}
+.grid-dark{background-color:rgba(255,255,255,.016);background-image:linear-gradient(rgba(34,211,238,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.045) 1px,transparent 1px);background-size:44px 44px;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+h2.title{font-size:clamp(28px,3.6vw,42px);line-height:1.1;letter-spacing:-.02em;margin:0 0 12px;font-weight:800;color:#fff}
+.sub{color:var(--ink-soft);margin:0 0 34px;max-width:40em}
+.sub a,.item p a,.proj p a,.contact a.mail{color:var(--cyan-l);text-underline-offset:3px}
+
+/* yang saya urus */
+.inc{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin:0 0 22px;padding:0;list-style:none}
+.inc .lbl{font:500 13px/1 var(--mono);color:var(--ink-soft);margin-right:4px}
+.inc li.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-size:15px;font-weight:600;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);box-shadow:0 1px 0 rgba(255,255,255,.1) inset}
+.inc li.chip::before{content:"";width:18px;height:18px;border-radius:50%;flex:none;background:var(--lime) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a2e05' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7.5'/></svg>") center/12px no-repeat;box-shadow:0 0 12px rgba(163,230,53,.55)}
+
+/* ===== layanan: kartu kaca ===== */
+.pricelist{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.item{display:flex;flex-direction:column;gap:18px;padding:26px 24px 24px;border-radius:20px;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.028));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(255,255,255,.14) inset,0 34px 60px -46px rgba(0,0,0,.95);overflow:hidden;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.item:hover{transform:translateY(-5px);box-shadow:0 1px 0 rgba(255,255,255,.2) inset,0 36px 70px -36px var(--c,rgba(34,211,238,.5))}
+.item::before{z-index:5}
+.item>div:first-child{flex:1}
+.item h3{margin:0 0 8px;font-size:20px;letter-spacing:-.01em;display:flex;align-items:center;gap:12px;color:#fff;line-height:1.25}
+.item h3::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c,var(--cyan));box-shadow:0 0 14px var(--c,var(--cyan)),inset 0 1px 0 rgba(255,255,255,.6);flex:none}
+.item p{margin:0;color:var(--ink-soft);font-size:16px}
+.price{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;font-weight:800;font-size:20px;color:#fff;padding-top:16px;border-top:1px solid var(--line)}
+.price em{font-style:normal;font-weight:500;font-size:13px;color:var(--ink-soft)}
+.price b{background:linear-gradient(180deg,#D9F99D,#A3E635);color:#1A2E05;padding:3px 13px;border-radius:9px;display:inline-block;border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 8px 22px -10px rgba(163,230,53,.85)}
+
+/* ===== proyek ===== */
+.projects{align-items:start;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.proj{background:linear-gradient(160deg,rgba(255,255,255,.085),rgba(255,255,255,.03));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:22px;padding:22px;box-shadow:0 1px 0 rgba(255,255,255,.16) inset,0 30px 60px -44px rgba(0,0,0,.95);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.proj:hover{box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 36px 70px -34px rgba(34,211,238,.5),0 18px 40px -30px rgba(139,92,246,.6)}
+.proj.feature{grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr;gap:34px;align-items:center;padding:24px 34px 24px 24px}
+.proj.feature .shot{margin:0}
+.proj.feature h3{font-size:26px;margin-bottom:10px}
+.proj.feature p{font-size:17px}
+.proj video.shot{background:#05070D;object-fit:contain}
+.proj .shot{border-radius:13px;border:1px solid rgba(255,255,255,.14);margin:-4px 0 16px;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:top left;box-shadow:0 14px 30px -18px rgba(0,0,0,.9)}
+.proj h3{margin:0 0 6px;font-size:20px;color:#fff}
+.proj h3 a{text-decoration:none;background:linear-gradient(90deg,var(--cyan),var(--purple)) 0 100%/100% 2px no-repeat;padding-bottom:2px;transition:background-size .3s,color .2s}
+.proj h3 a:hover{color:var(--cyan-l);background-size:100% 100%;background-image:linear-gradient(90deg,rgba(34,211,238,.18),rgba(167,139,250,.18))}
+.proj p{margin:0 0 12px;color:var(--ink-soft);font-size:16px}
+.stack{font-family:var(--mono);font-size:13px;color:var(--purple-l)}
+
+/* ===== langkah ===== */
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;counter-reset:s}
+ol.steps li{counter-increment:s;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.025));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-radius:18px;padding:18px 16px;font-size:15px;color:var(--ink-soft);box-shadow:0 1px 0 rgba(255,255,255,.14) inset}
+ol.steps li::after{content:counter(s);display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(145deg,var(--cyan),var(--purple));color:#07101F;font-family:var(--mono);font-weight:700;font-size:16px;margin-bottom:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 8px 20px -8px rgba(34,211,238,.8);order:-1;position:absolute;top:18px;left:16px}
+ol.steps li{padding-top:66px}
+ol.steps strong{display:block;color:#fff;font-size:17px;margin-bottom:2px}
+
+/* ===== tentang ===== */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about p{margin:0 0 16px;max-width:34em;color:var(--ink-soft)}
+.facts{margin:0;padding:6px 24px;list-style:none;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.028));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:20px;box-shadow:0 1px 0 rgba(255,255,255,.16) inset}
+.facts li{padding:15px 0;border-bottom:1px solid var(--line);font-size:17px;color:var(--ink)}
+.facts li:last-child{border-bottom:none}
+.facts b{display:block;font-size:13px;color:var(--purple-l);font-weight:600;font-family:var(--mono)}
+
+/* ===== kontak ===== */
+.contact{padding:60px 0 90px}
+.panel{overflow:hidden;border-radius:32px;padding:64px 48px;text-align:center;background:radial-gradient(600px 300px at 90% 110%,rgba(34,211,238,.22),transparent 70%),radial-gradient(520px 260px at 6% 0%,rgba(139,92,246,.24),transparent 70%),linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 50px 100px -60px rgba(139,92,246,.6)}
+.panel .sub{margin-left:auto;margin-right:auto}
+.panel .cta-row{justify-content:center}
+.panel .cta-note{margin:0}
+footer{background:rgba(3,6,14,.6);color:var(--ink-soft);padding:26px 0 40px;font-size:15px;border-top:1px solid rgba(255,255,255,.08)}
+footer a{color:var(--cyan-l)}
+
+/* muncul saat digulir */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.proj.rv.in{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .18s ease-out,box-shadow .3s}
+.item.rv.in{transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.item.rv.in:hover{transform:translateY(-5px)}
+
+@media (max-width:1000px){
+  .pricelist{grid-template-columns:repeat(2,1fr)}
+  .proj.feature{grid-template-columns:1fr;gap:18px;padding:22px}
+  .proj.feature .shot{margin:-4px 0 4px}
   ol.steps{grid-template-columns:1fr 1fr}
-  nav a:not(.btn){display:none}
 }
-@media (max-width:680px){.projects{grid-template-columns:1fr}}
+@media (max-width:960px){
+  .links{display:none}
+  .about{grid-template-columns:1fr;gap:36px}
+  .stage{padding:48px 36px 80px}
+  .power{left:auto;right:36px;top:34px;align-items:flex-end}
+  .hint{display:none}
+  .stage{flex-direction:column;align-items:flex-start;justify-content:center;padding-bottom:300px}
+  .scene{height:320px;-webkit-mask-image:none;mask-image:none}
+  .scroll{display:none}
+}
+@media (max-width:680px){
+  .projects{grid-template-columns:1fr}
+  .pricelist{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .stat{padding:16px 22px}
+}
 @media (max-width:560px){
   body{font-size:17px}
-  .wrap{padding:0 18px}
-  .hero{padding-top:44px;padding-bottom:56px}
+  .wrap{padding:0 14px}
+  header.island{top:8px;width:calc(100% - 16px)}
+  .bar{height:52px;padding:0 7px 0 18px}
+  .brand{font-size:16px}
+  .right{gap:8px}
+  .hero-wrap{padding-top:72px}
+  .stage{padding:34px 22px 250px;border-radius:26px;min-height:0}
+  .power{right:20px;top:26px}
+  .scene{height:280px}
+  .role{font-size:13px}
+  h1{margin-left:0}
+  .codeline.c2{padding-left:8px}.codeline.c3{padding-left:16px}.codeline.c4{padding-left:9em}.codeline.c5{padding-left:8px}.codeline.c6{padding-left:8em}
+  .role{margin-left:0}
   section{padding:56px 0}
-  .pricelist{padding:2px 18px}
-  .item{grid-template-columns:1fr;gap:10px}
-  .price{text-align:left}
+  .cta-row .btn{width:100%}
+  .cta-row .btn.ghost{width:100%}
+  .panel{padding:44px 22px;border-radius:26px}
   ol.steps{grid-template-columns:1fr}
-  .board{padding:20px 18px 10px}
-  .cta-row .btn{width:100%;justify-content:center}
-  .brand{font-size:17px}
-  nav{gap:10px}
-  .brand{white-space:nowrap}
-  .bar .btn.small{padding:8px 12px;font-size:14px;white-space:nowrap}
+  .bar .btn.small{padding:8px 13px;font-size:14px;white-space:nowrap}
   .lang{font-size:12px}
   .lang span{min-width:30px;padding:8px 4px}
 }
 @media (max-width:380px){.brand{font-size:15px}.bar .btn.small{padding:8px 10px}.lang span{min-width:26px}}
+@media (max-width:340px){.brand{font-size:14px}.bar{padding:0 5px 0 12px;gap:6px}.right{gap:6px}.bar .btn.small{padding:7px 9px;font-size:13px}.lang span{min-width:23px;padding:7px 3px}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  body::before,body::after,.glow-text,.row.on .dot{animation:none}
-  .dot,.row .val,.btn,.btn::after,.proj,ol.steps li,.lang::before,.lang span{transition:none}
+  body::before,body::after,h1 .name,.stars i,.link,.ring,.hint,.scroll i::after{animation:none}
+  .btn,.btn::after,.proj,.item,.lang::before,.lang span,.pill,.lit,.scene,.switch,.switch i,.stage{transition:none}
   .rv{opacity:1;transform:none;transition:none}
 }
+
 </style>
 </head>
 <body>
 <div class="progress" id="progress" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
-<header>
-  <div class="wrap bar">
+<header class="island">
+  <div class="bar">
     <a class="brand" href="#top">Ardha <span>Web & VPS</span></a>
-    <nav aria-label="Menu utama" data-iaria="a_nav">
-      <a href="#layanan" data-i="n_layanan">Layanan</a>
-      <a href="#proyek" data-i="n_proyek">Proyek</a>
-      <a href="#proses" data-i="n_proses">Cara kerja</a>
-      <a href="#tentang" data-i="n_tentang">Tentang</a>
+    <div class="right">
+      <nav class="links" aria-label="Menu utama" data-iaria="a_nav"><i class="pill" aria-hidden="true"></i>
+        <a href="#layanan" data-i="n_layanan">Layanan</a>
+        <a href="#proyek" data-i="n_proyek">Proyek</a>
+        <a href="#proses" data-i="n_proses">Cara kerja</a>
+        <a href="#tentang" data-i="n_tentang">Tentang</a>
+      </nav>
       <button class="lang" id="lang" type="button" data-lang="id" aria-label="Switch to English"><span>ID</span><span>EN</span></button>
       <a class="btn small wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." data-wa="consult" rel="noopener">WhatsApp</a>
-    </nav>
+    </div>
   </div>
 </header>
 
 <main id="top">
-<div class="hero-band grid-dark">
-<div class="wrap hero">
-  <div class="hero-grid">
-    <div>
-      <h1 data-i="h1">Website dan server yang <span class="glow-text">saya jaga seperti jaringan kantor</span></h1>
-      <p class="lead" data-i="lead">Saya Ardha. Saya membuat website dan mengurus VPS Linux untuk UMKM, sekolah, dan usaha lokal. Sehari-hari saya kerja di NOC (ruang pantau jaringan), jadi menjaga sistem tetap hidup sudah jadi kebiasaan.</p>
+<div class="hero-wrap"><div class="wrap">
+  <div class="stage" id="stage">
+    <div class="stars" id="stars" aria-hidden="true"></div>
+    <div class="scene"><svg viewBox="0 0 1200 520" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><defs>
+<linearGradient id="lk" x1="0" x2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#A78BFA"/></linearGradient>
+<radialGradient id="hl"><stop offset="0" stop-color="#67E8F9" stop-opacity=".75"/><stop offset=".4" stop-color="#22D3EE" stop-opacity=".25"/><stop offset="1" stop-color="#22D3EE" stop-opacity="0"/></radialGradient>
+<linearGradient id="rim" x1="0" x2="1"><stop offset="0" stop-color="#22D3EE" stop-opacity="0"/><stop offset=".5" stop-color="#67E8F9" stop-opacity=".55"/><stop offset="1" stop-color="#A78BFA" stop-opacity=".5"/></linearGradient>
+</defs><path d="M0 380 L90 340 L170 365 L260 310 L350 350 L440 300 L540 345 L640 305 L730 340 L790 285 L850 330 L905 262 L960 322 L1030 235 L1085 295 L1125 255 L1200 290 L1200 520 L0 520 Z" fill="#0c1528" stroke="rgba(140,170,255,.17)" stroke-width="1"/><polygon points="778,285 790,200 802,285" fill="#0f1a33" stroke="rgba(170,200,255,.34)" stroke-width="1.1"/><line x1="785.8" y1="229.8" x2="794.2" y2="229.8" stroke="rgba(170,200,255,.3)" stroke-width="1"/><line x1="782.6" y1="252.7" x2="797.4" y2="252.7" stroke="rgba(170,200,255,.3)" stroke-width="1"/><rect x="782" y="214" width="16" height="3" rx="1.5" fill="#16203a"/><line x1="790" y1="200" x2="790" y2="190" stroke="rgba(190,210,255,.3)" stroke-width="1.2"/><polygon points="893,262 905,150 917,262" fill="#0f1a33" stroke="rgba(170,200,255,.34)" stroke-width="1.1"/><line x1="900.8" y1="189.2" x2="909.2" y2="189.2" stroke="rgba(170,200,255,.3)" stroke-width="1"/><line x1="897.6" y1="219.4" x2="912.4" y2="219.4" stroke="rgba(170,200,255,.3)" stroke-width="1"/><rect x="897" y="164" width="16" height="3" rx="1.5" fill="#16203a"/><line x1="905" y1="150" x2="905" y2="140" stroke="rgba(190,210,255,.3)" stroke-width="1.2"/><polygon points="1018,235 1030,100 1042,235" fill="#0f1a33" stroke="rgba(170,200,255,.34)" stroke-width="1.1"/><line x1="1025.8" y1="147.2" x2="1034.2" y2="147.2" stroke="rgba(170,200,255,.3)" stroke-width="1"/><line x1="1022.6" y1="183.7" x2="1037.4" y2="183.7" stroke="rgba(170,200,255,.3)" stroke-width="1"/><rect x="1022" y="114" width="16" height="3" rx="1.5" fill="#16203a"/><line x1="1030" y1="100" x2="1030" y2="90" stroke="rgba(190,210,255,.3)" stroke-width="1.2"/><polygon points="1113,255 1125,185 1137,255" fill="#0f1a33" stroke="rgba(170,200,255,.34)" stroke-width="1.1"/><line x1="1120.8" y1="209.5" x2="1129.2" y2="209.5" stroke="rgba(170,200,255,.3)" stroke-width="1"/><line x1="1117.6" y1="228.4" x2="1132.4" y2="228.4" stroke="rgba(170,200,255,.3)" stroke-width="1"/><rect x="1117" y="199" width="16" height="3" rx="1.5" fill="#16203a"/><line x1="1125" y1="185" x2="1125" y2="175" stroke="rgba(190,210,255,.3)" stroke-width="1.2"/><circle cx="790" cy="190" r="3.6" fill="#1e2b4d"/><circle cx="905" cy="140" r="3.6" fill="#1e2b4d"/><circle cx="1030" cy="90" r="3.6" fill="#1e2b4d"/><circle cx="1125" cy="175" r="3.6" fill="#1e2b4d"/><path d="M0 430 L110 395 L220 420 L330 380 L450 425 L560 385 L680 430 L800 370 L900 415 L1010 360 L1110 405 L1200 380 L1200 520 L0 520 Z" fill="#080e1d" stroke="rgba(140,170,255,.17)" stroke-width="1"/><path d="M0 485 L140 455 L300 480 L450 450 L620 485 L780 455 L950 490 L1100 460 L1200 480 L1200 520 L0 520 Z" fill="#05080f" stroke="rgba(140,170,255,.17)" stroke-width="1"/></svg></div>
+    <div class="lit" aria-hidden="true"><div class="glow"></div><div class="scene"><svg viewBox="0 0 1200 520" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><path d="M0 380 L90 340 L170 365 L260 310 L350 350 L440 300 L540 345 L640 305 L730 340 L790 285 L850 330 L905 262 L960 322 L1030 235 L1085 295 L1125 255 L1200 290" fill="none" stroke="url(#rim)" stroke-width="1.6" style="filter:drop-shadow(0 0 6px rgba(103,232,249,.7))"/><path class="link" d="M790 190 Q848 98 905 140" id="lp0"/><path class="link" d="M905 140 Q968 48 1030 90" id="lp1"/><path class="link" d="M1030 90 Q1078 48 1125 175" id="lp2"/><path class="link" d="M905 140 Q1015 98 1125 175" id="lp3"/><circle r="2.6" fill="#CFFAFE" style="filter:drop-shadow(0 0 5px #67E8F9)"><animateMotion dur="2.6s" begin="0.0s" repeatCount="indefinite"><mpath href="#lp0"/></animateMotion></circle><circle r="2.6" fill="#CFFAFE" style="filter:drop-shadow(0 0 5px #67E8F9)"><animateMotion dur="3.5s" begin="1.1s" repeatCount="indefinite"><mpath href="#lp0"/></animateMotion></circle><circle r="2.6" fill="#CFFAFE" style="filter:drop-shadow(0 0 5px #67E8F9)"><animateMotion dur="3.1s" begin="0.0s" repeatCount="indefinite"><mpath href="#lp1"/></animateMotion></circle><circle r="2.6" fill="#CFFAFE" style="filter:drop-shadow(0 0 5px #67E8F9)"><animateMotion dur="4.0s" begin="1.1s" repeatCount="indefinite"><mpath href="#lp1"/></animateMotion></circle><circle r="2.6" fill="#CFFAFE" style="filter:drop-shadow(0 0 5px #67E8F9)"><animateMotion dur="3.6s" begin="0.0s" repeatCount="indefinite"><mpath href="#lp2"/></animateMotion></circle><circle r="2.6" fill="#CFFAFE" style="filter:drop-shadow(0 0 5px #67E8F9)"><animateMotion dur="4.5s" begin="1.1s" repeatCount="indefinite"><mpath href="#lp2"/></animateMotion></circle><circle r="2.6" fill="#CFFAFE" style="filter:drop-shadow(0 0 5px #67E8F9)"><animateMotion dur="4.1s" begin="0.0s" repeatCount="indefinite"><mpath href="#lp3"/></animateMotion></circle><circle r="2.6" fill="#CFFAFE" style="filter:drop-shadow(0 0 5px #67E8F9)"><animateMotion dur="5.0s" begin="1.1s" repeatCount="indefinite"><mpath href="#lp3"/></animateMotion></circle><circle cx="790" cy="190" r="46" fill="url(#hl)"/><circle class="ring" cx="790" cy="190" r="4"/><circle cx="790" cy="190" r="4.2" fill="#E0FBFF" style="filter:drop-shadow(0 0 8px #67E8F9)"/><circle cx="905" cy="140" r="46" fill="url(#hl)"/><circle class="ring" cx="905" cy="140" r="4"/><circle cx="905" cy="140" r="4.2" fill="#E0FBFF" style="filter:drop-shadow(0 0 8px #67E8F9)"/><circle cx="1030" cy="90" r="46" fill="url(#hl)"/><circle class="ring" cx="1030" cy="90" r="4"/><circle cx="1030" cy="90" r="4.2" fill="#E0FBFF" style="filter:drop-shadow(0 0 8px #67E8F9)"/><circle cx="1125" cy="175" r="46" fill="url(#hl)"/><circle class="ring" cx="1125" cy="175" r="4"/><circle cx="1125" cy="175" r="4.2" fill="#E0FBFF" style="filter:drop-shadow(0 0 8px #67E8F9)"/></svg></div></div>
+
+    <div class="copy">
+      <div class="codeline" aria-hidden="true">&lt;html&gt;</div>
+      <div class="codeline c2" aria-hidden="true">&lt;body&gt;</div>
+      <div class="codeline c3" aria-hidden="true">&lt;h1&gt;</div>
+      <h1 data-i="h1">Hai!<br>Saya <span class="name">Ardha</span>,<br>web developer</h1>
+      <div class="codeline c4" aria-hidden="true">&lt;/h1&gt;</div>
+      <div class="codeline c5" aria-hidden="true">&lt;p&gt;</div>
+      <p class="role" data-i="role">Website · VPS Linux · Tools otomasi</p>
+      <div class="codeline c6" aria-hidden="true">&lt;/p&gt;</div>
+      <p class="lead" data-i="lead">Saya membuat website dan mengurus VPS Linux untuk UMKM, sekolah, dan usaha lokal. Sehari-hari saya kerja di NOC (ruang pantau jaringan), jadi website klien saya jaga seperti jaringan kantor.</p>
       <div class="cta-row">
-        <a class="btn wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." data-wa="consult">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.51-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg><span data-i="cta1">Konsultasi gratis lewat WhatsApp</span></a>
-        <span class="cta-note" data-i="cta_note">Saya balas di sela jam shift.</span>
+        <a class="btn wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." data-wa="consult"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.51-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg><span data-i="cta1">Konsultasi gratis lewat WhatsApp</span></a>
+        <a class="btn ghost" href="#proyek" data-i="cta_proj">Lihat proyek</a>
       </div>
+      <span class="cta-note" data-i="cta_note">Saya balas di sela jam shift.</span>
     </div>
 
-    <aside class="board" aria-label="Contoh yang saya jaga untuk klien" data-iaria="a_board">
-      <h2 data-i="board_h">Yang saya jaga untuk Anda</h2>
-      <p data-i="board_p">Contoh pengecekan rutin yang saya lakukan di website klien.</p>
-      <div class="row"><span class="state"><i class="dot"></i>Website</span><span class="val">Online</span></div>
-      <div class="row"><span class="state"><i class="dot"></i><span data-i="r_ssl">Sertifikat SSL</span></span><span class="val">Valid</span></div>
-      <div class="row"><span class="state"><i class="dot"></i><span data-i="r_backup">Backup data</span></span><span class="val" data-i="v_sched">Terjadwal</span></div>
-      <div class="row"><span class="state"><i class="dot"></i>Firewall</span><span class="val" data-i="v_active">Aktif</span></div>
-      <div class="row"><span class="state"><i class="dot"></i><span data-i="r_update">Pembaruan keamanan</span></span><span class="val" data-i="v_mon">Dipantau</span></div>
-      <small data-i="board_small">Ini contoh, bukan data asli.</small>
-    </aside>
+    <div class="power">
+      <span class="power-label"><span class="off-txt" data-i="pw_off">Nyalakan jaringan!</span><span class="on-txt" data-i="pw_on">Jaringan menyala</span></span>
+      <button class="switch" id="power" type="button" role="switch" aria-checked="false" aria-label="Nyalakan jaringan" data-iaria="a_power"><i></i></button>
+      <svg class="hint" viewBox="0 0 120 56" aria-hidden="true"><path d="M4 6 C 40 -2, 92 6, 112 44"/><path d="M100 40 L113 46 L116 31"/></svg>
+    </div>
+    <div class="scroll" aria-hidden="true"><span data-i="scroll">gulir</span><i></i></div>
   </div>
-</div>
-</div>
+
+  <div class="stats">
+    <div class="stat"><b data-count="11">11</b><span data-i="st1">proyek sudah dikerjakan</span></div>
+    <div class="stat"><b data-count="2" data-suffix="+">2+</b><span data-i="st2">tahun lebih jadi freelancer</span></div>
+    <div class="stat"><b data-count="6">6</b><span data-i="st3">layanan</span></div>
+  </div>
+</div></div>
 
 <section id="layanan" class="grid-light">
   <div class="wrap">
     <h2 class="title" data-i="t_layanan">Layanan dan harga</h2>
     <p class="sub" data-i="layanan_sub">Angka di bawah adalah harga awal, harga akhir tergantung kebutuhan. Konsultasi dan penawaran gratis.</p>
+    <ul class="inc">
+      <li class="lbl" data-i="inc_lbl">Yang saya urus di server klien:</li>
+      <li class="chip" data-i="inc1">Sertifikat SSL</li><li class="chip" data-i="inc2">Backup terjadwal</li><li class="chip" data-i="inc3">Firewall aktif</li><li class="chip" data-i="inc4">Update keamanan</li>
+    </ul>
     <div class="pricelist">
       <div class="item" style="--c:var(--cyan)"><div><h3 data-i="s1_h">Setup VPS Linux</h3><p data-i="s1_p">Saya pasang Ubuntu dan aaPanel, SSL, firewall, dan pengamanan dasar, lalu atur jadwal backup.</p></div><div class="price"><em data-i="from">mulai dari</em><b data-i="p1">Rp 600.000</b></div></div>
       <div class="item" style="--c:var(--purple)"><div><h3 data-i="s2_h">Pembuatan website</h3><p data-i="s2_p">Website Laravel atau Node.js yang enak dibuka di HP, sudah termasuk domain dan VPS satu tahun. Bisa dua bahasa (Indonesia dan Inggris), dan ada dashboard admin supaya Anda bisa mengganti isi halaman sendiri.</p></div><div class="price"><em data-i="from">mulai dari</em><b data-i="p2">Rp 2.500.000</b></div></div>
@@ -265,31 +358,27 @@ footer a{color:var(--cyan-l)}
     <h2 class="title" data-i="t_proyek">Proyek yang sudah saya kerjakan</h2>
     <p class="sub" data-i="proyek_sub">Sebagian bisa dibuka langsung, kodenya ada di GitHub. Jalur adalah template yang saya jual, jadi repo-nya hanya berisi demo dan source code diberikan setelah pembelian. Dashboard Proxmox, Radiusin, FieldOps, dan Djamoe Multi saya tampilkan sebagai studi kasus, jadi repo-nya hanya berisi tangkapan layar dan penjelasan cara kerja, tanpa kode.</p>
     <div class="projects">
-      <div class="proj"><video class="shot" src="video/jalur-promo.mp4" poster="img/jalur-dashboard.jpg" width="1200" height="675" autoplay muted loop playsinline controls preload="metadata" aria-label="Video promo Jalur Admin Dashboard" data-iaria="a_video"></video><h3><a href="https://github.com/asammanis89/DEMOV1" rel="noopener" data-i="j_h">Jalur: template admin dashboard</a></h3><p data-i="j_p">Template yang saya jual. Isinya 4 halaman siap pakai, transisi antar halaman, efek ganti tema yang merambat, dan tampilan kaca. <a href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20tertarik%20template%20Jalur%20Admin%20Dashboard." data-wa="jalur" rel="noopener">Beli lewat WhatsApp</a>.</p><span class="stack">HTML, CSS, JavaScript</span></div>
-      <div class="proj"><img class="shot" src="img/djamoe-beranda.jpg" alt="Beranda website D'jamoe" width="1200" height="755" data-ialt="i_dj"><h3><a href="https://djamoemadiun.co.id" rel="noopener" data-i="dj_h">Website djamoemadiun.co.id</a></h3><p data-i="dj_p">Website usaha lokal lengkap dengan domain dan VPS. Saya yang mengerjakan dan mengelolanya sampai tayang.</p><span class="stack">Laravel, Ubuntu, aaPanel</span></div>
-      <div class="proj"><img class="shot" src="img/djamoe-admin.jpg" alt="Halaman admin kelola produk" width="1200" height="755" data-ialt="i_dja"><h3><a href="https://github.com/asammanis89/djamoe-multi" rel="noopener" data-i="cp_h">Company profile dua bahasa</a></h3><p data-i="cp_p">Website dua bahasa (Indonesia dan Inggris) dengan dashboard admin untuk mengelola produk, artikel, outlet, dan pengguna.</p><span class="stack">Laravel 9, AdminLTE, MySQL</span></div>
-      <div class="proj"><img class="shot" src="img/olt-secure.jpg" alt="Tabel hasil pembacaan data OLT" width="1200" height="744" data-ialt="i_olt"><h3><a href="https://github.com/asammanis89/OLT-SECURE" rel="noopener" data-i="olt_h">Laporan PDF terenkripsi otomatis</a></h3><p data-i="olt_p">Program ini membaca file konfigurasi OLT pakai regex, merangkum jumlah pelanggan per status, lalu mengunci laporan PDF-nya dengan AES-256.</p><span class="stack">Node.js, PDFKit, qpdf</span></div>
-      <div class="proj"><img class="shot" src="img/iot-dashboard.jpg" alt="Dashboard web sensor dapur" width="1200" height="790" data-ialt="i_iot"><h3><a href="https://github.com/asammanis89/iot-dashboard-web" rel="noopener" data-i="iot_h">Dashboard IoT web</a></h3><p data-i="iot_p">Panel web dengan grafik real-time dan riwayat kejadian untuk sensor gas, suhu, dan kelembapan.</p><span class="stack">JavaScript, Chart.js, Firebase</span></div>
-      <div class="proj"><img class="shot" src="img/radiusin.jpg" alt="Ringkasan panel Radiusin: pelanggan, sesi online, dan pemakaian pool IP" width="1200" height="862" loading="lazy" data-ialt="i_rad"><h3><a href="https://github.com/asammanis89/Radiusin" rel="noopener" data-i="rad_h">Radiusin: manajemen RADIUS untuk ISP</a></h3><p data-i="radiusin_p">Mengelola router, pool IP yang dibagi otomatis, profil kecepatan, pelanggan, dan sesi online, plus impor CSV. Datanya langsung dipakai FreeRADIUS.</p><span class="stack">Node.js, PostgreSQL, FreeRADIUS, Docker</span></div>
-      <div class="proj"><img class="shot" src="img/fieldops.jpg" alt="Papan dispatch FieldOps: peta site, alarm aktif, dan tiket gangguan" width="1200" height="750" loading="lazy" data-ialt="i_fo"><h3><a href="https://github.com/asammanis89/FieldOps" rel="noopener" data-i="fo_h">FieldOps: operasional lapangan ISP</a></h3><p data-i="fo_p">Pemasangan baru, tiket gangguan, alarm jaringan, dan peta lokasi ada di satu papan kerja. Laporan Word dan PDF bisa dibuat dengan sekali klik.</p><span class="stack">Node.js, SQLite, Leaflet, docx, PDFKit</span></div>
-      <div class="proj"><img class="shot" src="img/pingmap.jpg" alt="Peta PingMap dengan router online dan router yang mati" width="1200" height="750" loading="lazy" data-ialt="i_pm"><h3><a href="https://github.com/asammanis89/PingMap" rel="noopener" data-i="pm_h">PingMap: pantau router di peta</a></h3><p data-i="pm_p">Mengecek ping atau port router secara berkala, menampilkannya di peta, dan mengirim pesan Telegram saat ada router yang mati atau sudah hidup lagi.</p><span class="stack">Node.js, SQLite, Leaflet, Telegram Bot API</span></div>
-      <div class="proj"><img class="shot" src="img/gadgetbekas.jpg" alt="Katalog GadgetBekas dengan filter dan kartu HP bekas" width="1200" height="750" loading="lazy" data-ialt="i_gb"><h3><a href="https://github.com/asammanis89/GadgetBekas" rel="noopener" data-i="gb_h">GadgetBekas: toko HP bekas</a></h3><p data-i="gb_p">Katalog HP bekas yang bisa difilter berdasarkan grade dan kesehatan baterai, ada tombol tanya lewat WhatsApp, dan halaman admin untuk mengatur stok, foto, dan harga.</p><span class="stack">Laravel 12, SQLite</span></div>
-      <div class="proj"><img class="shot" src="img/iot-dapur-ai.jpg" alt="IoT Dapur AI: aplikasi Flutter pemantau gas, suhu, dan kelembapan dapur dengan analisis Gemini" width="1200" height="675" loading="lazy" data-ialt="i_dapur"><h3><a href="https://github.com/asammanis89/proyek_dapur_pintariot" rel="noopener">IoT Dapur AI</a></h3><p data-i="dapur_p">Aplikasi HP untuk memantau gas, suhu, dan kelembapan dapur. Ada notifikasi suara dan analisis dari AI.</p><span class="stack">Flutter, Firebase, Gemini</span></div>
-      <div class="proj"><img class="shot" src="img/proxmox-monitor.jpg" alt="Halaman login dan dashboard monitoring Proxmox dalam tema terang dan gelap, dengan data contoh fiktif" width="1200" height="750" loading="lazy" data-ialt="i_px"><h3><a href="https://github.com/asammanis89/ProxmoxMonitor" rel="noopener" data-i="px_h">Dashboard monitoring server Proxmox</a></h3><p data-i="px_p">Alat internal untuk tim NOC. Memantau CPU, RAM, disk, dan status VM secara real-time dengan tampilan yang lebih mudah dibaca daripada bawaan Proxmox.</p><span class="stack">Node.js, Proxmox API</span></div>
+      <div class="proj feature"><video class="shot" src="video/jalur-promo.mp4" poster="img/jalur-dashboard.jpg" width="1200" height="675" autoplay muted loop playsinline controls preload="metadata" aria-label="Video promo Jalur Admin Dashboard" data-iaria="a_video"></video><div class="ptext"><h3><a href="https://github.com/asammanis89/DEMOV1" rel="noopener" data-i="j_h">Jalur: template admin dashboard</a></h3><p data-i="j_p">Template yang saya jual. Isinya 4 halaman siap pakai, transisi antar halaman, efek ganti tema yang merambat, dan tampilan kaca. <a href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20tertarik%20template%20Jalur%20Admin%20Dashboard." data-wa="jalur" rel="noopener">Beli lewat WhatsApp</a>.</p><span class="stack">HTML, CSS, JavaScript</span></div></div>
+      <div class="proj"><img class="shot" src="img/djamoe-beranda.jpg" alt="Beranda website D'jamoe" data-ialt="i_dj" width="1200" height="755"><h3><a href="https://djamoemadiun.co.id" rel="noopener" data-i="dj_h">Website djamoemadiun.co.id</a></h3><p data-i="dj_p">Website usaha lokal lengkap dengan domain dan VPS. Saya yang mengerjakan dan mengelolanya sampai tayang.</p><span class="stack">Laravel, Ubuntu, aaPanel</span></div>
+      <div class="proj"><img class="shot" src="img/djamoe-admin.jpg" alt="Halaman admin kelola produk" data-ialt="i_dja" width="1200" height="755"><h3><a href="https://github.com/asammanis89/djamoe-multi" rel="noopener" data-i="cp_h">Company profile dua bahasa</a></h3><p data-i="cp_p">Website dua bahasa (Indonesia dan Inggris) dengan dashboard admin untuk mengelola produk, artikel, outlet, dan pengguna.</p><span class="stack">Laravel 9, AdminLTE, MySQL</span></div>
+      <div class="proj"><img class="shot" src="img/olt-secure.jpg" alt="Tabel hasil pembacaan data OLT" data-ialt="i_olt" width="1200" height="744"><h3><a href="https://github.com/asammanis89/OLT-SECURE" rel="noopener" data-i="olt_h">Laporan PDF terenkripsi otomatis</a></h3><p data-i="olt_p">Program ini membaca file konfigurasi OLT pakai regex, merangkum jumlah pelanggan per status, lalu mengunci laporan PDF-nya dengan AES-256.</p><span class="stack">Node.js, PDFKit, qpdf</span></div>
+      <div class="proj"><img class="shot" src="img/iot-dashboard.jpg" alt="Dashboard web sensor dapur" data-ialt="i_iot" width="1200" height="790"><h3><a href="https://github.com/asammanis89/iot-dashboard-web" rel="noopener" data-i="iot_h">Dashboard IoT web</a></h3><p data-i="iot_p">Panel web dengan grafik real-time dan riwayat kejadian untuk sensor gas, suhu, dan kelembapan.</p><span class="stack">JavaScript, Chart.js, Firebase</span></div>
+      <div class="proj"><img class="shot" src="img/radiusin.jpg" alt="Ringkasan panel Radiusin: pelanggan, sesi online, dan pemakaian pool IP" data-ialt="i_rad" width="1200" height="862" loading="lazy"><h3><a href="https://github.com/asammanis89/Radiusin" rel="noopener" data-i="rad_h">Radiusin: manajemen RADIUS untuk ISP</a></h3><p data-i="rad_p">Mengelola router, pool IP yang dibagi otomatis, profil kecepatan, pelanggan, dan sesi online, plus impor CSV. Datanya langsung dipakai FreeRADIUS.</p><span class="stack">Node.js, PostgreSQL, FreeRADIUS, Docker</span></div>
+      <div class="proj"><img class="shot" src="img/fieldops.jpg" alt="Papan dispatch FieldOps: peta site, alarm aktif, dan tiket gangguan" data-ialt="i_fo" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/FieldOps" rel="noopener" data-i="fo_h">FieldOps: operasional lapangan ISP</a></h3><p data-i="fo_p">Pemasangan baru, tiket gangguan, alarm jaringan, dan peta lokasi ada di satu papan kerja. Laporan Word dan PDF bisa dibuat dengan sekali klik.</p><span class="stack">Node.js, SQLite, Leaflet, docx, PDFKit</span></div>
+      <div class="proj"><img class="shot" src="img/pingmap.jpg" alt="Peta PingMap dengan router online dan router yang mati" data-ialt="i_pm" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/PingMap" rel="noopener" data-i="pm_h">PingMap: pantau router di peta</a></h3><p data-i="pm_p">Mengecek ping atau port router secara berkala, menampilkannya di peta, dan mengirim pesan Telegram saat ada router yang mati atau sudah hidup lagi.</p><span class="stack">Node.js, SQLite, Leaflet, Telegram Bot API</span></div>
+      <div class="proj"><img class="shot" src="img/gadgetbekas.jpg" alt="Katalog GadgetBekas dengan filter dan kartu HP bekas" data-ialt="i_gb" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/GadgetBekas" rel="noopener" data-i="gb_h">GadgetBekas: toko HP bekas</a></h3><p data-i="gb_p">Katalog HP bekas yang bisa difilter berdasarkan grade dan kesehatan baterai, ada tombol tanya lewat WhatsApp, dan halaman admin untuk mengatur stok, foto, dan harga.</p><span class="stack">Laravel 12, SQLite</span></div>
+      <div class="proj"><img class="shot" src="img/iot-dapur-ai.jpg" alt="IoT Dapur AI: aplikasi Flutter pemantau gas, suhu, dan kelembapan dapur dengan analisis Gemini" data-ialt="i_dapur" width="1200" height="675" loading="lazy"><h3><a href="https://github.com/asammanis89/proyek_dapur_pintariot" rel="noopener">IoT Dapur AI</a></h3><p data-i="dapur_p">Aplikasi HP untuk memantau gas, suhu, dan kelembapan dapur. Ada notifikasi suara dan analisis dari AI.</p><span class="stack">Flutter, Firebase, Gemini</span></div>
+      <div class="proj"><img class="shot" src="img/proxmox-monitor.jpg" alt="Halaman login dan dashboard monitoring Proxmox dalam tema terang dan gelap, dengan data contoh fiktif" data-ialt="i_px" width="1200" height="750" loading="lazy"><h3><a href="https://github.com/asammanis89/ProxmoxMonitor" rel="noopener" data-i="px_h">Dashboard monitoring server Proxmox</a></h3><p data-i="px_p">Alat internal untuk tim NOC. Memantau CPU, RAM, disk, dan status VM secara real-time dengan tampilan yang lebih mudah dibaca daripada bawaan Proxmox.</p><span class="stack">Node.js, Proxmox API</span></div>
     </div>
   </div>
 </section>
 
 <section id="proses" class="grid-light">
   <div class="wrap">
-    <h2 class="title" data-i="n_proses">Cara kerja</h2>
+    <h2 class="title" data-i="t_proses">Cara kerja</h2>
     <p class="sub" data-i="proses_sub">Dari pertanyaan pertama sampai selesai, Anda selalu tahu pekerjaan sudah sampai mana.</p>
     <ol class="steps">
-      <li data-i="st1"><strong>Konsultasi</strong>Ceritakan kebutuhan lewat WhatsApp, gratis.</li>
-      <li data-i="st2"><strong>Penawaran</strong>Harga dan jadwal jelas, DP 50%.</li>
-      <li data-i="st3"><strong>Pengerjaan</strong>Anda dikabari di setiap tahap penting.</li>
-      <li data-i="st4"><strong>Revisi</strong>Perbaikan sampai sesuai kesepakatan.</li>
-      <li data-i="st5"><strong>Serah terima</strong>Pelunasan, lalu panduan penggunaan.</li>
+      <li data-i="step1"><strong>Konsultasi</strong>Ceritakan kebutuhan lewat WhatsApp, gratis.</li><li data-i="step2"><strong>Penawaran</strong>Harga dan jadwal jelas, DP 50%.</li><li data-i="step3"><strong>Pengerjaan</strong>Anda dikabari di setiap tahap penting.</li><li data-i="step4"><strong>Revisi</strong>Perbaikan sampai sesuai kesepakatan.</li><li data-i="step5"><strong>Serah terima</strong>Pelunasan, lalu panduan penggunaan.</li>
     </ol>
   </div>
 </section>
@@ -313,15 +402,14 @@ footer a{color:var(--cyan-l)}
 </section>
 
 <section id="kontak" class="contact">
-  <div class="wrap">
+  <div class="wrap"><div class="panel">
     <h2 class="title" data-i="t_kontak">Ceritakan kebutuhan Anda</h2>
     <p class="sub" data-i="k_sub">Cukup satu pesan singkat: usaha Anda bergerak di bidang apa, dan apa yang ingin dibuat atau diperbaiki. Nanti saya balas dengan saran dan perkiraan biaya.</p>
     <div class="cta-row">
-      <a class="btn wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." data-wa="consult">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.51-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg><span data-i="cta2">Chat WhatsApp 0857-5517-1491</span></a>
+      <a class="btn wa" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." data-wa="consult"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm5.8 14.1c-.25.7-1.45 1.33-2 1.4-.52.07-1.17.1-1.88-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.32.38-.45.51-.15.15-.3.3-.13.6.17.3.77 1.27 1.65 2.05 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42Z"/></svg><span data-i="cta2">Chat WhatsApp 0857-5517-1491</span></a>
       <span class="cta-note" data-i="k_note">atau email <a class="mail" href="mailto:febrianardha24@gmail.com">febrianardha24@gmail.com</a></span>
     </div>
-  </div>
+  </div></div>
 </section>
 </main>
 
@@ -329,67 +417,152 @@ footer a{color:var(--cyan-l)}
   <div class="wrap" data-i="foot">Ardha Web & VPS, Ngawi, Jawa Timur. <a href="https://www.linkedin.com/in/ardha-febrian-342317289/" rel="noopener">LinkedIn</a> dan <a href="https://github.com/asammanis89" rel="noopener">GitHub</a>.</div>
 </footer>
 
-<div class="fab"><a class="btn wa small" href="https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20ingin%20konsultasi%20soal%20website%2FVPS." data-wa="consult" data-i="wa_btn">Chat WhatsApp</a></div>
-
 <script>
 (function(){
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var rows=[].slice.call(document.querySelectorAll('.board .row'));
-  if(reduce){rows.forEach(function(r){r.classList.add('on')});}
-  else{rows.forEach(function(r,i){setTimeout(function(){r.classList.add('on')},500+i*420)});}
+  var doc=document,root=doc.documentElement;
+  var mq=function(q){return window.matchMedia&&window.matchMedia(q).matches};
+  var reduce=mq('(prefers-reduced-motion: reduce)'),fine=mq('(pointer: fine)');
+  function $(s,c){return (c||doc).querySelector(s)}
+  function $$(s,c){return [].slice.call((c||doc).querySelectorAll(s))}
 
-  /* progres gulir */
-  var bar=document.getElementById('progress'),tick=false;
-  function upd(){var h=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?Math.min(scrollY/h,1):0)+')';tick=false}
-  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});upd();
-
-  /* sorotan kaca mengikuti kursor */
-  [].slice.call(document.querySelectorAll('.proj,.board')).forEach(function(el){
-    el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')});
-  });
-
-  /* muncul saat digulir */
-  if(reduce||!('IntersectionObserver' in window))return;
-  var els=[].slice.call(document.querySelectorAll('h2.title,.sub,.pricelist,.proj,ol.steps li,.about>div,.facts,.contact .cta-row'));
-  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var t=en.target;t.classList.add('in');io.unobserve(t);setTimeout(function(){t.style.transitionDelay=''},1100)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-  els.forEach(function(el,i){var sib=el.parentNode?[].indexOf.call(el.parentNode.children,el):0;el.style.transitionDelay=(Math.min(sib%4,3)*70)+'ms';el.classList.add('rv');io.observe(el)});
-})();
-</script>
-<script>
-(function(){
-  var EN={"lead":"I'm Ardha. I build websites and look after Linux VPSs for small businesses, schools, and local shops. By day I work in a NOC (a network operations center), so keeping systems up has become second nature.","layanan_sub":"These are starting prices. The final price depends on what you need. Consultation and quotes are free.","proyek_sub":"Some can be opened live, and the code is on GitHub. Jalur is a template I sell, so its repo only has the demo and the source code comes with purchase. The Proxmox dashboard, Radiusin, FieldOps, and Djamoe Multi are case studies: their repos hold screenshots and an explanation of how they work, but no code.","proses_sub":"From your first question to handover, you always know where the work stands.","radiusin_p":"Manages routers, automatically allocated IP pools, speed profiles, customers, and online sessions, plus CSV import. FreeRADIUS uses the data directly.","n_layanan":"Services","n_proyek":"Projects","n_proses":"How I work","n_tentang":"About","wa_btn":"Chat on WhatsApp","h1":"Websites and servers that I <span class=\"glow-text\">look after like an office network</span>","cta1":"Free consultation on WhatsApp","cta_note":"I reply in between my shifts.","board_h":"What I look after for you","board_p":"Examples of routine checks I run on client websites.","r_ssl":"SSL certificate","r_backup":"Data backup","r_update":"Security updates","v_sched":"Scheduled","v_active":"Active","v_mon":"Monitored","board_small":"This is an example, not live data.","t_layanan":"Services and pricing","s1_h":"Linux VPS setup","s1_p":"I install Ubuntu and aaPanel, set up SSL, the firewall, and basic hardening, then schedule backups.","s2_h":"Website development","s2_p":"A Laravel or Node.js website that works well on phones, with a domain and one year of VPS included. It can be bilingual (Indonesian and English), and comes with an admin dashboard so you can edit page content yourself.","s3_h":"Tools and automation","s3_p":"Apps that generate PDF or Word reports automatically, process data, or collect data through bots. I build them around how your business already works.","s4_h":"Application and security testing","s4_p":"Blackbox and whitebox testing. The report includes test scenarios, results, evidence, and fix recommendations. I only run security tests on systems whose owner has given written permission.","s5_h":"Ready-made admin dashboard template","s5_p":"Jalur: an admin dashboard template with a glass look (glassmorphism), smooth animation, and dark mode. Plain HTML, CSS, and JS, so it drops easily into Laravel or Node.js. <a href=\"https://github.com/asammanis89/DEMOV1\" rel=\"noopener\">See the demo</a>.","s6_h":"Monthly maintenance","s6_p":"I monitor the server, run regular backups, install security updates, and you can message me on WhatsApp whenever something goes wrong.","from":"from","per_app":"per app","per_month":"per month","digital":"digital product","p1":"IDR 600,000","p2":"IDR 2,500,000","p3":"IDR 1,500,000","p4":"IDR 500,000","p5":"IDR 300,000","ask":"Ask for price","t_proyek":"Projects I've built","j_h":"Jalur: admin dashboard template","j_p":"A template I sell. It has 4 ready-to-use pages, page transitions, a theme switch that ripples across the screen, and a glass look. <a href=\"https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20tertarik%20template%20Jalur%20Admin%20Dashboard.\" data-wa=\"jalur\" rel=\"noopener\">Buy on WhatsApp</a>.","dj_h":"djamoemadiun.co.id website","dj_p":"A local business website with its own domain and VPS. I built it and managed it through to launch.","cp_h":"Bilingual company profile","cp_p":"A website in Indonesian and English with an admin dashboard for managing products, articles, outlets, and users.","olt_h":"Automatic encrypted PDF reports","olt_p":"This program reads OLT config files with regex, summarizes the number of customers per status, then locks the PDF report with AES-256.","iot_h":"IoT web dashboard","iot_p":"A web panel with real-time charts and an event history for gas, temperature, and humidity sensors.","rad_h":"Radiusin: RADIUS management for ISPs","fo_h":"FieldOps: ISP field operations","fo_p":"New installations, fault tickets, network alarms, and a site map on one work board. Word and PDF reports are one click away.","pm_h":"PingMap: watch your routers on a map","pm_p":"Checks router ping or ports on a schedule, shows them on a map, and sends a Telegram message when a router goes down or comes back up.","gb_h":"GadgetBekas: used phone shop","gb_p":"A used-phone catalog you can filter by grade and battery health, with a WhatsApp inquiry button and an admin page for stock, photos, and prices.","dapur_p":"A phone app for monitoring kitchen gas, temperature, and humidity. It has voice notifications and analysis from AI.","px_h":"Proxmox server monitoring dashboard","px_p":"An internal tool for the NOC team. It watches CPU, RAM, disk, and VM status in real time, and is easier to read than the built-in Proxmox view.","st1":"<strong>Consultation</strong>Tell me what you need on WhatsApp. It's free.","st2":"<strong>Quote</strong>A clear price and schedule, 50% down payment.","st3":"<strong>Build</strong>I update you at every major stage.","st4":"<strong>Revisions</strong>Changes until it matches what we agreed.","st5":"<strong>Handover</strong>Final payment, then a usage guide.","t_tentang":"About me","ab1":"I'm Ardha Febrian Muqorrobin, a graduate of the D3 Information Technology program at Politeknik Negeri Madiun. I've built websites and tools as a freelancer since 2024, and since September 2026 I've worked in the NOC of an internet provider.","ab2":"Because I come from a networking background, I tend to think about what often gets forgotten when a website is built: security, backups, and what happens when the server goes down in the middle of the night.","ab3":"That work led me to build tools for internet provider operations too: RADIUS and IP pool management, a router monitor that sends Telegram notifications, field work records with their reports, and a Proxmox monitoring dashboard.","f1":"<b>Tech</b>Laravel, Node.js, Python, Flutter","f2":"<b>ISP tools</b>RADIUS management, router monitoring, field operations, Proxmox dashboard","f4":"<b>Networking</b>FTTH, bandwidth management, network security","f5":"<b>Location</b>Ngawi, East Java. Remote work available across Indonesia","t_kontak":"Tell me what you need","k_sub":"Just one short message: what your business does, and what you'd like built or fixed. I'll reply with advice and a cost estimate.","cta2":"Chat on WhatsApp 0857-5517-1491","k_note":"or email <a class=\"mail\" href=\"mailto:febrianardha24@gmail.com\">febrianardha24@gmail.com</a>","foot":"Ardha Web &amp; VPS, Ngawi, East Java. <a href=\"https://www.linkedin.com/in/ardha-febrian-342317289/\" rel=\"noopener\">LinkedIn</a> and <a href=\"https://github.com/asammanis89\" rel=\"noopener\">GitHub</a>."},ALT={"i_dj":"D'jamoe website homepage","i_dja":"Admin page for managing products","i_olt":"Table of parsed OLT data","i_iot":"Web dashboard for kitchen sensors","i_rad":"Radiusin panel overview: customers, online sessions, and IP pool usage","i_fo":"FieldOps dispatch board: site map, active alarms, and fault tickets","i_pm":"PingMap map showing online and offline routers","i_gb":"GadgetBekas catalog with filters and used-phone cards","i_dapur":"IoT Dapur AI: a Flutter app monitoring kitchen gas, temperature, and humidity, with Gemini analysis","i_px":"Proxmox monitoring login page and dashboard in light and dark themes, with fictional sample data"},ARIA={"a_nav":"Main menu","a_board":"Examples of what I look after for clients","a_video":"Jalur Admin Dashboard promo video"},META={"id":{"title":"Ardha Web & VPS | Website, VPS Linux, dan Tools Otomasi","desc":"Jasa pembuatan website, setup dan pengelolaan VPS Linux, tools otomasi laporan, dan pengujian aplikasi untuk UMKM, sekolah, dan usaha lokal. Ada juga tools operasional ISP dan template admin dashboard. Dikerjakan Ardha Febrian, staf NOC.","ogd":"Website dan server yang saya jaga seperti jaringan kantor."},"en":{"title":"Ardha Web & VPS | Websites, Linux VPS, and Automation Tools","desc":"Website development, Linux VPS setup and management, report automation tools, and application testing for small businesses, schools, and local shops. Also ISP operations tools and an admin dashboard template. Built by Ardha Febrian, NOC staff.","ogd":"Websites and servers looked after like an office network."}},WA={"id":{"consult":"Halo Ardha, saya ingin konsultasi soal website/VPS.","jalur":"Halo Ardha, saya tertarik template Jalur Admin Dashboard."},"en":{"consult":"Hi Ardha, I'd like to talk about a website/VPS.","jalur":"Hi Ardha, I'm interested in the Jalur Admin Dashboard template."}};
-  var btn=document.getElementById('lang'),cur='id';
-  var tx=[].slice.call(document.querySelectorAll('[data-i]')),
-      al=[].slice.call(document.querySelectorAll('[data-ialt]')),
-      ar=[].slice.call(document.querySelectorAll('[data-iaria]')),
-      wa=null;
+  /* ---------- ganti bahasa ---------- */
+  var EN={"n_layanan":"Services","n_proyek":"Projects","n_proses":"How I work","n_tentang":"About","h1":"Hi!<br>I'm <span class=\"name\">Ardha</span>,<br>web developer","role":"Websites · Linux VPS · Automation tools","lead":"I build websites and look after Linux VPSs for small businesses, schools, and local shops. By day I work in a NOC (a network operations center), so I look after client websites like an office network.","cta1":"Free consultation on WhatsApp","cta_proj":"See projects","cta_note":"I reply in between my shifts.","pw_off":"Power on the network!","pw_on":"Network is up","scroll":"scroll","st1":"projects built","st2":"years freelancing","st3":"services","t_layanan":"Services and pricing","layanan_sub":"These are starting prices. The final price depends on what you need. Consultation and quotes are free.","inc_lbl":"What I handle on client servers:","inc1":"SSL certificate","inc2":"Scheduled backups","inc3":"Active firewall","inc4":"Security updates","s1_h":"Linux VPS setup","s1_p":"I install Ubuntu and aaPanel, set up SSL, the firewall, and basic hardening, then schedule backups.","s2_h":"Website development","s2_p":"A Laravel or Node.js website that works well on phones, with a domain and one year of VPS included. It can be bilingual (Indonesian and English), and comes with an admin dashboard so you can edit page content yourself.","s3_h":"Tools and automation","s3_p":"Apps that generate PDF or Word reports automatically, process data, or collect data through bots. I build them around how your business already works.","s4_h":"Application and security testing","s4_p":"Blackbox and whitebox testing. The report includes test scenarios, results, evidence, and fix recommendations. I only run security tests on systems whose owner has given written permission.","s5_h":"Ready-made admin dashboard template","s5_p":"Jalur: an admin dashboard template with a glass look (glassmorphism), smooth animation, and dark mode. Plain HTML, CSS, and JS, so it drops easily into Laravel or Node.js. <a href=\"https://github.com/asammanis89/DEMOV1\" rel=\"noopener\">See the demo</a>.","s6_h":"Monthly maintenance","s6_p":"I monitor the server, run regular backups, install security updates, and you can message me on WhatsApp whenever something goes wrong.","from":"from","per_app":"per app","per_month":"per month","digital":"digital product","p1":"IDR 600,000","p2":"IDR 2,500,000","p3":"IDR 1,500,000","p4":"IDR 500,000","p5":"IDR 300,000","ask":"Ask for price","t_proyek":"Projects I've built","proyek_sub":"Some can be opened live, and the code is on GitHub. Jalur is a template I sell, so its repo only has the demo and the source code comes with purchase. The Proxmox dashboard, Radiusin, FieldOps, and Djamoe Multi are case studies: their repos hold screenshots and an explanation of how they work, but no code.","j_h":"Jalur: admin dashboard template","j_p":"A template I sell. It has 4 ready-to-use pages, page transitions, a theme switch that ripples across the screen, and a glass look. <a href=\"https://wa.me/6285755171491?text=Halo%20Ardha%2C%20saya%20tertarik%20template%20Jalur%20Admin%20Dashboard.\" data-wa=\"jalur\" rel=\"noopener\">Buy on WhatsApp</a>.","dj_h":"djamoemadiun.co.id website","dj_p":"A local business website with its own domain and VPS. I built it and managed it through to launch.","cp_h":"Bilingual company profile","cp_p":"A website in Indonesian and English with an admin dashboard for managing products, articles, outlets, and users.","olt_h":"Automatic encrypted PDF reports","olt_p":"This program reads OLT config files with regex, summarizes the number of customers per status, then locks the PDF report with AES-256.","iot_h":"IoT web dashboard","iot_p":"A web panel with real-time charts and an event history for gas, temperature, and humidity sensors.","rad_h":"Radiusin: RADIUS management for ISPs","rad_p":"Manages routers, automatically allocated IP pools, speed profiles, customers, and online sessions, plus CSV import. FreeRADIUS uses the data directly.","fo_h":"FieldOps: ISP field operations","fo_p":"New installations, fault tickets, network alarms, and a site map on one work board. Word and PDF reports are one click away.","pm_h":"PingMap: watch your routers on a map","pm_p":"Checks router ping or ports on a schedule, shows them on a map, and sends a Telegram message when a router goes down or comes back up.","gb_h":"GadgetBekas: used phone shop","gb_p":"A used-phone catalog you can filter by grade and battery health, with a WhatsApp inquiry button and an admin page for stock, photos, and prices.","dapur_p":"A phone app for monitoring kitchen gas, temperature, and humidity. It has voice notifications and analysis from AI.","px_h":"Proxmox server monitoring dashboard","px_p":"An internal tool for the NOC team. It watches CPU, RAM, disk, and VM status in real time, and is easier to read than the built-in Proxmox view.","t_proses":"How I work","proses_sub":"From your first question to handover, you always know where the work stands.","step1":"<strong>Consultation</strong>Tell me what you need on WhatsApp. It's free.","step2":"<strong>Quote</strong>A clear price and schedule, 50% down payment.","step3":"<strong>Build</strong>I update you at every major stage.","step4":"<strong>Revisions</strong>Changes until it matches what we agreed.","step5":"<strong>Handover</strong>Final payment, then a usage guide.","t_tentang":"About me","ab1":"I'm Ardha Febrian Muqorrobin, a graduate of the D3 Information Technology program at Politeknik Negeri Madiun. I've built websites and tools as a freelancer since 2024, and since September 2026 I've worked in the NOC of an internet provider.","ab2":"Because I come from a networking background, I tend to think about what often gets forgotten when a website is built: security, backups, and what happens when the server goes down in the middle of the night.","ab3":"That work led me to build tools for internet provider operations too: RADIUS and IP pool management, a router monitor that sends Telegram notifications, field work records with their reports, and a Proxmox monitoring dashboard.","f1":"<b>Tech</b>Laravel, Node.js, Python, Flutter","f2":"<b>ISP tools</b>RADIUS management, router monitoring, field operations, Proxmox dashboard","f4":"<b>Networking</b>FTTH, bandwidth management, network security","f5":"<b>Location</b>Ngawi, East Java. Remote work available across Indonesia","t_kontak":"Tell me what you need","k_sub":"Just one short message: what your business does, and what you'd like built or fixed. I'll reply with advice and a cost estimate.","cta2":"Chat on WhatsApp 0857-5517-1491","k_note":"or email <a class=\"mail\" href=\"mailto:febrianardha24@gmail.com\">febrianardha24@gmail.com</a>","foot":"Ardha Web &amp; VPS, Ngawi, East Java. <a href=\"https://www.linkedin.com/in/ardha-febrian-342317289/\" rel=\"noopener\">LinkedIn</a> and <a href=\"https://github.com/asammanis89\" rel=\"noopener\">GitHub</a>."},ALT={"i_dj":"D'jamoe website homepage","i_dja":"Admin page for managing products","i_olt":"Table of parsed OLT data","i_iot":"Web dashboard for kitchen sensors","i_rad":"Radiusin panel overview: customers, online sessions, and IP pool usage","i_fo":"FieldOps dispatch board: site map, active alarms, and fault tickets","i_pm":"PingMap map showing online and offline routers","i_gb":"GadgetBekas catalog with filters and used-phone cards","i_dapur":"IoT Dapur AI: a Flutter app monitoring kitchen gas, temperature, and humidity, with Gemini analysis","i_px":"Proxmox monitoring login page and dashboard in light and dark themes, with fictional sample data"},ARIA={"a_nav":"Main menu","a_power":"Power on the network","a_video":"Jalur Admin Dashboard promo video"},META={"id":{"title":"Ardha Web & VPS | Website, VPS Linux, dan Tools Otomasi","desc":"Jasa pembuatan website, setup dan pengelolaan VPS Linux, tools otomasi laporan, dan pengujian aplikasi untuk UMKM, sekolah, dan usaha lokal. Ada juga tools operasional ISP dan template admin dashboard. Dikerjakan Ardha Febrian, staf NOC.","ogd":"Website dan server yang saya jaga seperti jaringan kantor."},"en":{"title":"Ardha Web & VPS | Websites, Linux VPS, and Automation Tools","desc":"Website development, Linux VPS setup and management, report automation tools, and application testing for small businesses, schools, and local shops. Also ISP operations tools and an admin dashboard template. Built by Ardha Febrian, NOC staff.","ogd":"Websites and servers looked after like an office network."}},WA={"id":{"consult":"Halo Ardha, saya ingin konsultasi soal website/VPS.","jalur":"Halo Ardha, saya tertarik template Jalur Admin Dashboard."},"en":{"consult":"Hi Ardha, I'd like to talk about a website/VPS.","jalur":"Hi Ardha, I'm interested in the Jalur Admin Dashboard template."}};
+  var btn=$('#lang'),cur='id';
+  var tx=$$('[data-i]'),al=$$('[data-ialt]'),ar=$$('[data-iaria]');
   tx.forEach(function(e){e._id=e.innerHTML});
   al.forEach(function(e){e._id=e.getAttribute('alt')});
   ar.forEach(function(e){e._id=e.getAttribute('aria-label')});
-  function meta(sel,v){var m=document.querySelector(sel);if(m)m.setAttribute('content',v)}
-  function set(l){
+  function meta(sel,v){var m=$(sel);if(m)m.setAttribute('content',v)}
+  function setLang(l){
     cur=l;var en=l==='en';
-    document.documentElement.lang=l;
+    root.lang=l;
     tx.forEach(function(e){e.innerHTML=en?EN[e.getAttribute('data-i')]:e._id});
     al.forEach(function(e){e.setAttribute('alt',en?ALT[e.getAttribute('data-ialt')]:e._id)});
     ar.forEach(function(e){e.setAttribute('aria-label',en?ARIA[e.getAttribute('data-iaria')]:e._id)});
-    [].slice.call(document.querySelectorAll('[data-wa]')).forEach(function(e){e.href='https://wa.me/6285755171491?text='+encodeURIComponent(WA[l][e.getAttribute('data-wa')])});
-    document.title=META[l].title;
+    $$('[data-wa]').forEach(function(e){e.href='https://wa.me/6285755171491?text='+encodeURIComponent(WA[l][e.getAttribute('data-wa')])});
+    doc.title=META[l].title;
     meta('meta[name="description"]',META[l].desc);
-    meta('meta[property="og:title"]','Ardha Web & VPS');
     meta('meta[property="og:description"]',META[l].ogd);
     btn.setAttribute('data-lang',l);
-    btn.setAttribute('aria-label',en?'Ganti ke Bahasa Indonesia':'Switch to English');
-    btn.title=en?'Ganti ke Bahasa Indonesia':'Switch to English';
+    var t=en?'Ganti ke Bahasa Indonesia':'Switch to English';
+    btn.setAttribute('aria-label',t);btn.title=t;
+    placePill(active);
   }
+
+  /* ---------- progres gulir ---------- */
+  var bar=$('#progress'),tick=false;
+  function upd(){var h=root.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?Math.min(scrollY/h,1):0)+')';tick=false}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});upd();
+
+  /* ---------- bintang ---------- */
+  var stage=$('#stage');
+  (function(){
+    var a=7;function r(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
+    var h='',i,s;
+    for(i=0;i<80;i++){s=r()<.18?2:1;h+='<i style="left:'+(r()*100).toFixed(1)+'%;top:'+(r()*60).toFixed(1)+'%;width:'+s+'px;height:'+s+'px;animation-delay:'+(r()*6).toFixed(1)+'s;opacity:'+(.25+r()*.5).toFixed(2)+'"></i>'}
+    $('#stars').innerHTML=h;
+  })();
+
+  /* ---------- saklar jaringan + riak ---------- */
+  var sw=$('#power');
+  function setOn(on,x,y,instant){
+    if(x!=null){stage.style.setProperty('--tx',x+'px');stage.style.setProperty('--ty',y+'px')}
+    stage.classList.toggle('instant',!!instant);
+    stage.classList.toggle('on',on);
+    sw.setAttribute('aria-checked',on?'true':'false');
+    try{localStorage.setItem('lit',on?'1':'0')}catch(e){}
+  }
+  sw.addEventListener('click',function(){
+    var b=stage.getBoundingClientRect(),s=sw.getBoundingClientRect();
+    setOn(!stage.classList.contains('on'),s.left-b.left+s.width/2,s.top-b.top+s.height/2);
+  });
+  try{if(localStorage.getItem('lit')==='1'){setOn(true,null,null,true);requestAnimationFrame(function(){requestAnimationFrame(function(){stage.classList.remove('instant')})})}}catch(e){}
+
+  /* paralaks halus mengikuti kursor */
+  if(fine&&!reduce){
+    var raf=0,px=0,py=0;
+    stage.addEventListener('pointermove',function(e){
+      var b=stage.getBoundingClientRect();
+      px=((e.clientX-b.left)/b.width-.5)*2;py=((e.clientY-b.top)/b.height-.5)*2;
+      if(!raf)raf=requestAnimationFrame(function(){raf=0;stage.style.setProperty('--px',px.toFixed(3));stage.style.setProperty('--py',py.toFixed(3))});
+    });
+    stage.addEventListener('pointerleave',function(){stage.style.setProperty('--px',0);stage.style.setProperty('--py',0)});
+  }
+
+  /* ---------- penanda navigasi yang meluncur ---------- */
+  var links=$('.links'),pill=$('.pill'),as=$$('.links a'),active=null;
+  function placePill(a){
+    if(!a||!links||links.offsetParent===null){if(pill)pill.style.opacity=0;return}
+    pill.style.opacity=1;pill.style.width=a.offsetWidth+'px';pill.style.transform='translateX('+a.offsetLeft+'px)';
+  }
+  as.forEach(function(a){
+    a.addEventListener('pointerenter',function(){placePill(a)});
+    a.addEventListener('focus',function(){placePill(a)});
+  });
+  if(links){
+    links.addEventListener('pointerleave',function(){placePill(active)});
+    links.addEventListener('focusout',function(){placePill(active)});
+  }
+  if('IntersectionObserver' in window){
+    var secs=$$('main section[id]'),spy=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(!en.isIntersecting)return;
+        var id=en.target.id,m=null;
+        as.forEach(function(a){a.classList.remove('active');if(a.getAttribute('href')==='#'+id){m=a}});
+        if(m)m.classList.add('active');
+        active=m;placePill(m);
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    secs.forEach(function(s){spy.observe(s)});
+  }
+  addEventListener('resize',function(){placePill(active)});
+  if(doc.fonts&&doc.fonts.ready)doc.fonts.ready.then(function(){placePill(active)});
+
+  /* ---------- kilau tombol, sorotan kartu, tilt ---------- */
+  $$('.btn').forEach(function(el){
+    el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();el.style.setProperty('--bx',(e.clientX-r.left)+'px');el.style.setProperty('--by',(e.clientY-r.top)+'px')});
+  });
+  $$('.proj,.item').forEach(function(el){
+    el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')});
+  });
+  if(fine&&!reduce){
+    $$('.proj').forEach(function(el){
+      el.addEventListener('pointermove',function(e){
+        var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        el.style.setProperty('--ry',(x*7).toFixed(2)+'deg');el.style.setProperty('--rx',(-y*7).toFixed(2)+'deg');
+      });
+      el.addEventListener('pointerleave',function(){el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg')});
+    });
+  }
+
+  /* ---------- hitung angka ---------- */
+  function countUp(el){
+    var end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'';
+    if(reduce){el.textContent=end+suf;return}
+    var t0=null,dur=1300;
+    function f(t){if(t0===null)t0=t;var p=Math.min((t-t0)/dur,1),v=1-Math.pow(1-p,3);el.textContent=Math.round(end*v)+suf;if(p<1)requestAnimationFrame(f)}
+    el.textContent='0'+suf;requestAnimationFrame(f);
+  }
+
+  /* ---------- muncul saat digulir ---------- */
+  if('IntersectionObserver' in window&&!reduce){
+    var els=$$('h2.title,.sub,.inc,.item,.proj,ol.steps li,.about>div,.facts,.panel,.stat');
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){
+      if(en.isIntersecting){var t=en.target;t.classList.add('in');io.unobserve(t);setTimeout(function(){t.style.transitionDelay=''},1100);var c=$('[data-count]',t);if(c)countUp(c)}
+    })},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){var sib=el.parentNode?[].indexOf.call(el.parentNode.children,el):0;el.style.transitionDelay=(Math.min(sib%4,3)*70)+'ms';el.classList.add('rv');io.observe(el)});
+  }
+
+  /* ---------- bahasa awal ---------- */
   var start='id';
   try{var q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='id')start=q;else{var sv=localStorage.getItem('lang');if(sv==='en'||sv==='id')start=sv}}catch(e){}
-  if(start==='en')set('en');
+  if(start==='en')setLang('en');
   btn.addEventListener('click',function(){
-    var n=cur==='id'?'en':'id';set(n);
+    var n=cur==='id'?'en':'id';setLang(n);
     try{localStorage.setItem('lang',n)}catch(e){}
   });
 })();
+
 </script>
 </body>
 </html>
