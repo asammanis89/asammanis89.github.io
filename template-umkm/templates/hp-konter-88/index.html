@@ -292,7 +292,7 @@ if(d&&d.hours&&d.hours.length){window.__HRS=d.hours;var esc2=function(t){return 
 // link Google Maps dari admin
 if(d&&d.maps)document.querySelectorAll('[data-biz=map]').forEach(function(a){a.href=d.maps});
 // status buka/tutup sesuai jam WIB
-(function(){var H=window.__HRS;if(!H)return;var DN=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],n=new Date(Date.now()+(420+new Date().getTimezoneOffset())*6e4),day=n.getDay(),m=n.getHours()*60+n.getMinutes(),st=null;
+(function(){var H=window.__HRS;if(!H||/[?&]shot=/.test(location.search))return;var DN=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],n=new Date(Date.now()+(420+new Date().getTimezoneOffset())*6e4),day=n.getDay(),m=n.getHours()*60+n.getMinutes(),st=null;
  function days(l){if(/setiap hari/i.test(l))return [0,1,2,3,4,5,6];var a=l.split(/\s*-\s*/).map(function(x){return DN.indexOf(x.trim())}),r=[],i=a[0];if(i<0||a[a.length-1]<0)return [];for(var k=0;k<7;k++){r.push(i);if(i===a[a.length-1])break;i=(i+1)%7}return r}
  H.forEach(function(h){if(st||days(h[0]).indexOf(day)<0)return;if(/24 jam/i.test(h[1])){st=[1,'Buka 24 jam'];return}if(/tutup/i.test(h[1])){st=[0,'Tutup hari ini'];return}var t=h[1].match(/(\d+)\.(\d+)\s*-\s*(\d+)\.(\d+)/);if(!t)return;var a=t[1]*60+ +t[2],b=t[3]*60+ +t[4];
   st=m>=a&&m<b?[1,'Buka sekarang, tutup '+t[3]+'.'+t[4]]:m<a?[0,'Tutup, buka pukul '+t[1]+'.'+t[2]]:[0,'Sudah tutup, buka lagi besok']});
