@@ -40,11 +40,11 @@ img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:non
 .dot{position:relative;width:9px;height:9px;border-radius:50%;background:#22C55E;flex:none}.dot:after{content:"";position:absolute;inset:0;border-radius:50%;background:#22C55E;animation:pulse 2s ease-out infinite}
 @keyframes pulse{to{transform:scale(2.8);opacity:0}}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:1.05rem}
-.logo i{width:36px;height:36px;border-radius:11px;background:var(--accent);color:var(--ai);display:grid;place-items:center;font-style:normal;font-size:.8rem;font-weight:800;letter-spacing:0}
+.logo i{overflow:hidden;width:36px;height:36px;border-radius:11px;background:var(--accent);color:var(--ai);display:grid;place-items:center;font-style:normal;font-size:.8rem;font-weight:800;letter-spacing:0}
 .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:transparent;place-items:center;cursor:pointer}
 .stars{display:flex;gap:2px;color:#F5B301}.stars .ico{width:15px;height:15px;fill:currentColor;stroke:none}
 .opn{display:inline-flex;align-items:center;gap:8px;margin:4px 0 10px;padding:6px 12px;border-radius:999px;font-size:.85rem;font-weight:700;color:#16a34a;background:#16a34a1f}.opn.cl{color:#e11d48;background:#e11d481f}.opn i{width:8px;height:8px;border-radius:50%;background:currentColor}
-.mapb{margin-top:18px}
+.mapb{margin-top:18px}.logo i img{width:100%;height:100%;object-fit:cover}
 .cart{position:fixed;left:50%;bottom:16px;translate:-50% 0;z-index:70;width:min(520px,calc(100% - 24px));background:#0f172a;color:#fff;border-radius:20px;box-shadow:0 24px 50px -16px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.14);padding:10px;display:none}
 .cart.on{display:block;animation:cin .35s cubic-bezier(.2,.8,.2,1)}@keyframes cin{from{transform:translateY(30px);opacity:0}}
 .cart .cr{display:flex;align-items:center;gap:10px}.cart .cs{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;background:none;border:0;color:inherit;font:inherit;text-align:left;padding:4px 8px;cursor:pointer}
@@ -250,12 +250,18 @@ var tm=new Date(Date.now()+864e5),fm=function(d){return d.toISOString().slice(0,
 addEventListener('storage',function(ev){if(ev.key==='tpl:'+window.__SLUG)location.reload()});
 // filter katalog (delegasi, aman untuk daftar yang dirender ulang)
 document.addEventListener('click',function(ev){var b=ev.target.closest('.chips button');if(!b)return;var ch=b.parentNode;ch.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});var k=b.dataset.f;document.querySelectorAll('.pc[data-t]').forEach(function(c){c.hidden=!(k==='*'||c.dataset.t===k)})});
+// logo dan jam buka dari admin
+if(d&&/^data:image\//.test(d.logo||''))document.querySelectorAll('.logo i').forEach(function(i){i.innerHTML='<img src="'+d.logo.replace(/"/g,'')+'" alt="">'});
+if(d&&d.hours&&d.hours.length){window.__HRS=d.hours;var esc2=function(t){return String(t).replace(/[<&]/g,'')};
+ document.querySelectorAll('.mapb').forEach(function(mb){var par=mb.parentNode;par.querySelectorAll('.hr').forEach(function(r){r.remove()});
+  d.hours.forEach(function(h){var r=document.createElement('div');r.className='hr';r.innerHTML='<span>'+esc2(h[0])+'</span><b>'+esc2(h[1])+'</b>';par.insertBefore(r,mb)})});
+ document.querySelectorAll('.badge>b').forEach(function(b){var n=b.nextSibling;if(n&&n.nodeType===3)n.textContent=d.hours[0][0]+', '+d.hours[0][1]})}
 // link Google Maps dari admin
 if(d&&d.maps)document.querySelectorAll('[data-biz=map]').forEach(function(a){a.href=d.maps});
 // status buka/tutup sesuai jam WIB
 (function(){var H=window.__HRS;if(!H)return;var DN=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],n=new Date(Date.now()+(420+new Date().getTimezoneOffset())*6e4),day=n.getDay(),m=n.getHours()*60+n.getMinutes(),st=null;
  function days(l){if(/setiap hari/i.test(l))return [0,1,2,3,4,5,6];var a=l.split(/\s*-\s*/).map(function(x){return DN.indexOf(x.trim())}),r=[],i=a[0];if(i<0||a[a.length-1]<0)return [];for(var k=0;k<7;k++){r.push(i);if(i===a[a.length-1])break;i=(i+1)%7}return r}
- H.forEach(function(h){if(st||days(h[0]).indexOf(day)<0)return;if(/24 jam/i.test(h[1])){st=[1,'Buka 24 jam'];return}var t=h[1].match(/(\d+)\.(\d+)\s*-\s*(\d+)\.(\d+)/);if(!t)return;var a=t[1]*60+ +t[2],b=t[3]*60+ +t[4];
+ H.forEach(function(h){if(st||days(h[0]).indexOf(day)<0)return;if(/24 jam/i.test(h[1])){st=[1,'Buka 24 jam'];return}if(/tutup/i.test(h[1])){st=[0,'Tutup hari ini'];return}var t=h[1].match(/(\d+)\.(\d+)\s*-\s*(\d+)\.(\d+)/);if(!t)return;var a=t[1]*60+ +t[2],b=t[3]*60+ +t[4];
   st=m>=a&&m<b?[1,'Buka sekarang, tutup '+t[3]+'.'+t[4]]:m<a?[0,'Tutup, buka pukul '+t[1]+'.'+t[2]]:[0,'Sudah tutup, buka lagi besok']});
  if(!st)return;document.querySelectorAll('[data-open]').forEach(function(x){x.hidden=false;x.classList.toggle('cl',!st[0]);x.querySelector('span').textContent=st[1]});
  document.querySelectorAll('.badge>b').forEach(function(b){if(b.textContent==='Buka'&&!st[0])b.textContent='Tutup'})})();
