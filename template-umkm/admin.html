@@ -21,6 +21,16 @@ linear-gradient(to right,rgba(148,163,200,.05) 1px,transparent 1px) 0 0/44px 44p
 .fld{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}.fld span{font-size:.8rem;color:var(--muted);font-weight:600}
 .fld input,.fld select,.fld textarea{height:44px;border-radius:12px;border:1px solid var(--line);background:rgba(7,11,22,.6);padding:0 14px;outline:none}
 .fld textarea{height:auto;padding:10px 14px;resize:vertical}
+.pick{position:relative;height:170px;border-radius:14px;border:1.5px dashed color-mix(in oklab,var(--accent) 45%,var(--line));background:rgba(7,11,22,.5);display:grid;place-items:center;cursor:pointer;overflow:hidden;transition:border-color .2s,background .2s}
+.pick:hover,.pick.ov{border-color:var(--accent);background:color-mix(in oklab,var(--accent) 10%,rgba(7,11,22,.5))}
+.pick img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}.pick.has img{display:block}.pick.has .pe{display:none}
+.pe{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;padding:12px;color:var(--muted)}.pe .ico{width:28px;height:28px;color:var(--accent);margin-bottom:4px}.pe b{color:var(--ink);font-size:.95rem}.pe small{font-size:.78rem}
+.pdel{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(2,6,23,.7);color:#fff;font-size:1.3rem;line-height:1;cursor:pointer;display:none}.pick.has .pdel{display:block}
+.pick.busy:after{content:"Memproses foto...";position:absolute;inset:0;display:grid;place-items:center;background:rgba(2,6,23,.75);color:#fff;font-size:.85rem}
+.pacts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.pb{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);font:inherit;font-size:.85rem;font-weight:600;cursor:pointer}.pb:hover{border-color:var(--accent)}.pb .ico{width:18px;height:18px;color:var(--accent)}
+.plink{display:flex;gap:8px;margin-top:8px}.plink[hidden]{display:none}.plink input{flex:1;min-width:0}.plink .btn{min-height:44px}
+.pmsg{font-size:.78rem;color:var(--muted);line-height:1.4}.pmsg.err{color:#f87171}.pmsg.ok{color:#4ade80}
 .fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in oklab,var(--accent) 25%,transparent)}
 .note{font-size:.8rem;color:var(--muted);margin-top:14px;line-height:1.5}
 /* app */
@@ -101,7 +111,7 @@ td img{width:52px;height:40px;border-radius:9px;object-fit:cover;background:#1a2
 <div class="drawer" id="dr"><div class="bd" data-x></div><form class="pn" id="itf"><h2 style="font-size:1.3rem;margin-bottom:18px" id="dt">Tambah produk</h2>
 <label class="fld"><span>Nama</span><input name="n" required></label><label class="fld"><span>Harga</span><input name="price" placeholder="Rp100.000" required></label>
 <label class="fld"><span>Keterangan</span><input name="note"></label><label class="fld"><span>Kategori</span><input name="tag" list="tags"></label><datalist id="tags"></datalist>
-<label class="fld"><span>Link foto</span><input name="img" type="url" placeholder="https://..."></label>
+<div class="fld"><span>Foto produk</span><input type="hidden" name="img"><div class="pick" id="pick" tabindex="0" role="button" aria-label="Pilih foto produk"><img id="pimg" alt=""><div class="pe"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg><b>Seret foto ke sini</b><small>atau tempel gambar yang sudah disalin (Ctrl+V)</small></div><button type="button" class="pdel" id="pdel" aria-label="Hapus foto">&times;</button></div><div class="pacts"><label class="pb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>Galeri<input type="file" accept="image/*" id="pf1" hidden></label><label class="pb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg>Kamera<input type="file" accept="image/*" capture="environment" id="pf2" hidden></label><button type="button" class="pb" id="plb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Link / Drive</button></div><div class="plink" id="plink" hidden><input id="pin" inputmode="url" placeholder="Tempel link foto atau link Google Drive"><button type="button" class="btn a" id="pgo">Pakai</button></div><small class="pmsg" id="pmsg">Foto otomatis dikecilkan supaya website tetap ringan.</small></div>
 <div style="display:flex;gap:8px;margin-top:8px"><button class="btn a" type="submit">Simpan</button><button class="btn g" type="button" data-x>Batal</button></div></form></div>
 <div class="toast" id="toast">Tersimpan</div>
 <script>(function(){
@@ -110,7 +120,7 @@ var $=function(s){return document.querySelector(s)},esc=function(s){return Strin
 function lum(h){h=h.replace('#','');return (0.299*parseInt(h.substr(0,2),16)+0.587*parseInt(h.substr(2,2),16)+0.114*parseInt(h.substr(4,2),16))/255}
 function paint(c){document.documentElement.style.setProperty('--accent',c);document.documentElement.style.setProperty('--ai',lum(c)>.62?'#0b0b0c':'#fff')}
 function key(){return 'tpl:'+slug}
-function save(msg){try{localStorage.setItem(key(),JSON.stringify(D))}catch(e){}render();toast(msg||'Tersimpan')}
+function save(msg){try{localStorage.setItem(key(),JSON.stringify(D))}catch(e){render();toast('Memori browser penuh. Pakai foto lewat link, atau hapus beberapa foto.');return}render();toast(msg||'Tersimpan')}
 function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('on')},1800)}
 function load(){var base=DB[slug];var s=null;try{s=JSON.parse(localStorage.getItem(key())||'null')}catch(e){}D=s||JSON.parse(JSON.stringify(base));
  var lg=DB[slug].logo||'';$('#li').innerHTML=lg;$('#si').innerHTML=lg;$('#ln').textContent=D.name;$('#sn').textContent=D.name;
@@ -135,7 +145,36 @@ document.addEventListener('click',function(ev){var t=ev.target.closest('[data-p]
 function fitL(){var v=$('#lvp');if(v.offsetWidth)$('#pvl').style.transform='scale('+(v.offsetWidth/1280)+')'}addEventListener('resize',fitL);
 document.querySelectorAll('[data-dev]').forEach(function(b){b.addEventListener('click',function(){var d=b.dataset.dev;document.querySelectorAll('[data-dev]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});$('#stg').dataset.d=d;$('#pvn').textContent=d==='hp'?'Tampilan di HP pelanggan':'Tampilan di laptop pelanggan';var L=$('#pvl');if(d==='lap'&&!L.dataset.on){L.dataset.on=1;L.src=L.dataset.u}fitL()})});
 document.addEventListener('input',function(ev){if(ev.target.type==='color'&&ev.target.closest('#cl')){D.accent=ev.target.value;paint(D.accent);clearTimeout(D._t);D._t=setTimeout(function(){delete D._t;save('Warna disimpan')},250)}});
-function openD(it){var f=$('#itf');$('#dt').textContent=it?'Ubah produk':'Tambah produk';['n','price','note','tag','img'].forEach(function(k){f[k].value=it?(it[k]||''):''});$('#dr').classList.add('on');setTimeout(function(){f.n.focus()},50)}
+function openD(it){var f=$('#itf');$('#dt').textContent=it?'Ubah produk':'Tambah produk';['n','price','note','tag','img'].forEach(function(k){f[k].value=it?(it[k]||''):''});setPic(it?it.img:'');$('#plink').hidden=true;msg('Foto otomatis dikecilkan supaya website tetap ringan.');$('#dr').classList.add('on');setTimeout(function(){f.n.focus()},50)}
+// ---------- foto produk: galeri, kamera, seret, tempel, link/Drive ----------
+var pick=$('#pick');
+function msg(t,c){var m=$('#pmsg');m.textContent=t;m.className='pmsg'+(c?' '+c:'')}
+function setPic(u){$('#itf').img.value=u||'';var im=$('#pimg');if(u){im.src=u;pick.classList.add('has')}else{im.removeAttribute('src');pick.classList.remove('has')}}
+function fromFile(f){if(!f)return;if(!/^image\//.test(f.type)){msg('File itu bukan foto. Pilih file JPG, PNG, atau WEBP.','err');return}
+ pick.classList.add('busy');var u=URL.createObjectURL(f),im=new Image();
+ im.onload=function(){var k=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+  var x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
+  var d=c.toDataURL('image/jpeg',.8);setPic(d);pick.classList.remove('busy');msg('Foto siap ('+Math.round(d.length*.75/1024)+' KB). Tekan Simpan.','ok')};
+ im.onerror=function(){pick.classList.remove('busy');URL.revokeObjectURL(u);msg('Foto tidak bisa dibaca. Coba foto lain.','err')};im.src=u}
+function fixLink(u){u=(u||'').trim();var m=u.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]{20,})/)||u.match(/docs\.google\.com\/uc\?.*id=([\w-]{20,})/);
+ if(m)return 'https://drive.google.com/thumbnail?id='+m[1]+'&sz=w1200';
+ if(/dropbox\.com/.test(u))return u.replace(/[?&]dl=0/,'').replace(/(\?|$)/,function(a){return a==='?'?'?raw=1&':'?raw=1'});return u}
+function fromLink(raw){var u=fixLink(raw);if(!/^https?:\/\//i.test(u)){msg('Link harus diawali https://','err');return}
+ if(/photos\.app\.goo\.gl|photos\.google\.com/.test(u)){msg('Link Google Foto tidak bisa dipakai langsung. Buka fotonya, tekan lama, pilih Salin gambar, lalu tempel di kotak di atas.','err');return}
+ pick.classList.add('busy');var im=new Image();im.onload=function(){pick.classList.remove('busy');setPic(u);$('#plink').hidden=true;msg(/drive\.google/.test(u)?'Foto dari Google Drive siap. Tekan Simpan.':'Foto dari link siap. Tekan Simpan.','ok')};
+ im.onerror=function(){pick.classList.remove('busy');msg(/drive\.google/.test(u)?'Foto Drive tidak bisa dibuka. Di Drive, tekan Bagikan lalu ubah akses ke "Siapa saja yang memiliki link".':'Foto dari link itu tidak bisa dibuka. Pastikan link mengarah langsung ke foto.','err')};im.src=u}
+pick.addEventListener('click',function(e){if(e.target.closest('#pdel'))return;$('#pf1').click()});
+pick.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();$('#pf1').click()}});
+$('#pdel').addEventListener('click',function(){setPic('');msg('Foto dihapus. Pilih foto baru atau biarkan kosong.')});
+['#pf1','#pf2'].forEach(function(s){$(s).addEventListener('change',function(e){fromFile(e.target.files[0]);e.target.value=''})});
+['dragenter','dragover'].forEach(function(n){pick.addEventListener(n,function(e){e.preventDefault();pick.classList.add('ov')})});
+['dragleave','drop'].forEach(function(n){pick.addEventListener(n,function(){pick.classList.remove('ov')})});
+pick.addEventListener('drop',function(e){e.preventDefault();var dt=e.dataTransfer,f=dt.files&&dt.files[0];if(f)return fromFile(f);var t=dt.getData('text/uri-list')||dt.getData('text/plain');if(t)fromLink(t.split('\n')[0])});
+document.addEventListener('paste',function(e){if(!$('#dr').classList.contains('on'))return;var it=[].slice.call(e.clipboardData.items||[]).filter(function(x){return x.type.indexOf('image/')===0})[0];
+ if(it){e.preventDefault();fromFile(it.getAsFile());return}if(e.target.closest('input:not(#pin),textarea'))return;var t=e.clipboardData.getData('text');if(/^https?:\/\//.test(t)){e.preventDefault();fromLink(t)}});
+$('#plb').addEventListener('click',function(){var b=$('#plink');b.hidden=!b.hidden;if(!b.hidden)$('#pin').focus()});
+$('#pgo').addEventListener('click',function(){fromLink($('#pin').value)});
+$('#pin').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();fromLink(this.value)}});
 $('#itf').addEventListener('submit',function(ev){ev.preventDefault();var f=ev.target,it={n:f.n.value.trim(),price:f.price.value.trim(),note:f.note.value.trim(),tag:f.tag.value.trim()||'Lainnya',img:f.img.value.trim()||(edit>-1?D.items[edit].img:D.items[0]&&D.items[0].img),status:edit>-1?D.items[edit].status:'ada'};
  if(edit>-1)D.items[edit]=it;else D.items.unshift(it);$('#dr').classList.remove('on');save(edit>-1?'Produk diperbarui':'Produk ditambahkan')});
 $('#pf').addEventListener('submit',function(ev){ev.preventDefault();var f=ev.target;D.name=f.name.value.trim();D.wa=f.wa.value.replace(/\D/g,'');D.addr=f.addr.value.trim();save('Profil disimpan');$('#sn').textContent=D.name});
