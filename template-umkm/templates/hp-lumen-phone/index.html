@@ -1,162 +1,128 @@
 <!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lumen Phone | Madiun</title><meta name="description" content="Kami spesialis iPhone bekas pilihan di Madiun. Setiap unit lolos cek 30 titik dan dijual dengan catatan kondisi tertulis."><meta name="color-scheme" content="light"><meta name="theme-color" content="#F1F0EE">
-<style>@font-face{font-family:'Fraunces';src:url('../../assets/fonts/fraunces-latin-wght-normal.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}@font-face{font-family:'Fraunces';src:url('../../assets/fonts/fraunces-latin-wght-italic.woff2') format('woff2');font-weight:100 900;font-style:italic;font-display:swap}@font-face{font-family:'Instrument';src:url('../../assets/fonts/instrument-sans-latin-wght-normal.woff2') format('woff2');font-weight:400 700;font-style:normal;font-display:swap}:root{--bg:#F1F0EE;--surface:#FFFFFF;--ink:#1C1B22;--muted:#6A6873;--accent:#2D2A3E;--accent-ink:#F1F0EE;--accent2:#B9A8E6;--soft:#E3E0EA;--line:#D9D6DE;}
+<title>Lumen Phone | Madiun</title><meta name="description" content="Setiap unit lolos cek 30 titik dan dijual dengan catatan kondisi tertulis."><meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://images.unsplash.com">
+<style>@font-face{font-family:'Geist';src:url('../../assets/fonts/geist-latin-wght-normal.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}@font-face{font-family:'Instrument Serif';src:url('../../assets/fonts/instrument-serif-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}:root{--accent:#6366F1;--ai:#ffffff}
 *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-a{color:inherit;text-decoration:none}svg{display:block}button{font:inherit;color:inherit}
-.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
-.ribbon{font:500 13px/1.45 system-ui,sans-serif;background:#1b1b1f;color:#f2f2f2;text-align:center;padding:8px 14px}
-.ribbon a{color:#fff;text-decoration:underline;text-underline-offset:2px;margin-left:6px;font-weight:600}
-.burger{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid currentColor;background:transparent;place-items:center;cursor:pointer;opacity:.85}
-.fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#1FAF5A;color:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.28);z-index:40}
-.fab .ico{width:28px;height:28px}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
-.items>*,.cat>*,.svc>*,.bento>*{min-width:0}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-@media(max-width:760px){.nav{position:relative}.links,.nav-cta{display:none!important}.burger{display:grid}
-.nav.open .links{display:flex!important;flex-direction:column;position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);color:var(--ink);padding:20px;border-radius:18px;gap:16px;z-index:50;box-shadow:0 24px 48px rgba(0,0,0,.2);border:1px solid var(--line)}}
+body{font-family:var(--fb);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button,input,select{font:inherit;color:inherit}
+:root{--a50:color-mix(in oklab,var(--accent) 7%,#fff);--a100:color-mix(in oklab,var(--accent) 15%,#fff);--a200:color-mix(in oklab,var(--accent) 30%,#fff);
+--a700:color-mix(in oklab,var(--accent) 78%,#000);--aglow:color-mix(in oklab,var(--accent) 45%,transparent);--ad:color-mix(in oklab,var(--accent) 18%,transparent)}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+.ico{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:var(--rb,12px);font-weight:600;font-size:.95rem;border:0;cursor:pointer;white-space:nowrap;transition:transform .15s,background-color .2s,box-shadow .2s}
+.btn:active{transform:scale(.98)}
+.btn-a{background:var(--accent);color:var(--ai);box-shadow:0 10px 28px -12px var(--aglow)}.btn-a:hover{background:var(--a700);color:#fff}
+.btn-d{background:var(--ink);color:var(--bg)}.btn-o{background:transparent;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink)}.btn-o:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+.dot{width:9px;height:9px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 0 #22c55e80;animation:pulse 2s infinite;flex:none}
+@keyframes pulse{70%{box-shadow:0 0 0 9px #22c55e00}100%{box-shadow:0 0 0 0 #22c55e00}}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:1.05rem}
+.logo i{width:36px;height:36px;border-radius:11px;background:var(--accent);color:var(--ai);display:grid;place-items:center;font-style:normal;font-size:.8rem;font-weight:800;letter-spacing:0}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:transparent;place-items:center;cursor:pointer}
+.stars{display:flex;gap:2px;color:#F5B301}.stars .ico{width:15px;height:15px;fill:currentColor;stroke:none}
+.ico.st{width:15px;height:15px;fill:#F5B301;stroke:none;display:inline;vertical-align:-2px}
+.avs{display:flex}.avs i,figcaption i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:.8rem;color:#fff;border:2px solid var(--bg);margin-left:-9px;
+background:color-mix(in oklab,var(--accent) calc(100% - var(--k)*28%),#334155)}.avs i:first-child{margin-left:0}
+.rate{display:flex;align-items:center;gap:12px;font-size:.9rem}.rate span{color:var(--muted)}
+.bk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:6px;padding:8px;border-radius:20px}
+.bk label{display:flex;flex-direction:column;gap:1px;padding:9px 14px;border-radius:14px;cursor:text;min-width:0}
+.bk label:hover{background:var(--hov,rgba(0,0,0,.04))}
+.bk label span{font-size:.74rem;font-weight:600;color:var(--muted)}
+.bk input,.bk select{border:0;background:transparent;font-weight:600;font-size:.95rem;outline:none;width:100%;min-width:0;padding:0;-webkit-appearance:none;appearance:none}
+.bk select{cursor:pointer}.bk input::placeholder{color:var(--muted);opacity:.7;font-weight:500}
+.bk .btn{min-height:auto;border-radius:14px;padding:0 24px}
+.sc{min-width:200px}.sc-h{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.8rem;color:var(--muted);font-weight:600}
+.sc-h em{font-style:normal;color:#16A34A;background:#16a34a1a;padding:2px 8px;border-radius:999px;font-size:.72rem}
+.sc>b{display:block;font-size:2rem;letter-spacing:-.04em;line-height:1.1;margin:6px 0 10px;font-weight:700}.bars{width:100%;height:44px}
+.live{display:flex;align-items:center;gap:12px}.live small{display:block;font-size:.74rem;color:var(--muted);font-weight:600;line-height:1.2}.live b{font-size:.95rem}
+.pc{display:flex;flex-direction:column;min-width:0}.pc[hidden]{display:none}
+.pc-img{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--a100)}.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.pc:hover .pc-img img{transform:scale(1.04)}
+.tag{position:absolute;top:12px;left:12px;font-size:.74rem;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.92);color:#111}
+.pc-b{display:flex;flex-direction:column;flex:1;padding:16px 4px 4px}.pc-b h3{font-size:1.05rem;letter-spacing:-.02em;line-height:1.3}.pc-b p{color:var(--muted);font-size:.88rem}
+.pc-f{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:14px}.pc-f b{font-size:1.1rem;letter-spacing:-.02em}.pc-f b small{font-size:.8rem;color:var(--muted);font-weight:500}
+.pc-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:10px;background:var(--accent);color:var(--ai);font-weight:600;font-size:.85rem}.pc-btn .ico{width:17px;height:17px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chips button{height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:transparent;font-weight:600;font-size:.88rem;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--ai)}
+.faq details{border-bottom:1px solid var(--line)}.faq summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:600;display:flex;justify-content:space-between;gap:16px;font-size:1.02rem}
+.faq summary::-webkit-details-marker{display:none}.faq .pl{width:18px;height:18px;transition:transform .2s;color:var(--accent)}.faq details[open] .pl{transform:rotate(90deg)}.faq p{color:var(--muted);padding:0 0 20px;max-width:60ch}
+.hr{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.hr span{color:var(--muted)}
+.tq{display:flex;flex-direction:column;gap:16px}.tq blockquote{font-size:1.02rem;line-height:1.6}.tq figcaption{display:flex;align-items:center;gap:12px;margin-top:auto}
+.tq figcaption i{margin:0;border:0}.tq figcaption b{display:block;font-size:.92rem;line-height:1.2}.tq figcaption small{color:var(--muted)}
+.ribbon{font:500 12.5px/1.4 system-ui,sans-serif;background:#0b0b0c;color:#e8e8e8;text-align:center;padding:7px 12px;position:relative;z-index:60}.ribbon a{color:#fff;text-decoration:underline;margin-left:6px}
+.fab{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:#1FAF5A;color:#fff;display:grid;place-items:center;box-shadow:0 12px 28px rgba(0,0,0,.3);z-index:50}.fab .ico{width:26px;height:26px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.sec{padding-top:110px}.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}.sh p{color:var(--muted);max-width:46ch}
+@media(max-width:860px){.links,.nav-cta{display:none!important}.burger{display:grid}
+.nav.open .links{display:flex!important;flex-direction:column;position:absolute;top:calc(100% + 8px);left:0;right:0;background:var(--card);color:var(--ink);padding:18px;border-radius:18px;gap:14px;z-index:70;box-shadow:0 24px 48px rgba(0,0,0,.25);border:1px solid var(--line)}
+.bk{grid-template-columns:1fr 1fr}.bk label:nth-child(1){grid-column:1/-1}.bk .btn{grid-column:1/-1;min-height:50px}.sec{padding-top:80px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
-body{font-family:'Instrument',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:1.02rem}
-h1,h2,h3,.logo,.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-.02em;font-variation-settings:"opsz" 144}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0;gap:18px;border-bottom:1px solid var(--line)}
-.logo{font-size:1.5rem;font-style:italic}
-.links{display:flex;gap:34px;font-size:.95rem}.links a:hover{text-decoration:underline;text-underline-offset:4px}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:.95rem;white-space:nowrap}
-.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
-.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:end;padding:64px 0 56px}
-.hero h1{font-size:clamp(3rem,7.4vw,6.6rem);line-height:.96;letter-spacing:-.035em}
-.hero p{font-size:1.15rem;max-width:44ch;color:var(--muted);margin:28px 0 32px}
-.acts{display:flex;gap:12px;flex-wrap:wrap}
-.arch{border-radius:999px 999px 28px 28px;background:var(--soft);aspect-ratio:3/4;display:grid;place-items:center;padding:30px;position:relative;overflow:hidden}
-.arch:after{content:"";position:absolute;inset:14px;border:1px solid var(--line);border-radius:999px 999px 20px 20px;pointer-events:none}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.facts div{padding:22px 0}.facts div+div{padding-left:28px;border-left:1px solid var(--line)}
-.facts b{display:block;font-family:'Fraunces',serif;font-weight:400;font-size:2.2rem;line-height:1.1}.facts span{color:var(--muted);font-size:.92rem}
-section{padding-top:110px}
-.sh{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:42px}
-h2{font-size:clamp(2.2rem,4.6vw,3.8rem);line-height:1.02;letter-spacing:-.03em}
-.sh p{color:var(--muted);max-width:46ch}
-.row{display:grid;grid-template-columns:70px 1fr 1.1fr;gap:28px;align-items:center;padding:28px 0;border-top:1px solid var(--line)}
-.row:last-child{border-bottom:1px solid var(--line)}
-.row .ic{width:52px;height:52px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--ink);display:grid;place-items:center}
-.row h3{font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.1}.row p{color:var(--muted)}
-.feat{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:72px}
-.feat:nth-child(even) .fa{order:2}
-.fa{background:var(--soft);border-radius:28px;aspect-ratio:5/4;display:grid;place-items:center;padding:12%}
-.fa svg{max-width:100%;max-height:100%;width:auto;height:100%}.fa .car-art,.fa .bowl-art,.fa .plate-art{width:100%;height:auto}
-.feat em{font-family:'Fraunces',serif;font-style:italic;color:var(--muted);font-size:1.1rem}
-.feat h3{font-size:clamp(2rem,3.6vw,3rem);line-height:1.05;margin:8px 0 10px}
-.feat .pr{font-family:'Fraunces',serif;font-size:1.8rem;margin:18px 0 22px}.feat .pr small{font-size:1rem;color:var(--muted)}
-.more{display:grid;grid-template-columns:1fr 1fr;gap:6px 56px}
-.mi{display:flex;align-items:baseline;gap:12px;padding:14px 0}
-.mi span{white-space:nowrap}.mi i{flex:1;border-bottom:1px dotted var(--muted);transform:translateY(-4px);opacity:.6}.mi b{font-weight:600;white-space:nowrap}
-.mi small{display:block;color:var(--muted)}
-.pull{background:var(--accent);color:var(--accent-ink);border-radius:34px;padding:72px clamp(26px,6vw,90px);position:relative}
-.pull blockquote{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.6rem,3.2vw,2.7rem);line-height:1.22;max-width:30ch;min-height:4.8em}
-.pull cite{display:block;margin-top:28px;font-style:normal;opacity:.75}
-.qnav{position:absolute;right:clamp(20px,4vw,48px);bottom:clamp(20px,4vw,48px);display:flex;gap:10px}
-.qnav button{width:48px;height:48px;border-radius:50%;border:1px solid currentColor;background:transparent;display:grid;place-items:center;cursor:pointer;color:var(--accent-ink)}
-.why{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
-.why h3{font-size:1.4rem;margin:16px 0 6px}.why p{color:var(--muted);font-size:.96rem}.why .ico{width:28px;height:28px;stroke-width:1.4}
-.locg{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:stretch}
-.locg .hrow{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
-.locg address{font-style:normal;font-family:'Fraunces',serif;font-size:1.7rem;line-height:1.25;margin:10px 0 26px}
-.mapbox{border-radius:28px;overflow:hidden;min-height:360px}.mapbox svg{width:100%;height:100%}
-.end{text-align:center;padding:120px 0 90px}.end h2{max-width:20ch;margin:0 auto 34px}
-footer{border-top:1px solid var(--line);padding:28px 0 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
-.hero-stack{position:relative;width:100%;height:100%}.hs{position:absolute;top:50%;left:50%;width:38%}
-.hs1{transform:translate(-118%,-44%) rotate(-10deg)}.hs2{transform:translate(-50%,-50%);width:44%;z-index:2}.hs3{transform:translate(18%,-44%) rotate(10deg)}
-.hero-car{width:110%}.hero-food{display:flex;flex-direction:column;align-items:center;width:100%}.hf1{width:56%}.hf2{width:96%;margin-top:-10%}
-@media(max-width:900px){.hero,.sh,.feat,.locg{grid-template-columns:1fr}.feat:nth-child(even) .fa{order:0}.hero{gap:36px;padding-top:40px}.arch{max-width:360px;width:100%;justify-self:center}
-.why{grid-template-columns:1fr 1fr}.more{grid-template-columns:1fr}.feat{gap:26px;margin-bottom:56px}}
-@media(max-width:600px){.row{grid-template-columns:52px 1fr;gap:14px 18px}.row p{grid-column:2}.row .ic{width:44px;height:44px}.facts{grid-template-columns:1fr}.facts div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
-section{padding-top:76px}.why{grid-template-columns:1fr}.pull{padding:44px 24px 96px;border-radius:24px}.end{padding:80px 0 60px}.mi span{white-space:normal}}
-body{background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22240%22%20height%3D%2240%22%20viewBox%3D%220%200%20240%2040%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%231C1B22%22%20stroke-opacity%3D%22.15%22%20stroke-width%3D%221.1%22%3E%3Cpath%20d%3D%22M0%206%20Q60%20-4%20120%206%20T240%206%22/%3E%3Cpath%20d%3D%22M0%2016%20Q60%206%20120%2016%20T240%2016%22/%3E%3Cpath%20d%3D%22M0%2026%20Q60%2016%20120%2026%20T240%2026%22/%3E%3Cpath%20d%3D%22M0%2036%20Q60%2026%20120%2036%20T240%2036%22/%3E%3C/g%3E%3C/svg%3E");background-size:240px 40px}</style></head><body>
-<div class="ribbon">Contoh template. Nama usaha, harga, dan ulasan di halaman ini hanya ilustrasi.<a href="../../index.html" target="_top">Kembali ke katalog</a></div>
-<div class="wrap">
-<header class="nav"><a class="logo" href="#">Lumen Phone</a><nav class="links"><a href="#layanan">Layanan</a><a href="#produk">Produk</a><a href="#kenapa">Kenapa kami</a><a href="#lokasi">Lokasi</a></nav><a class="btn nav-cta" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer">Hubungi kami</a><button class="burger" aria-label="Buka menu" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></header>
-<main>
-<div class="hero"><div><h1>iPhone second yang jujur kondisinya.</h1><p>Kami spesialis iPhone bekas pilihan di Madiun. Setiap unit lolos cek 30 titik dan dijual dengan catatan kondisi tertulis.</p><div class="acts"><a class="btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat WhatsApp</a><a class="btn line" href="#produk">Lihat pilihan</a></div></div>
-<div class="arch"><div class="hero-stack"><div class="hs hs1"><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph13" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B9A8E6"/><stop offset="1" stop-color="#B9A8E6" stop-opacity=".45"/></linearGradient></defs>
-<rect x="4" y="2" width="116" height="244" rx="24" fill="#E7C9C2" stroke="#00000022" stroke-width="2"/>
-<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
-<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph13)"/>
-<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
-<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
-<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
-<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
-<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
-</svg></div><div class="hs hs2"><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph14" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2D2A3E"/><stop offset="1" stop-color="#2D2A3E" stop-opacity=".45"/></linearGradient></defs>
-<rect x="4" y="2" width="116" height="244" rx="24" fill="#2F5BEA" stroke="#ffffff22" stroke-width="2"/>
-<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
-<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph14)"/>
-<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
-<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
-<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
-<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
-<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
-</svg></div><div class="hs hs3"><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph15" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB86B"/><stop offset="1" stop-color="#FFB86B" stop-opacity=".45"/></linearGradient></defs>
-<rect x="4" y="2" width="116" height="244" rx="24" fill="#1E2A3A" stroke="#ffffff22" stroke-width="2"/>
-<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
-<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph15)"/>
-<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
-<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
-<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
-<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
-<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
-</svg></div></div></div></div>
-<div class="facts"><div><b>1.200+</b><span>HP terjual</span></div><div><b>4,9</b><span>rating Google</span></div><div><b>7 tahun</b><span>melayani</span></div></div>
-<section id="layanan"><div class="sh"><h2>Layanan kami</h2><p>Dari Madiun untuk Madiun Raya. Semua layanan bisa dipesan lewat WhatsApp, tanpa perlu datang lebih dulu.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></div><h3>HP baru &amp; second</h3><p>Unit resmi bergaransi, juga second pilihan yang sudah kami cek satu per satu.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5a4 4 0 0 0-5 5L3.5 16.5a2 2 0 0 0 3 3l6-6a4 4 0 0 0 5-5l-2.3 2.3-2.4-.6-.6-2.4z"/></svg></div><h3>Servis ditunggu</h3><p>Ganti LCD, baterai, port cas, sampai HP mati total. Kerusakan ringan bisa ditunggu.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/></svg></div><h3>Tukar tambah</h3><p>Bawa HP lama, kami taksir di tempat, sisanya tinggal tambah.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20v-3M10 20v-7M15 20V9M20 20V4"/></svg></div><h3>Pulsa &amp; paket data</h3><p>Semua operator, token listrik, dan top up e-wallet.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v4M15 3v4M6.5 7h11v4a5.5 5.5 0 0 1-11 0V7zM12 16.5V21"/></svg></div><h3>Aksesoris lengkap</h3><p>Casing, charger ori, TWS, powerbank, dan kabel data.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.8-3.3 8.1-7.5 9.5-4.2-1.4-7.5-4.7-7.5-9.5V6L12 3z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg></div><h3>Garansi toko</h3><p>HP second bergaransi toko 30 hari. Servis bergaransi 14 hari.</p></div></section>
-<section id="produk"><div class="sh"><h2>Produk pilihan minggu ini</h2><p>Harga sudah termasuk tempered glass dan pemasangan. Stok bisa berubah, tanya dulu lewat WhatsApp.</p></div><div class="feat"><div class="fa"><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph10" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B9A8E6"/><stop offset="1" stop-color="#B9A8E6" stop-opacity=".45"/></linearGradient></defs>
-<rect x="4" y="2" width="116" height="244" rx="24" fill="#2F5BEA" stroke="#ffffff22" stroke-width="2"/>
-<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
-<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph10)"/>
-<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
-<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
-<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
-<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
-<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
-</svg></div><div><em>Baru</em><h3>Redmi Note 14 8/256</h3><p style="color:var(--muted)">Garansi resmi 1 tahun</p>
-<div class="pr">Rp2.899.000<small></small></div><a class="btn line" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20Redmi%20Note%2014%208/256" target="_blank" rel="noopener noreferrer">Tanya unit ini</a></div></div><div class="feat"><div class="fa"><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph11" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B9A8E6"/><stop offset="1" stop-color="#B9A8E6" stop-opacity=".45"/></linearGradient></defs>
-<rect x="4" y="2" width="116" height="244" rx="24" fill="#E7C9C2" stroke="#00000022" stroke-width="2"/>
-<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
-<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph11)"/>
-<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
-<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
-<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
-<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
-<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
-</svg></div><div><em>Second</em><h3>iPhone 13 128GB</h3><p style="color:var(--muted)">Mulus, baterai 88%</p>
-<div class="pr">Rp6.350.000<small></small></div><a class="btn line" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20iPhone%2013%20128GB" target="_blank" rel="noopener noreferrer">Tanya unit ini</a></div></div><div class="feat"><div class="fa"><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph12" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B9A8E6"/><stop offset="1" stop-color="#B9A8E6" stop-opacity=".45"/></linearGradient></defs>
-<rect x="4" y="2" width="116" height="244" rx="24" fill="#1E2A3A" stroke="#ffffff22" stroke-width="2"/>
-<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
-<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph12)"/>
-<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
-<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
-<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
-<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
-<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
-</svg></div><div><em>Baru</em><h3>Samsung Galaxy A16 6/128</h3><p style="color:var(--muted)">Garansi resmi SEIN</p>
-<div class="pr">Rp2.399.000<small></small></div><a class="btn line" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20Samsung%20Galaxy%20A16%206/128" target="_blank" rel="noopener noreferrer">Tanya unit ini</a></div></div><div class="more"><div class="mi"><span>iPhone 11 64GB<small>Fullset, iCloud aman</small></span><i></i><b>Rp3.650.000</b></div><div class="mi"><span>OPPO A3x 4/128<small>Garansi resmi 1 tahun</small></span><i></i><b>Rp1.599.000</b></div><div class="mi"><span>Vivo Y19s 6/128<small>Bonus casing</small></span><i></i><b>Rp1.899.000</b></div><div class="mi"><span>Powerbank 10.000 mAh<small>Fast charging 22,5W</small></span><i></i><b>Rp149.000</b></div><div class="mi"><span>TWS Bluetooth 5.3<small>Garansi 3 bulan</small></span><i></i><b>Rp189.000</b></div></div></section>
-<section id="kenapa"><div class="pull"><blockquote id="qt">“Beli iPhone second di sini, kondisinya persis seperti di foto. Baterainya juga awet.”</blockquote><cite id="qc">Dimas, mahasiswa</cite>
-<div class="qnav"><button type="button" data-d="-1" aria-label="Ulasan sebelumnya"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" data-d="1" aria-label="Ulasan berikutnya"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
-<div class="why" style="margin-top:72px"><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><h3>Dicek sebelum dijual</h3><p>IMEI, kamera, sinyal, dan baterai kami tes di depan Anda.</p></div><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 9.5v5M17.5 9.5v5"/></svg><h3>Harga ditulis jelas</h3><p>Tidak ada biaya tambahan diam-diam di kasir.</p></div><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><h3>Bisa COD dalam kota</h3><p>Pesan lewat WhatsApp, kami antar dan Anda bayar di tempat.</p></div><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5a4 4 0 0 0-5 5L3.5 16.5a2 2 0 0 0 3 3l6-6a4 4 0 0 0 5-5l-2.3 2.3-2.4-.6-.6-2.4z"/></svg><h3>Teknisi berpengalaman</h3><p>Sudah ribuan HP lewat meja servis kami.</p></div></div></section>
-<section id="lokasi"><div class="locg"><div><h2>Kunjungi kami</h2><address>Jl. Pahlawan No. 21, Madiun, Jawa Timur</address><div class="hrow"><span>Senin - Sabtu</span><b>09.00 - 21.00</b></div><div class="hrow"><span>Minggu</span><b>10.00 - 20.00</b></div><p style="margin-top:28px"><a class="btn line" href="https://maps.google.com" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Petunjuk arah</a></p></div><div class="mapbox"><svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" class="map-art" aria-label="Ilustrasi peta lokasi" role="img">
-<rect width="600" height="380" fill="#E3E0EA"/>
-<g stroke="#FFFFFF" stroke-width="14" fill="none" stroke-linecap="round">
-<path d="M-20 260 Q180 220 300 240 T640 200"/><path d="M140 -20 L210 400"/><path d="M420 -20 Q390 180 470 400"/><path d="M-20 90 L640 130"/></g>
-<g stroke="#FFFFFF" stroke-width="6" fill="none" opacity=".8"><path d="M40 -10 L90 400"/><path d="M300 -10 L320 400"/><path d="M-10 330 L620 300"/><path d="M520 -10 L560 400"/></g>
-<rect x="230" y="150" width="70" height="50" rx="6" fill="#D9D6DE" opacity=".7"/><rect x="330" y="40" width="60" height="60" rx="6" fill="#D9D6DE" opacity=".7"/>
-<circle cx="80" cy="190" r="34" fill="#8fc98f" opacity=".45"/>
-<g transform="translate(300 190)"><circle r="26" fill="#2D2A3E" opacity=".3"/><path d="M0 -6 C-14 -36 -38 -30 -38 -52 A38 38 0 0 1 38 -52 C38 -30 14 -36 0 -6Z" transform="translate(0 0) scale(.7)" fill="#1C1B22"/><circle cy="-36" r="9" fill="#FFFFFF"/></g>
-</svg></div></div></section>
-<div class="end"><h2>Cek unit dulu, baru bayar.</h2><a class="btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat WhatsApp</a></div>
-</main><footer><span>© 2026 Lumen Phone</span><span>Jl. Pahlawan No. 21, Madiun, Jawa Timur</span></footer></div>
+:root{--bg:#FFFFFF;--card:#fff;--ink:#0A0A0A;--muted:#6B6B6B;--line:#E8E8E8;--fb:'Geist',system-ui,sans-serif;--rb:999px}
+body{background:repeating-linear-gradient(90deg,transparent 0 calc(100%/12 - 1px),rgba(10,10,10,.035) calc(100%/12 - 1px) calc(100%/12)),var(--bg)}
+.s,h1,h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.02em}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.logo i{border-radius:50%}.links{display:flex;gap:30px;font-size:.92rem}.links a:hover{color:var(--accent)}
+.hero{padding:70px 0 0}
+.hgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:end}
+.hero h1{font-size:clamp(3.2rem,8vw,7.4rem);line-height:.92}
+.hero .r p{color:var(--muted);font-size:1.08rem;margin-bottom:26px;max-width:36ch}.acts{display:flex;gap:10px;flex-wrap:wrap}
+.wide{position:relative;margin-top:56px;border-radius:6px;overflow:hidden;aspect-ratio:21/9}.wide img{width:100%;height:100%;object-fit:cover}
+.cap{position:absolute;left:20px;bottom:20px;background:#fff;border-radius:14px;padding:12px 16px}
+.cap2{position:absolute;right:20px;bottom:20px;background:#fff;border-radius:14px;padding:14px;width:230px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}.facts div{padding:28px 0}.facts div+div{padding-left:28px;border-left:1px solid var(--line)}
+.facts b{font-family:'Instrument Serif',serif;font-weight:400;font-size:3rem;line-height:1;display:block;color:var(--accent)}.facts span{color:var(--muted);font-size:.92rem}
+.h2{font-size:clamp(2.6rem,5.6vw,4.6rem);line-height:.98;max-width:14ch}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}.col .ph{aspect-ratio:3/4;border-radius:4px;overflow:hidden;margin-bottom:16px}.col .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+.col h3{font-size:1.08rem;letter-spacing:-.02em;margin-bottom:4px}.col p{color:var(--muted);font-size:.92rem}.col .ico{color:var(--accent);margin-bottom:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px;margin-top:24px}
+.pc-img{aspect-ratio:4/5;border-radius:4px}.tag{background:#fff;border-radius:4px}.pc-b{padding:16px 0 0}.pc-b h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:1.7rem;letter-spacing:-.01em;line-height:1.1}
+.pc-btn{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);border-radius:999px}.pc-btn:hover{background:var(--accent);color:var(--ai);box-shadow:none}
+.chips button{border-radius:999px}
+.gal{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:16px;height:620px}.gal div{border-radius:4px;overflow:hidden}.gal div:first-child{grid-row:span 2}.gal img{width:100%;height:100%;object-fit:cover}
+.qt{border-top:1px solid var(--ink);padding-top:40px;display:grid;grid-template-columns:1fr 2fr;gap:40px}
+.qt blockquote{font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.08}.qt cite{display:block;margin-top:20px;font-style:normal;color:var(--muted)}
+.qs{display:flex;gap:8px;margin-top:20px}.qs button{width:12px;height:12px;border-radius:50%;border:1px solid var(--ink);background:transparent;cursor:pointer;padding:0}.qs button[aria-current=true]{background:var(--accent);border-color:var(--accent)}
+.two{display:grid;grid-template-columns:1fr 1.4fr;gap:56px}
+.band{margin-top:110px;background:var(--accent);color:var(--ai);border-radius:6px;padding:clamp(36px,6vw,80px);display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:end}
+.band h2{font-size:clamp(2.4rem,5vw,4.4rem);line-height:.98}.band .btn{background:var(--ai);color:var(--accent);justify-self:end}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:40px 0 48px;color:var(--muted);font-size:.9rem}
+@media(max-width:960px){.hgrid,.two,.qt,.band{grid-template-columns:1fr}.wide{aspect-ratio:4/3}.cap2{display:none}.cols{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.gal{height:auto;grid-template-columns:1fr 1fr;grid-template-rows:auto}.gal div{aspect-ratio:1}.gal div:first-child{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}.band .btn{justify-self:start}}
+@media(max-width:560px){.facts{grid-template-columns:1fr}.facts div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}.cols{gap:14px}.col .ph{aspect-ratio:1}.grid3{gap:18px 10px}.pc-b h3{font-size:1.2rem}.pc-b p{font-size:.8rem}.pc-f{flex-direction:column;align-items:stretch;gap:8px}.pc-btn{justify-content:center}}
+</style></head><body>
+<div class="ribbon">Contoh template. Nama usaha, harga, foto, dan ulasan hanya ilustrasi.<a href="../../index.html" target="_top">Kembali ke katalog</a></div>
+<div class="wrap"><header class="nav "><a class="logo" href="#"><i>LP</i><b>Lumen Phone</b></a>
+<nav class="links"><a href="#layanan">Layanan</a><a href="#produk">Produk</a><a href="#ulasan">Ulasan</a><a href="#lokasi">Lokasi</a></nav><a class="btn btn-a nav-cta" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat admin</a>
+<button class="burger" aria-label="Buka menu" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></header>
+<main><section class="hero"><div class="hgrid"><h1>iPhone second yang jujur kondisinya.</h1><div class="r"><p>Setiap unit lolos cek 30 titik dan dijual dengan catatan kondisi tertulis.</p><div class="acts"><a class="btn btn-a" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Hubungi kami</a><a class="btn btn-o" href="#produk">Lihat pilihan</a></div></div></div>
+<div class="wide"><img class="" src="https://images.unsplash.com/photo-1757710436034-f1d7372ec1be?auto=format&fit=crop&w=2000&q=72&h=860" alt="Lumen Phone"  decoding="async"><div class="cap"><div class="live"><span class="dot"></span><div><small>Teknisi standby</small><b>3 orang</b></div></div></div><div class="cap2"><div class="sc"><div class="sc-h"><span>Unit ready hari ini</span><em>+12%</em></div><b>48</b><svg class="bars" viewBox="0 0 120 44" aria-hidden="true"><rect x="0" y="26" width="12" height="18" rx="3" fill="var(--accent)" opacity="0.25"/><rect x="18" y="15" width="12" height="29" rx="3" fill="var(--accent)" opacity="0.31"/><rect x="36" y="23" width="12" height="21" rx="3" fill="var(--accent)" opacity="0.37"/><rect x="54" y="12" width="12" height="32" rx="3" fill="var(--accent)" opacity="0.43"/><rect x="72" y="19" width="12" height="25" rx="3" fill="var(--accent)" opacity="0.49"/><rect x="90" y="4" width="12" height="40" rx="3" fill="var(--accent)" opacity="0.55"/><rect x="108" y="8" width="12" height="36" rx="3" fill="var(--accent)" opacity="1.00"/></svg></div></div></div>
+<div class="facts"><div><b>1.200+</b><span>HP terjual</span></div><div><b>4,9</b><span>rating Google</span></div><div><b>30 hari</b><span>garansi toko</span></div></div></section>
+<section class="sec" id="layanan"><div class="sh"><h2 class="h2">Layanan</h2><p>Dari Madiun untuk Madiun Raya. Semua bisa dipesan lewat WhatsApp.</p></div><div class="cols"><div class="col"><div class="ph"><img class="" src="https://images.unsplash.com/photo-1758467700568-05de57ed46c4?auto=format&fit=crop&w=600&q=72&h=800" alt="HP baru &amp; second" loading="lazy" decoding="async"></div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><h3>HP baru &amp; second</h3><p>Unit resmi bergaransi dan second pilihan yang sudah dicek satu per satu.</p></div><div class="col"><div class="ph"><img class="" src="https://images.unsplash.com/photo-1772442125267-7640b4b5f2fe?auto=format&fit=crop&w=600&q=72&h=800" alt="Servis ditunggu" loading="lazy" decoding="async"></div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5a4 4 0 0 0-5 5L3.5 16.5a2 2 0 0 0 3 3l6-6a4 4 0 0 0 5-5l-2.3 2.3-2.4-.6-.6-2.4z"/></svg><h3>Servis ditunggu</h3><p>Ganti LCD, baterai, port cas, sampai mati total. Kerusakan ringan selesai sejam.</p></div><div class="col"><div class="ph"><img class="" src="https://images.unsplash.com/photo-1780930130600-49feaad3169d?auto=format&fit=crop&w=600&q=72&h=800" alt="Tukar tambah" loading="lazy" decoding="async"></div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/></svg><h3>Tukar tambah</h3><p>Bawa HP lama, kami taksir di tempat, sisanya tinggal tambah.</p></div><div class="col"><div class="ph"><img class="" src="https://images.unsplash.com/photo-1617701586210-a4f7c114bdc9?auto=format&fit=crop&w=600&q=72&h=800" alt="Aksesoris original" loading="lazy" decoding="async"></div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v4M15 3v4M6.5 7h11v4a5.5 5.5 0 0 1-11 0V7zM12 16.5V21"/></svg><h3>Aksesoris original</h3><p>Charger, casing, TWS, dan powerbank bergaransi.</p></div></div></section>
+<section class="sec" id="produk"><div class="sh"><h2 class="h2">Produk pilihan minggu ini</h2><p>Stok bisa berubah tiap hari. Tanya admin untuk foto asli unit.</p></div><div class="chips" role="group" aria-label="Filter kategori"><button type="button" aria-pressed="true" data-f="*">Semua</button><button type="button" aria-pressed="false" data-f="Baru">Baru</button><button type="button" aria-pressed="false" data-f="Second">Second</button><button type="button" aria-pressed="false" data-f="Aksesoris">Aksesoris</button></div><div class="grid3"><article class="pc" data-t="Baru"><div class="pc-img"><img class="" src="https://images.unsplash.com/photo-1772182137994-4158ac33bddd?auto=format&fit=crop&w=640&q=72&h=800" alt="Redmi Note 14 8/256" loading="lazy" decoding="async"><span class="tag">Baru</span></div>
+<div class="pc-b"><h3>Redmi Note 14 8/256</h3><p>Garansi resmi 1 tahun</p><div class="pc-f"><b>Rp2.899.000</b><a class="pc-btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20Redmi%20Note%2014%208/256" target="_blank" rel="noopener noreferrer" aria-label="Pesan Redmi Note 14 8/256 lewat WhatsApp"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg><span>Pesan</span></a></div></div></article><article class="pc" data-t="Second"><div class="pc-img"><img class="" src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=640&q=72&h=800" alt="iPhone 13 128GB" loading="lazy" decoding="async"><span class="tag">Second</span></div>
+<div class="pc-b"><h3>iPhone 13 128GB</h3><p>Mulus, baterai 88%</p><div class="pc-f"><b>Rp6.350.000</b><a class="pc-btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20iPhone%2013%20128GB" target="_blank" rel="noopener noreferrer" aria-label="Pesan iPhone 13 128GB lewat WhatsApp"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg><span>Pesan</span></a></div></div></article><article class="pc" data-t="Baru"><div class="pc-img"><img class="" src="https://images.unsplash.com/photo-1773414422164-eefdc240da58?auto=format&fit=crop&w=640&q=72&h=800" alt="Galaxy A16 6/128" loading="lazy" decoding="async"><span class="tag">Baru</span></div>
+<div class="pc-b"><h3>Galaxy A16 6/128</h3><p>Garansi resmi SEIN</p><div class="pc-f"><b>Rp2.399.000</b><a class="pc-btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20Galaxy%20A16%206/128" target="_blank" rel="noopener noreferrer" aria-label="Pesan Galaxy A16 6/128 lewat WhatsApp"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg><span>Pesan</span></a></div></div></article><article class="pc" data-t="Second"><div class="pc-img"><img class="" src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=640&q=72&h=800" alt="iPhone 11 64GB" loading="lazy" decoding="async"><span class="tag">Second</span></div>
+<div class="pc-b"><h3>iPhone 11 64GB</h3><p>Fullset, iCloud aman</p><div class="pc-f"><b>Rp3.650.000</b><a class="pc-btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20iPhone%2011%2064GB" target="_blank" rel="noopener noreferrer" aria-label="Pesan iPhone 11 64GB lewat WhatsApp"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg><span>Pesan</span></a></div></div></article><article class="pc" data-t="Baru"><div class="pc-img"><img class="" src="https://images.unsplash.com/photo-1772182129439-7ab29e9d154c?auto=format&fit=crop&w=640&q=72&h=800" alt="OPPO A3x 4/128" loading="lazy" decoding="async"><span class="tag">Baru</span></div>
+<div class="pc-b"><h3>OPPO A3x 4/128</h3><p>Garansi resmi</p><div class="pc-f"><b>Rp1.599.000</b><a class="pc-btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20OPPO%20A3x%204/128" target="_blank" rel="noopener noreferrer" aria-label="Pesan OPPO A3x 4/128 lewat WhatsApp"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg><span>Pesan</span></a></div></div></article><article class="pc" data-t="Baru"><div class="pc-img"><img class="" src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=640&q=72&h=800" alt="Vivo Y19s 6/128" loading="lazy" decoding="async"><span class="tag">Baru</span></div>
+<div class="pc-b"><h3>Vivo Y19s 6/128</h3><p>Bonus casing</p><div class="pc-f"><b>Rp1.899.000</b><a class="pc-btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20Vivo%20Y19s%206/128" target="_blank" rel="noopener noreferrer" aria-label="Pesan Vivo Y19s 6/128 lewat WhatsApp"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg><span>Pesan</span></a></div></div></article></div></section>
+<section class="sec"><div class="gal"><div><img class="" src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=1200&q=72&h=900" alt="" loading="lazy" decoding="async"></div><div><img class="" src="https://images.unsplash.com/photo-1758467700917-3517eb11ec8c?auto=format&fit=crop&w=700&q=72&h=500" alt="" loading="lazy" decoding="async"></div><div><img class="" src="https://images.unsplash.com/photo-1780930130600-49feaad3169d?auto=format&fit=crop&w=700&q=72&h=500" alt="" loading="lazy" decoding="async"></div></div></section>
+<section class="sec" id="ulasan"><div class="qt"><div><h2 class="h2" style="font-size:2.6rem">Kata mereka</h2><div class="stars" style="margin-top:14px"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8 6.8 19.5l1-5.8-4.2-4.1 5.8-.8z"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8 6.8 19.5l1-5.8-4.2-4.1 5.8-.8z"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8 6.8 19.5l1-5.8-4.2-4.1 5.8-.8z"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8 6.8 19.5l1-5.8-4.2-4.1 5.8-.8z"/></svg><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8 6.8 19.5l1-5.8-4.2-4.1 5.8-.8z"/></svg></div></div>
+<div><blockquote id="qt">“Beli iPhone second, kondisinya persis seperti di foto. Baterainya juga awet.”</blockquote><cite id="qc">Dimas, Mahasiswa</cite><div class="qs"><button type="button" data-i="0" aria-label="Ulasan 1" aria-current="true"></button><button type="button" data-i="1" aria-label="Ulasan 2" aria-current="false"></button><button type="button" data-i="2" aria-label="Ulasan 3" aria-current="false"></button></div></div></div></section>
+<section class="sec" id="lokasi"><div class="two"><div><h2 class="h2" style="font-size:3rem">Kunjungi kami</h2><p style="font-family:'Instrument Serif',serif;font-size:1.6rem;margin:10px 0 20px;line-height:1.2">Jl. Pahlawan No. 21, Madiun</p><div class="hr"><span>Senin - Sabtu</span><b>09.00 - 21.00</b></div><div class="hr"><span>Minggu</span><b>10.00 - 20.00</b></div></div><div class="faq"><details><summary>Apakah HP second bergaransi?<svg class="ico pl" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary><p>Ya, garansi toko 30 hari untuk mesin dan layar.</p></details><details><summary>Bisa cicilan?<svg class="ico pl" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary><p>Bisa lewat kartu kredit atau paylater. Tanyakan syaratnya ke admin.</p></details><details><summary>Berapa lama servis ganti LCD?<svg class="ico pl" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary><p>Untuk tipe yang stoknya ada, sekitar 1 jam dan bisa ditunggu.</p></details><details><summary>Bisa kirim ke luar kota?<svg class="ico pl" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary><p>Bisa, dengan packing kayu dan asuransi pengiriman.</p></details></div></div></section>
+<section class="band"><h2>Mau tanya stok atau servis dulu?</h2><a class="btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat WhatsApp</a></section></main>
+<footer><span>© 2026 Lumen Phone</span><span>Jl. Pahlawan No. 21, Madiun</span></footer></div>
 <a class="fab" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg></a>
-<script>(function(){var q=[["Beli iPhone second di sini, kondisinya persis seperti di foto. Baterainya juga awet.", "Dimas, mahasiswa"], ["LCD HP saya pecah, ditunggu satu jam sudah beres. Harganya juga masuk akal.", "Bu Rini, pedagang"], ["Tukar tambah HP lama, taksirannya jujur. Admin cepat balas chat.", "Fajar, ojol"]],i=0,t=document.getElementById("qt"),c=document.getElementById("qc");
-document.querySelectorAll(".qnav button").forEach(function(b){b.addEventListener("click",function(){i=(i+ +b.dataset.d+q.length)%q.length;t.textContent="\u201c"+q[i][0]+"\u201d";c.textContent=q[i][1]})})})();</script>
+<script>(function(){var q=[["Beli iPhone second, kondisinya persis seperti di foto. Baterainya juga awet.", "Dimas, Mahasiswa"], ["LCD pecah, ditunggu satu jam sudah beres. Harganya masuk akal.", "Bu Rini, Pedagang"], ["Tukar tambah HP lama, taksirannya jujur. Admin cepat balas.", "Fajar, Driver ojol"]],t=document.getElementById("qt"),c=document.getElementById("qc"),ds=document.querySelectorAll(".qs button");
+ds.forEach(function(d){d.addEventListener("click",function(){var i=+d.dataset.i;t.textContent="\u201c"+q[i][0]+"\u201d";c.textContent=q[i][1];ds.forEach(function(x){x.setAttribute("aria-current",x===d)})})})})();</script>
 <script>
+(function(){var R=document.documentElement;
+function lum(h){h=h.replace('#','');var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);return (0.299*r+0.587*g+0.114*b)/255}
+window.setAccent=function(c){if(!/^#?[0-9a-f]{6}$/i.test(c))return;if(c[0]!=='#')c='#'+c;R.style.setProperty('--accent',c);R.style.setProperty('--ai',lum(c)>.62?'#0b0b0c':'#ffffff')};
+try{var q=new URLSearchParams(location.search).get('accent');if(q)setAccent(q)}catch(e){}
+addEventListener('message',function(ev){if(ev.data&&ev.data.accent)setAccent(ev.data.accent)});
 document.querySelectorAll('.burger').forEach(function(b){b.addEventListener('click',function(){var n=b.closest('.nav');var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})});
-document.querySelectorAll('.links a').forEach(function(a){a.addEventListener('click',function(){var n=a.closest('.nav');if(n)n.classList.remove('open')})});
+document.querySelectorAll('.links a').forEach(function(a){a.addEventListener('click',function(){var n=a.closest('.nav');n&&n.classList.remove('open')})});
+document.querySelectorAll('form.bk').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();var t=f.dataset.msg+'.';
+f.querySelectorAll('input,select').forEach(function(i){if(i.value)t+='\n'+i.name+': '+i.value});window.open('https://wa.me/'+f.dataset.wa+'?text='+encodeURIComponent(t),'_blank','noopener')})});
+var bs=document.querySelectorAll('.chips button'),cs=document.querySelectorAll('.pc[data-t]');bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});var k=b.dataset.f;cs.forEach(function(c){c.hidden=!(k==='*'||c.dataset.t===k)})})});
+})();
 </script></body></html>

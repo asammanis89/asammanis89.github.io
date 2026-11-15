@@ -1,2 +1,2 @@
-// Ganti dengan nomor WhatsApp Anda (format 62..., tanpa + dan tanpa spasi)
-window.SITE_CONFIG = { whatsapp: "6281234567890" };
+// Nomor WhatsApp Anda (format 62..., tanpa + dan spasi)
+window.SITE_CONFIG = { whatsapp: "6285755171491" };
