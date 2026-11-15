@@ -69,14 +69,19 @@ background:color-mix(in oklab,var(--accent) calc(100% - var(--k)*28%),#334155)}.
 .hr{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.hr span{color:var(--muted)}
 .tq{display:flex;flex-direction:column;gap:16px}.tq blockquote{font-size:1.02rem;line-height:1.6}.tq figcaption{display:flex;align-items:center;gap:12px;margin-top:auto}
 .tq figcaption i{margin:0;border:0}.tq figcaption b{display:block;font-size:.92rem;line-height:1.2}.tq figcaption small{color:var(--muted)}
+.logo i .lgs{width:58%;height:58%}
+.mnav{position:fixed;inset:0;z-index:300;background:color-mix(in oklab,var(--bg) 93%,transparent);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);display:flex;flex-direction:column;justify-content:center;padding:90px 28px 40px;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.mnav.on{opacity:1;visibility:visible}.mnav nav{display:flex;flex-direction:column;gap:4px}
+.mnav nav a{font-size:2.3rem;font-weight:700;letter-spacing:-.035em;color:var(--ink);padding:4px 0;opacity:0;transform:translateY(26px);transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--n)*70ms + 60ms)}
+.mnav.on nav a{opacity:1;transform:none}.mnav nav a:hover{color:var(--accent)}
+.mnav .mclose{position:absolute;top:18px;right:18px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.mnav .mtop{position:absolute;top:22px;left:24px}.mnav .mcta{margin-top:30px;align-self:flex-start;opacity:0;transform:translateY(20px);transition:.6s .38s}.mnav.on .mcta{opacity:1;transform:none}
 .ribbon{font:500 12.5px/1.4 system-ui,sans-serif;background:#0b0b0c;color:#e8e8e8;text-align:center;padding:7px 12px;position:relative;z-index:60}.ribbon a{color:#fff;text-decoration:underline;margin-left:6px}
 .emb .ribbon,.emb .fab{display:none}html.emb{scrollbar-width:none}html.emb::-webkit-scrollbar{display:none}
 .fab{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:#1FAF5A;color:#fff;display:grid;place-items:center;box-shadow:0 12px 28px rgba(0,0,0,.3);z-index:50}.fab .ico{width:26px;height:26px}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
 .sec{padding-top:110px}.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}.sh p{color:var(--muted);max-width:46ch}
-@media(max-width:860px){.links,.nav-cta{display:none!important}.burger{display:grid}
-.nav.open .links{display:flex!important;flex-direction:column;position:absolute;top:calc(100% + 8px);left:0;right:0;background:var(--card);color:var(--ink);padding:18px;border-radius:18px;gap:14px;z-index:70;box-shadow:0 24px 48px rgba(0,0,0,.25);border:1px solid var(--line)}
-.bk{grid-template-columns:1fr 1fr}.bk label:nth-child(1){grid-column:1/-1}.bk .btn{grid-column:1/-1;min-height:50px}.sec{padding-top:80px}}
+@media(max-width:860px){.links,.nav-cta{display:none!important}.burger{display:grid}.bk{grid-template-columns:1fr 1fr}.bk label:nth-child(1){grid-column:1/-1}.bk .btn{grid-column:1/-1;min-height:50px}.sec{padding-top:80px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 :root{--bg:#F6F7F9;--card:#fff;--ink:#0B0D12;--muted:#5D6575;--line:#E5E7EC;--fb:'Geist',system-ui,sans-serif;--rb:12px}
@@ -136,7 +141,7 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;paddin
 .f1{width:186px;padding:12px;top:20px}.f2{bottom:96px}.sc>b{font-size:1.5rem}.kp{grid-template-columns:1fr}.why{grid-template-columns:1fr}.cta{padding:44px 22px}.nav{top:8px}}
 </style></head><body>
 <div class="ribbon">Contoh template, isi hanya ilustrasi.<a href="../../admin.html?t=hp-ruang-gawai">Coba halaman admin</a><a href="../../index.html">Kembali ke katalog</a></div>
-<div class="bgfx"></div><div class="wrap"><header class="nav "><a class="logo" href="#"><i>RG</i><b data-biz="name">Ruang Gawai</b></a>
+<div class="bgfx"></div><div class="wrap"><header class="nav "><a class="logo" href="#"><i><svg class="lgs" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5l8-5.5 8 5.5V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19z"/><rect x="9.6" y="11" width="4.8" height="9.5" rx="1.2" fill="currentColor" stroke="none"/></svg></i><b data-biz="name">Ruang Gawai</b></a>
 <nav class="links"><a href="#layanan">Layanan</a><a href="#produk">Produk</a><a href="#ulasan">Ulasan</a><a href="#lokasi">Lokasi</a></nav><a class="btn btn-a nav-cta" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat admin</a>
 <button class="burger" aria-label="Buka menu" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></header>
 <main><section class="hero"><div><span class="badge hx" style="--i:0"><b>Buka</b>Senin - Sabtu, 09.00 - 21.00</span>
@@ -171,8 +176,14 @@ function lum(h){h=h.replace('#','');var r=parseInt(h.substr(0,2),16),g=parseInt(
 window.setAccent=function(c){if(!/^#?[0-9a-f]{6}$/i.test(c))return;if(c[0]!=='#')c='#'+c;R.style.setProperty('--accent',c);R.style.setProperty('--ai',lum(c)>.62?'#0b0b0c':'#ffffff')};
 try{var q=new URLSearchParams(location.search).get('accent');if(q)setAccent(q)}catch(e){}
 addEventListener('message',function(ev){if(ev.data&&ev.data.accent)setAccent(ev.data.accent)});
-document.querySelectorAll('.burger').forEach(function(b){b.addEventListener('click',function(){var n=b.closest('.nav');var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})});
-document.querySelectorAll('.links a').forEach(function(a){a.addEventListener('click',function(){var n=a.closest('.nav');n&&n.classList.remove('open')})});
+var ov=null,lastB=null;function closeM(){if(!ov)return;ov.classList.remove('on');R.style.overflow='';if(lastB){lastB.setAttribute('aria-expanded','false');lastB.focus()}}
+document.querySelectorAll('.burger').forEach(function(b){b.addEventListener('click',function(){var n=b.closest('.nav');lastB=b;
+ if(!ov){ov=document.createElement('div');ov.className='mnav';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');ov.setAttribute('aria-label','Menu');document.body.appendChild(ov);
+  ov.addEventListener('click',function(e){if(e.target.closest('a,.mclose'))closeM()});addEventListener('keydown',function(e){if(e.key==='Escape')closeM()})}
+ var lg=n.querySelector('.logo'),cta=n.querySelector('.nav-cta');
+ ov.innerHTML=(lg?'<div class="mtop">'+lg.outerHTML+'</div>':'')+'<button class="mclose" type="button" aria-label="Tutup menu"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><nav>'+
+  [].map.call(n.querySelectorAll('.links a'),function(a,i){return '<a href="'+a.getAttribute('href')+'" style="--n:'+i+'">'+a.textContent+'</a>'}).join('')+'</nav>'+(cta?'<a class="btn btn-a mcta" target="_blank" rel="noopener" href="'+cta.href+'">'+cta.innerHTML+'</a>':'');
+ requestAnimationFrame(function(){ov.classList.add('on')});R.style.overflow='hidden';b.setAttribute('aria-expanded','true');setTimeout(function(){var c=ov.querySelector('.mclose');c&&c.focus()},50)})});
 document.querySelectorAll('form.bk').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();var t=f.dataset.msg+'.';
 f.querySelectorAll('input,select').forEach(function(i){if(i.value)t+='\n'+i.name+': '+i.value});window.open('https://wa.me/'+f.dataset.wa+'?text='+encodeURIComponent(t),'_blank','noopener')})});
 
