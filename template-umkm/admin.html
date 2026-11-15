@@ -173,11 +173,11 @@ function render(){var tb=$('#tb');tb.innerHTML=D.items.map(function(it,i){return
  var cs=[DB[slug].accent].concat(P.filter(function(c){return c.toLowerCase()!==DB[slug].accent.toLowerCase()}));
  $('#cl').innerHTML=cs.map(function(c){return '<button type="button" style="--c:'+c+'" data-c="'+c+'" aria-label="Warna '+c+'" aria-pressed="'+(c.toLowerCase()===D.accent.toLowerCase())+'"></button>'}).join('')+'<label aria-label="Warna lain"><input type="color" value="'+D.accent+'"></label>'}
 $('#ch').innerHTML=[42,58,51,74,66,88,95].map(function(v,i){return '<div style="height:'+v+'%;--i:'+i+'"></div>'}).join('');
-document.addEventListener('click',function(ev){var t=ev.target.closest('[data-p],[data-s],[data-e],[data-d],[data-c],[data-x],#add,#out,#reset');if(!t)return;
+document.addEventListener('click',function(ev){var t=ev.target.closest('[data-p],[data-s],[data-e],[data-d],[data-c],[data-x],#add,#out,#reset');if(!t)return;if((t.dataset.s!=null||t.dataset.e!=null||t.dataset.d!=null)&&!t.closest('#tb'))return;
  if(t.dataset.p){document.querySelectorAll('[data-p]').forEach(function(b){b.classList.toggle('on',b.dataset.p===t.dataset.p)});document.querySelectorAll('.pg').forEach(function(s){s.classList.toggle('on',s.id==='p-'+t.dataset.p)})}
  else if(t.dataset.s){var it=D.items[+t.dataset.s];it.status=it.status==='habis'?'ada':'habis';save(it.status==='habis'?'Ditandai habis':'Ditandai tersedia')}
  else if(t.dataset.e){edit=+t.dataset.e;openD(D.items[edit])}
- else if(t.dataset.d){var at=+t.dataset.d,x=D.items.splice(at,1)[0];save();toast(x.n+' dihapus',function(){D.items.splice(at,0,x);save('Dikembalikan')})}
+ else if(t.dataset.d){var at=+t.dataset.d;if(!(at>=0&&at<D.items.length))return;var x=D.items.splice(at,1)[0];save();toast(x.n+' dihapus',function(){D.items.splice(at,0,x);save('Dikembalikan')})}
  else if(t.dataset.c){D.accent=t.dataset.c;paint(D.accent);save('Warna disimpan')}
  else if(t.hasAttribute('data-x')){$('#dr').classList.remove('on')}
  else if(t.id==='add'){edit=-1;openD(null)}
@@ -245,11 +245,11 @@ var DAYS=['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
 function dIdx(l){if(/setiap hari/i.test(l))return DAYS.slice();var a=l.split(/\s*-\s*/).map(function(x){return DAYS.indexOf(x.trim())});if(a[0]<0||a[a.length-1]<0)return [];var r=[];for(var i=a[0];;i=(i+1)%7){r.push(DAYS[i]);if(i===a[a.length-1])break}return r}
 function hrsToDays(H){var o={};DAYS.forEach(function(d){o[d]={m:'tutup',a:'09:00',b:'21:00'}});(H||[]).forEach(function(h){dIdx(h[0]).forEach(function(d){var v=h[1];
  if(/24 jam/i.test(v))o[d]={m:'24',a:'00:00',b:'00:00'};else if(/tutup/i.test(v))o[d].m='tutup';else{var t=v.match(/(\d+)\.(\d+)\s*-\s*(\d+)\.(\d+)/);if(t)o[d]={m:'buka',a:('0'+t[1]).slice(-2)+':'+t[2],b:(t[3]==='24'?'00':('0'+t[3]).slice(-2))+':'+t[4]}}})});return o}
-function readHrs(){var o={};document.querySelectorAll('.hrw').forEach(function(r){var s=r.querySelectorAll('input');o[r.dataset.d]={m:r.querySelector('select').value,a:s[0].value||'09:00',b:s[1].value||'21:00'}});return o}
+function readHrs(){var o={};document.querySelectorAll('.hrw').forEach(function(r){var s=r.querySelectorAll('input');o[r.dataset.day]={m:r.querySelector('select').value,a:s[0].value||'09:00',b:s[1].value||'21:00'}});return o}
 function val(x){return x.m==='24'?'24 jam':x.m==='tutup'?'Tutup':x.a.replace(':','.')+' - '+(x.b==='00:00'?'24.00':x.b.replace(':','.'))}
 function daysToHrs(o){var g=[];DAYS.forEach(function(d){var v=val(o[d]),l=g[g.length-1];if(l&&l.v===v)l.e=d;else g.push({s:d,e:d,v:v})});
  if(g.length===1)return [['Setiap hari',g[0].v]];return g.map(function(x){return [x.s===x.e?x.s:x.s+' - '+x.e,x.v]})}
-function drawHrs(){var o=hrsToDays(D.hours||DB[slug].hours);$('#hrs').innerHTML=DAYS.map(function(d){var x=o[d];return '<div class="hrw'+(x.m!=='buka'?' off':'')+'" data-d="'+d+'"><b>'+d+'</b><select aria-label="Status '+d+'"><option value="buka"'+(x.m==='buka'?' selected':'')+'>Buka</option><option value="24"'+(x.m==='24'?' selected':'')+'>24 jam</option><option value="tutup"'+(x.m==='tutup'?' selected':'')+'>Tutup</option></select><div class="tm"><input type="time" value="'+x.a+'" aria-label="Jam buka '+d+'"><span>–</span><input type="time" value="'+x.b+'" aria-label="Jam tutup '+d+'"></div></div>'}).join('');pv()}
+function drawHrs(){var o=hrsToDays(D.hours||DB[slug].hours);$('#hrs').innerHTML=DAYS.map(function(d){var x=o[d];return '<div class="hrw'+(x.m!=='buka'?' off':'')+'" data-day="'+d+'"><b>'+d+'</b><select aria-label="Status '+d+'"><option value="buka"'+(x.m==='buka'?' selected':'')+'>Buka</option><option value="24"'+(x.m==='24'?' selected':'')+'>24 jam</option><option value="tutup"'+(x.m==='tutup'?' selected':'')+'>Tutup</option></select><div class="tm"><input type="time" value="'+x.a+'" aria-label="Jam buka '+d+'"><span>–</span><input type="time" value="'+x.b+'" aria-label="Jam tutup '+d+'"></div></div>'}).join('');pv()}
 $('#hrs').addEventListener('change',function(ev){var r=ev.target.closest('.hrw');if(r&&ev.target.tagName==='SELECT')r.classList.toggle('off',ev.target.value!=='buka');pv()});
 $('#hsame').addEventListener('click',function(){var o=readHrs(),f=o.Senin;DAYS.forEach(function(d){o[d]=JSON.parse(JSON.stringify(f))});D.hours=daysToHrs(o);drawHrs();toast('Semua hari disamakan dengan Senin. Tekan Simpan profil.')});
 // ---------- logo ----------
