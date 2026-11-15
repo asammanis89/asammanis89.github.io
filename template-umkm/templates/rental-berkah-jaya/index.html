@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Berkah Jaya Trans | Magetan</title><meta name="description" content="Pilih unit di katalog, cek harganya, lalu pesan lewat WhatsApp. Tanpa biaya tersembunyi."><meta name="color-scheme" content="light"><meta name="theme-color" content="#FFFFFF">
+<style>@font-face{font-family:'Bricolage';src:url('../../assets/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap}@font-face{font-family:'DM Sans';src:url('../../assets/fonts/dm-sans-latin-wght-normal.woff2') format('woff2');font-weight:100 1000;font-style:normal;font-display:swap}:root{--bg:#FFFFFF;--surface:#F3F8F4;--ink:#11261A;--muted:#55685C;--accent:#1FA35B;--accent-ink:#FFFFFF;--accent2:#0E5E35;--soft:#E4F4EA;--line:#DDE9E1;}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}svg{display:block}button{font:inherit;color:inherit}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+.ribbon{font:500 13px/1.45 system-ui,sans-serif;background:#1b1b1f;color:#f2f2f2;text-align:center;padding:8px 14px}
+.ribbon a{color:#fff;text-decoration:underline;text-underline-offset:2px;margin-left:6px;font-weight:600}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid currentColor;background:transparent;place-items:center;cursor:pointer;opacity:.85}
+.fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#1FAF5A;color:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.28);z-index:40}
+.fab .ico{width:28px;height:28px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.items>*,.cat>*,.svc>*,.bento>*{min-width:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:760px){.nav{position:relative}.links,.nav-cta{display:none!important}.burger{display:grid}
+.nav.open .links{display:flex!important;flex-direction:column;position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);color:var(--ink);padding:20px;border-radius:18px;gap:16px;z-index:50;box-shadow:0 24px 48px rgba(0,0,0,.2);border:1px solid var(--line)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3,.logo{font-family:'Bricolage',sans-serif;letter-spacing:-.035em}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem}
+.logo i{width:38px;height:38px;border-radius:50% 50% 50% 12px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-style:normal;font-size:.85rem}
+.links{display:flex;gap:6px;font-weight:500}.links a{padding:8px 14px;border-radius:999px}.links a:hover{background:var(--surface)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:14px;font-weight:700;background:var(--accent);color:var(--accent-ink);white-space:nowrap;border:0;cursor:pointer}
+.btn.dk{background:var(--ink);color:var(--bg)}.btn.ol{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:56px 0 30px}
+.rate{display:inline-flex;align-items:center;gap:8px;background:var(--surface);padding:8px 14px;border-radius:999px;font-size:.9rem;font-weight:500}
+.rate .ico{width:16px;height:16px;fill:#f2a81d;stroke:none}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.9rem);line-height:1;font-weight:800;margin:22px 0 20px;max-width:14ch}
+.hero p{font-size:1.12rem;color:var(--muted);max-width:46ch;margin-bottom:30px}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;align-items:center;gap:14px;margin-top:32px;font-size:.92rem;color:var(--muted)}
+.avs{display:flex}.avs i{width:36px;height:36px;border-radius:50%;border:3px solid var(--bg);margin-left:-10px;font-style:normal;display:grid;place-items:center;font-weight:700;font-size:.8rem;color:#fff}.avs i:first-child{margin-left:0}
+.blob{position:relative;aspect-ratio:1;border-radius:44% 56% 48% 52%/52% 42% 58% 48%;background:var(--accent);display:grid;place-items:center}
+.blob:before{content:"";position:absolute;inset:7%;border-radius:inherit;border:2px dashed color-mix(in srgb,var(--accent-ink) 35%,transparent)}
+.pc{position:absolute;background:var(--bg);border-radius:16px;padding:12px 16px;box-shadow:0 18px 40px rgba(0,0,0,.14);font-size:.88rem;z-index:3}
+.pc b{display:block;font-family:'Bricolage',sans-serif;font-size:1.05rem}.pc span{color:var(--muted)}
+.pc1{left:-4%;top:14%}.pc2{right:-2%;bottom:12%}
+section{padding-top:96px}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.sh h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.04;font-weight:800;max-width:16ch}.sh p{color:var(--muted);max-width:44ch}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.chips button{padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);font-weight:700;cursor:pointer;font-size:.92rem}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ci{border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;background:var(--bg);transition:box-shadow .2s}
+.ci:hover{box-shadow:0 16px 40px rgba(0,0,0,.08)}.ci[hidden]{display:none}
+.ci .art{height:220px;display:grid;place-items:center;padding:24px;position:relative}
+.ci .art svg{max-height:100%;max-width:100%;width:auto;height:100%}.ci .art .car-art,.ci .art .bowl-art,.ci .art .plate-art{width:100%;height:auto}
+.ci .tg{position:absolute;top:14px;left:14px;background:var(--bg);padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:700}
+.ci .b{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.ci h3{font-size:1.2rem;font-weight:700;letter-spacing:-.02em}.ci small{color:var(--muted)}
+.ci .pr{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:18px;gap:10px}
+.ci .pr b{font-family:'Bricolage',sans-serif;font-size:1.3rem}.ci .pr b small{font-size:.85rem}
+.ci .pr a{padding:10px 16px;border-radius:12px;background:var(--ink);color:var(--bg);font-weight:700;font-size:.9rem;display:inline-flex;gap:8px;align-items:center}
+.ci .pr a .ico{width:18px;height:18px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:var(--surface);border-radius:22px;padding:28px}
+.step i{width:52px;height:52px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-style:normal;font-family:'Bricolage',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:22px}
+.step h3{font-size:1.3rem;margin-bottom:6px}.step p{color:var(--muted)}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.sv{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.sv .ic{width:50px;height:50px;border-radius:14px;background:var(--soft);color:var(--accent2);display:grid;place-items:center;flex:none}
+.sv h3{font-size:1.15rem;margin-bottom:2px}.sv p{color:var(--muted)}
+.tq{columns:3;column-gap:18px}.tq div{break-inside:avoid;background:var(--surface);border-radius:22px;padding:24px;margin-bottom:18px}.tq p{font-size:1.02rem}.tq b{display:block;margin-top:14px;font-size:.92rem}
+.tq div:nth-child(2){background:var(--accent);color:var(--accent-ink)}
+.loc{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}.mapbox{border-radius:24px;overflow:hidden;min-height:340px}.mapbox svg{width:100%;height:100%}
+.info{background:var(--surface);border-radius:24px;padding:30px}.info .hrow{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}.info .hrow span{color:var(--muted)}
+footer{margin-top:96px;background:var(--ink);color:var(--bg)}
+footer .wrap{padding-top:60px;padding-bottom:40px}
+footer .fn{font-family:'Bricolage',sans-serif;font-weight:800;font-size:clamp(3rem,10vw,8rem);line-height:.9;letter-spacing:-.05em;color:var(--accent)}
+footer .fr{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:30px;opacity:.75;font-size:.92rem}
+.mbar{display:none}
+.hero-stack{position:relative;width:80%;height:80%}.hs{position:absolute;top:50%;left:50%;width:30%}
+.hs1{transform:translate(-118%,-46%) rotate(-12deg)}.hs2{transform:translate(-50%,-52%);width:34%;z-index:2}.hs3{transform:translate(18%,-46%) rotate(12deg)}
+.hero-car{width:92%;position:relative;z-index:2}.hero-food{display:flex;align-items:flex-end;width:78%;justify-content:center;position:relative;z-index:2}.hf1{width:40%}.hf2{width:62%;margin-left:-6%}
+@media(max-width:960px){.hero{grid-template-columns:1fr;gap:30px}.blob{max-width:460px;width:100%;justify-self:center}.cat{grid-template-columns:1fr 1fr}.svc{grid-template-columns:1fr}.tq{columns:2}.loc{grid-template-columns:1fr}}
+@media(max-width:600px){.cat{grid-template-columns:1fr 1fr;gap:12px}.ci .art{height:140px;padding:12px}.ci .b{padding:12px}.ci h3{font-size:1rem}.ci .pr{flex-direction:column;align-items:stretch}.ci .pr b{font-size:1.05rem}.ci .pr a{justify-content:center}
+.steps{grid-template-columns:1fr}.tq{columns:1}section{padding-top:72px}.hero{padding-top:34px}.pc{display:none}
+.mbar{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;position:fixed;left:0;right:0;bottom:0;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line);z-index:40}
+.mbar a{justify-content:center}body{padding-bottom:76px}}
+body{background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Cg%20fill%3D%22%231FA35B%22%20fill-opacity%3D%22.05%22%20stroke%3D%22%231FA35B%22%20stroke-opacity%3D%22.16%22%20stroke-width%3D%221%22%3E%3Cellipse%20cx%3D%2227%22%20cy%3D%2227%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%2845%2027%2027%29%22/%3E%3Cellipse%20cx%3D%2253%22%20cy%3D%2227%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%28-45%2053%2027%29%22/%3E%3Cellipse%20cx%3D%2227%22%20cy%3D%2253%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%28-45%2027%2053%29%22/%3E%3Cellipse%20cx%3D%2253%22%20cy%3D%2253%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%2845%2053%2053%29%22/%3E%3Cellipse%20cx%3D%22-13%22%20cy%3D%22-13%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%2845%20-13%20-13%29%22/%3E%3Cellipse%20cx%3D%2213%22%20cy%3D%22-13%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%28-45%2013%20-13%29%22/%3E%3Cellipse%20cx%3D%22-13%22%20cy%3D%2213%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%28-45%20-13%2013%29%22/%3E%3Cellipse%20cx%3D%2213%22%20cy%3D%2213%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%2845%2013%2013%29%22/%3E%3Cellipse%20cx%3D%2267%22%20cy%3D%22-13%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%2845%2067%20-13%29%22/%3E%3Cellipse%20cx%3D%2293%22%20cy%3D%22-13%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%28-45%2093%20-13%29%22/%3E%3Cellipse%20cx%3D%2267%22%20cy%3D%2213%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%28-45%2067%2013%29%22/%3E%3Cellipse%20cx%3D%2293%22%20cy%3D%2213%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%2845%2093%2013%29%22/%3E%3Cellipse%20cx%3D%22-13%22%20cy%3D%2267%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%2845%20-13%2067%29%22/%3E%3Cellipse%20cx%3D%2213%22%20cy%3D%2267%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%28-45%2013%2067%29%22/%3E%3Cellipse%20cx%3D%22-13%22%20cy%3D%2293%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%28-45%20-13%2093%29%22/%3E%3Cellipse%20cx%3D%2213%22%20cy%3D%2293%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%2845%2013%2093%29%22/%3E%3Cellipse%20cx%3D%2267%22%20cy%3D%2267%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%2845%2067%2067%29%22/%3E%3Cellipse%20cx%3D%2293%22%20cy%3D%2267%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%28-45%2093%2067%29%22/%3E%3Cellipse%20cx%3D%2267%22%20cy%3D%2293%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%28-45%2067%2093%29%22/%3E%3Cellipse%20cx%3D%2293%22%20cy%3D%2293%22%20rx%3D%228%22%20ry%3D%2215%22%20transform%3D%22rotate%2845%2093%2093%29%22/%3E%3C/g%3E%3Cg%20fill%3D%22%230E5E35%22%20fill-opacity%3D%22.14%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%222.5%22/%3E%3Ccircle%20cx%3D%220%22%20cy%3D%2240%22%20r%3D%222%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%222%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%220%22%20r%3D%222%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2280%22%20r%3D%222%22/%3E%3C/g%3E%3C/svg%3E");background-size:80px 80px}</style></head><body>
+<div class="ribbon">Contoh template. Nama usaha, harga, dan ulasan di halaman ini hanya ilustrasi.<a href="../../index.html" target="_top">Kembali ke katalog</a></div>
+<div class="top"><div class="wrap"><header class="nav"><a class="logo" href="#"><i>BJ</i>Berkah Jaya Trans</a><nav class="links"><a href="#layanan">Layanan</a><a href="#produk">Armada</a><a href="#kenapa">Kenapa kami</a><a href="#lokasi">Lokasi</a></nav><a class="btn nav-cta" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat admin</a><button class="burger" aria-label="Buka menu" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></header></div></div>
+<div class="wrap"><main>
+<div class="hero"><div><span class="rate"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8 6.8 19.5l1-5.8-4.2-4.1 5.8-.8z"/></svg><b>4,9</b> dari 800+ ulasan Google</span><h1>Rental mobil keluarga, harga jelas di depan.</h1><p>Pilih unit di katalog, cek harganya, lalu pesan lewat WhatsApp. Tanpa biaya tersembunyi.</p>
+<div class="acts"><a class="btn" href="#produk">Lihat katalog</a><a class="btn ol" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Tanya admin</a></div>
+<div class="trust"><div class="avs"><i style="background:#E4572E">A</i><i style="background:#2E86AB">D</i><i style="background:#7B9E3F">R</i><i style="background:#9C51B6">N</i></div><span>Dipercaya ribuan pelanggan di Magetan dan sekitarnya</span></div></div>
+<div class="blob"><div class="hero-car"><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="132" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M18 108 Q16 80 40 74 L70 70 L98 34 Q104 28 116 28 L232 28 Q246 28 254 38 L276 72 L292 78 Q306 84 306 104 L306 112 L18 112Z" fill="#F4F4F2" stroke="#00000030" stroke-width="2"/>
+<path d="M82 70 L104 38 Q108 34 116 34 L168 34 L168 70Z" fill="#1d2733" opacity=".88"/><path d="M176 70 L176 34 L230 34 Q240 34 246 42 L264 70Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="86" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="88" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 104 H296" stroke="#00000030" stroke-width="2"/>
+<circle cx="84" cy="112" r="21" fill="#1b1f24"/><circle cx="84" cy="112" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="112" r="21" fill="#1b1f24"/><circle cx="246" cy="112" r="9" fill="#c9ced6"/>
+</svg></div><div class="pc pc1"><span>Toyota Avanza</span><b>Rp350.000/hari</b></div><div class="pc pc2"><span>Mulai</span><b>Rp300.000/hari</b></div></div></div>
+<section id="produk"><div class="sh"><h2>Pilih armada</h2><p>Harga per 24 jam untuk lepas kunci. Paket dengan sopir dan BBM bisa ditanyakan ke admin.</p></div><div class="chips" role="group" aria-label="Filter kategori"><button type="button" aria-pressed="true" data-f="*">Semua</button><button type="button" aria-pressed="false" data-f="MPV">MPV</button><button type="button" aria-pressed="false" data-f="Premium">Premium</button><button type="button" aria-pressed="false" data-f="City car">City car</button><button type="button" aria-pressed="false" data-f="Rombongan">Rombongan</button></div><div class="cat"><article class="ci" data-t="MPV"><div class="art" style="background:color-mix(in srgb,#C8CDD3 16%,var(--surface))"><span class="tg">MPV</span><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="132" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M18 108 Q16 80 40 74 L70 70 L98 34 Q104 28 116 28 L232 28 Q246 28 254 38 L276 72 L292 78 Q306 84 306 104 L306 112 L18 112Z" fill="#C8CDD3" stroke="#00000030" stroke-width="2"/>
+<path d="M82 70 L104 38 Q108 34 116 34 L168 34 L168 70Z" fill="#1d2733" opacity=".88"/><path d="M176 70 L176 34 L230 34 Q240 34 246 42 L264 70Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="86" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="88" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 104 H296" stroke="#00000030" stroke-width="2"/>
+<circle cx="84" cy="112" r="21" fill="#1b1f24"/><circle cx="84" cy="112" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="112" r="21" fill="#1b1f24"/><circle cx="246" cy="112" r="9" fill="#c9ced6"/>
+</svg></div><div class="b"><h3>Toyota Avanza</h3><small>7 kursi, manual/matic</small>
+<div class="pr"><b>Rp350.000<small>/hari</small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan%20Toyota%20Avanza" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="MPV"><div class="art" style="background:color-mix(in srgb,#F4F4F2 16%,var(--surface))"><span class="tg">MPV</span><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="132" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M18 108 Q16 80 40 74 L70 70 L98 34 Q104 28 116 28 L232 28 Q246 28 254 38 L276 72 L292 78 Q306 84 306 104 L306 112 L18 112Z" fill="#F4F4F2" stroke="#00000030" stroke-width="2"/>
+<path d="M82 70 L104 38 Q108 34 116 34 L168 34 L168 70Z" fill="#1d2733" opacity=".88"/><path d="M176 70 L176 34 L230 34 Q240 34 246 42 L264 70Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="86" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="88" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 104 H296" stroke="#00000030" stroke-width="2"/>
+<circle cx="84" cy="112" r="21" fill="#1b1f24"/><circle cx="84" cy="112" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="112" r="21" fill="#1b1f24"/><circle cx="246" cy="112" r="9" fill="#c9ced6"/>
+</svg></div><div class="b"><h3>Mitsubishi Xpander</h3><small>7 kursi, matic</small>
+<div class="pr"><b>Rp450.000<small>/hari</small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan%20Mitsubishi%20Xpander" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="Premium"><div class="art" style="background:color-mix(in srgb,#2C2F36 16%,var(--surface))"><span class="tg">Premium</span><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="132" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M18 108 Q16 80 40 74 L70 70 L98 34 Q104 28 116 28 L232 28 Q246 28 254 38 L276 72 L292 78 Q306 84 306 104 L306 112 L18 112Z" fill="#2C2F36" stroke="#ffffff20" stroke-width="2"/>
+<path d="M82 70 L104 38 Q108 34 116 34 L168 34 L168 70Z" fill="#1d2733" opacity=".88"/><path d="M176 70 L176 34 L230 34 Q240 34 246 42 L264 70Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="86" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="88" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 104 H296" stroke="#ffffff20" stroke-width="2"/>
+<circle cx="84" cy="112" r="21" fill="#1b1f24"/><circle cx="84" cy="112" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="112" r="21" fill="#1b1f24"/><circle cx="246" cy="112" r="9" fill="#c9ced6"/>
+</svg></div><div class="b"><h3>Toyota Innova Reborn</h3><small>7 kursi, diesel</small>
+<div class="pr"><b>Rp600.000<small>/hari</small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan%20Toyota%20Innova%20Reborn" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="City car"><div class="art" style="background:color-mix(in srgb,#D6453D 16%,var(--surface))"><span class="tg">City car</span><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="132" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M24 108 Q20 82 46 76 L84 72 L112 44 Q118 38 128 38 L204 38 Q214 38 222 46 L252 74 L282 80 Q300 84 300 104 L300 112 L24 112Z" fill="#D6453D" stroke="#ffffff20" stroke-width="2"/>
+<path d="M96 72 L118 48 Q122 44 130 44 L160 44 L160 72Z" fill="#1d2733" opacity=".88"/><path d="M168 72 L168 44 L200 44 Q208 44 214 50 L238 72Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="86" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="88" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 104 H296" stroke="#ffffff20" stroke-width="2"/>
+<circle cx="84" cy="112" r="21" fill="#1b1f24"/><circle cx="84" cy="112" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="112" r="21" fill="#1b1f24"/><circle cx="246" cy="112" r="9" fill="#c9ced6"/>
+</svg></div><div class="b"><h3>Honda Brio</h3><small>5 kursi, irit BBM</small>
+<div class="pr"><b>Rp300.000<small>/hari</small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan%20Honda%20Brio" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="Premium"><div class="art" style="background:color-mix(in srgb,#1F2A24 16%,var(--surface))"><span class="tg">Premium</span><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="128" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M18 104 Q16 74 40 68 L66 64 L90 26 Q96 20 108 20 L236 20 Q250 20 256 30 L278 66 L294 72 Q308 78 308 98 L308 108 L18 108Z" fill="#1F2A24" stroke="#ffffff20" stroke-width="2"/>
+<path d="M78 64 L98 30 Q102 26 110 26 L166 26 L166 64Z" fill="#1d2733" opacity=".88"/><path d="M174 64 L174 26 L232 26 Q242 26 248 34 L266 64Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="82" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="84" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 100 H296" stroke="#ffffff20" stroke-width="2"/>
+<circle cx="84" cy="108" r="21" fill="#1b1f24"/><circle cx="84" cy="108" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="108" r="21" fill="#1b1f24"/><circle cx="246" cy="108" r="9" fill="#c9ced6"/>
+</svg></div><div class="b"><h3>Toyota Fortuner</h3><small>7 kursi, 4x2 diesel</small>
+<div class="pr"><b>Rp1.200.000<small>/hari</small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan%20Toyota%20Fortuner" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="Rombongan"><div class="art" style="background:color-mix(in srgb,#E9ECEF 16%,var(--surface))"><span class="tg">Rombongan</span><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="132" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M14 108 L14 30 Q14 16 30 16 L250 16 Q266 16 274 30 L300 70 Q310 76 310 96 L310 112 L14 112Z" fill="#E9ECEF" stroke="#00000030" stroke-width="2"/>
+<path d="M26 64 L26 26 L120 26 L120 64Z" fill="#1d2733" opacity=".88"/><path d="M128 64 L128 26 L246 26 Q256 26 262 36 L280 64Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="86" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="88" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 104 H296" stroke="#00000030" stroke-width="2"/>
+<circle cx="84" cy="112" r="21" fill="#1b1f24"/><circle cx="84" cy="112" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="112" r="21" fill="#1b1f24"/><circle cx="246" cy="112" r="9" fill="#c9ced6"/>
+</svg></div><div class="b"><h3>Toyota Hiace Commuter</h3><small>15 kursi, dengan sopir</small>
+<div class="pr"><b>Rp1.100.000<small>/hari</small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan%20Toyota%20Hiace%20Commuter" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article></div></section>
+<section><div class="sh"><h2>Cara pesan</h2></div><div class="steps"><div class="step"><i>1</i><h3>Pilih mobil</h3><p>Tentukan unit, tanggal, dan lama sewa.</p></div><div class="step"><i>2</i><h3>Kirim data</h3><p>Foto KTP dan SIM lewat WhatsApp untuk verifikasi.</p></div><div class="step"><i>3</i><h3>Mobil siap</h3><p>Ambil di garasi atau kami antar ke alamat Anda.</p></div></div></section>
+<section id="layanan"><div class="sh"><h2>Layanan lainnya</h2></div><div class="svc"><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L19 4M16 7l2.5 2.5M13.5 9.5l2 2"/></svg></div><div><h3>Lepas kunci</h3><p>Sewa harian kalau Anda ingin menyetir sendiri. Syaratnya KTP, SIM A, dan jaminan.</p></div></div><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.2"/><path d="M9.8 12H3.5M14.2 12h6.3M12 14.2v6.3"/></svg></div><div><h3>Dengan sopir</h3><p>Sopir hafal rute Jawa Timur dan Jawa Tengah. Ada paket all in termasuk BBM.</p></div></div><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4L3 11l6.5 2.5L12 20l3-5.5L21 4z"/><path d="M9.5 13.5L21 4"/></svg></div><div><h3>Antar jemput bandara</h3><p>Juanda, Adi Soemarmo, dan stasiun kereta. Dijemput tepat waktu.</p></div></div><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></div><div><h3>Paket wisata</h3><p>Telaga Sarangan, Ponorogo, Jogja, sampai Bromo. Tinggal pilih tujuan.</p></div></div><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14.5" r="6"/><path d="M9.5 4.5L12 3l2.5 1.5L12 8.5z"/></svg></div><div><h3>Mobil pengantin</h3><p>Lengkap dengan hiasan bunga untuk hari bahagia Anda.</p></div></div><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 12.5h18"/></svg></div><div><h3>Kontrak bulanan</h3><p>Harga khusus untuk kantor, instansi, dan proyek.</p></div></div></div></section>
+<section id="kenapa"><div class="sh"><h2>Kata pelanggan</h2></div><div class="tq"><div><p>“Sewa Innova dengan sopir untuk mudik. Sopirnya sabar dan hafal jalan tikus.”</p><b>Pak Hendra, karyawan swasta</b></div><div><p>“Mobil pengantinnya cantik, hiasannya rapi. Datang sebelum jam yang dijanjikan.”</p><b>Mbak Laras, pengantin</b></div><div><p>“Hiace untuk rombongan kampus, AC dingin dan harganya bersaing.”</p><b>Rizky, panitia study tour</b></div></div></section>
+<section id="lokasi"><div class="sh"><h2>Lokasi kami</h2></div><div class="loc"><div class="mapbox"><svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" class="map-art" aria-label="Ilustrasi peta lokasi" role="img">
+<rect width="600" height="380" fill="#E4F4EA"/>
+<g stroke="#F3F8F4" stroke-width="14" fill="none" stroke-linecap="round">
+<path d="M-20 260 Q180 220 300 240 T640 200"/><path d="M140 -20 L210 400"/><path d="M420 -20 Q390 180 470 400"/><path d="M-20 90 L640 130"/></g>
+<g stroke="#F3F8F4" stroke-width="6" fill="none" opacity=".8"><path d="M40 -10 L90 400"/><path d="M300 -10 L320 400"/><path d="M-10 330 L620 300"/><path d="M520 -10 L560 400"/></g>
+<rect x="230" y="150" width="70" height="50" rx="6" fill="#DDE9E1" opacity=".7"/><rect x="330" y="40" width="60" height="60" rx="6" fill="#DDE9E1" opacity=".7"/>
+<circle cx="80" cy="190" r="34" fill="#8fc98f" opacity=".45"/>
+<g transform="translate(300 190)"><circle r="26" fill="#1FA35B" opacity=".3"/><path d="M0 -6 C-14 -36 -38 -30 -38 -52 A38 38 0 0 1 38 -52 C38 -30 14 -36 0 -6Z" transform="translate(0 0) scale(.7)" fill="#11261A"/><circle cy="-36" r="9" fill="#F3F8F4"/></g>
+</svg></div><div class="info"><h3 style="font-size:1.4rem">Berkah Jaya Trans</h3><p style="color:var(--muted);margin:6px 0 18px">Jl. Pahlawan No. 21, Magetan, Jawa Timur</p><div class="hrow"><span>Setiap hari</span><b>24 jam</b></div><div class="hrow"><span>Kantor</span><b>07.00 - 21.00</b></div><p style="margin-top:22px"><a class="btn dk" href="https://maps.google.com" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Buka Maps</a></p></div></div></section>
+</main></div>
+<footer><div class="wrap"><div class="fn">Berkah Jaya Trans</div><div class="fr"><span>© 2026 Berkah Jaya Trans, Magetan</span><span>WhatsApp 0812-3456-7890</span></div></div></footer>
+<div class="mbar"><a class="btn ol" href="tel:+6281234567890"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h3l1.5 4-2 1.3a10 10 0 0 0 4.7 4.7l1.3-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4 5.5a2 2 0 0 1 2-2z"/></svg>Telepon</a><a class="btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat WhatsApp</a></div>
+<script>(function(){var bs=document.querySelectorAll(".chips button"),cs=document.querySelectorAll(".ci");bs.forEach(function(b){b.addEventListener("click",function(){bs.forEach(function(x){x.setAttribute("aria-pressed",x===b)});var f=b.dataset.f;cs.forEach(function(c){c.hidden=!(f==="*"||c.dataset.t===f)})})})})();</script>
+<script>
+document.querySelectorAll('.burger').forEach(function(b){b.addEventListener('click',function(){var n=b.closest('.nav');var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})});
+document.querySelectorAll('.links a').forEach(function(a){a.addEventListener('click',function(){var n=a.closest('.nav');if(n)n.classList.remove('open')})});
+</script></body></html>

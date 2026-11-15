@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mie Ngebul | Ponorogo</title><meta name="description" content="Mie pedas level 0 sampai 5, mulai 13 ribu. Kuat sampai level berapa?"><meta name="color-scheme" content="light"><meta name="theme-color" content="#FFF4E0">
+<style>@font-face{font-family:'Archivo Black';src:url('../../assets/fonts/archivo-black-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:'Space Grotesk';src:url('../../assets/fonts/space-grotesk-latin-wght-normal.woff2') format('woff2');font-weight:300 700;font-style:normal;font-display:swap}:root{--bg:#FFF4E0;--surface:#FFFFFF;--ink:#1B0F0A;--muted:#3B2A22;--accent:#E2412F;--accent-ink:#FFFFFF;--accent2:#FFC93C;--soft:#FFE3B8;--line:#1B0F0A;}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}svg{display:block}button{font:inherit;color:inherit}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+.ribbon{font:500 13px/1.45 system-ui,sans-serif;background:#1b1b1f;color:#f2f2f2;text-align:center;padding:8px 14px}
+.ribbon a{color:#fff;text-decoration:underline;text-underline-offset:2px;margin-left:6px;font-weight:600}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid currentColor;background:transparent;place-items:center;cursor:pointer;opacity:.85}
+.fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#1FAF5A;color:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.28);z-index:40}
+.fab .ico{width:28px;height:28px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.items>*,.cat>*,.svc>*,.bento>*{min-width:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:760px){.nav{position:relative}.links,.nav-cta{display:none!important}.burger{display:grid}
+.nav.open .links{display:flex!important;flex-direction:column;position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);color:var(--ink);padding:20px;border-radius:18px;gap:16px;z-index:50;box-shadow:0 24px 48px rgba(0,0,0,.2);border:1px solid var(--line)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+.d{font-family:'Archivo Black',Impact,sans-serif;text-transform:uppercase;letter-spacing:-.01em;line-height:.9;font-weight:400}
+.box{border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);border-radius:16px;background:var(--surface)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:16px}
+.logo{font-family:'Archivo Black',sans-serif;font-size:1.25rem;padding:8px 14px;background:var(--ink);color:var(--bg);border-radius:10px;text-transform:uppercase}
+.links{display:flex;gap:26px;font-weight:700}.links a{border-bottom:3px solid transparent}.links a:hover{border-color:var(--accent)}
+.pb{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);background:var(--accent);color:var(--accent-ink);font-weight:700;border-radius:12px;transition:transform .12s,box-shadow .12s;white-space:nowrap}
+.pb:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}.pb.y{background:var(--accent2);color:var(--ink)}.pb.w{background:var(--surface);color:var(--ink)}
+.hero{padding:26px 0 0}
+.hero h1{font-size:clamp(3.6rem,13vw,11.5rem);margin-bottom:22px}
+.hgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:24px}
+.hcopy{padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:26px}
+.hcopy p{font-size:clamp(1.15rem,1.8vw,1.5rem);font-weight:500;line-height:1.35}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.mst{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.mst div{border:3px solid var(--ink);border-radius:12px;padding:10px 12px;background:var(--soft)}.mst b{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:1.35rem;display:block;line-height:1.1}.mst span{font-size:.82rem;font-weight:600}
+.hart{background:var(--accent);min-height:400px;display:grid;place-items:center;position:relative;overflow:hidden;padding:20px}
+.hart:before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--ink) 1.4px,transparent 1.6px);background-size:18px 18px;opacity:.18}
+.stk{position:absolute;font-family:'Archivo Black',sans-serif;text-transform:uppercase;background:var(--accent2);color:var(--ink);border:3px solid var(--ink);padding:8px 16px;border-radius:999px;font-size:.95rem;z-index:3}
+.stk.a{top:22px;left:22px;transform:rotate(-8deg)}.stk.b{bottom:24px;right:22px;transform:rotate(6deg);background:var(--surface)}
+.tapew{overflow:hidden;padding:30px 0}.tape{margin:34px -40px 0;background:var(--ink);color:var(--bg);overflow:hidden;transform:rotate(-1.6deg);border-block:3px solid var(--ink)}
+.tape div{display:flex;gap:40px;width:max-content;padding:16px 0;animation:roll 28s linear infinite}
+.tape span{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:1.4rem;display:flex;align-items:center;gap:40px;white-space:nowrap}
+.tape span:after{content:"";width:14px;height:14px;background:var(--accent2);border-radius:50%}
+@keyframes roll{to{transform:translateX(-50%)}}
+section{padding-top:96px}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.sh h2{font-size:clamp(2.4rem,6vw,4.6rem)}.sh p{max-width:40ch;font-weight:500}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.sv{overflow:hidden}.sv .top{padding:18px 22px;border-bottom:3px solid var(--ink);display:flex;justify-content:space-between;align-items:center;background:var(--accent)}
+.sv:nth-child(3n+2) .top{background:var(--accent2)}.sv:nth-child(3n) .top{background:var(--soft)}
+.sv .top .ico{width:30px;height:30px;stroke-width:2.2}.sv h3{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:1.25rem;line-height:1.05;font-weight:400}
+.sv p{padding:18px 22px 22px;font-weight:500}
+.items{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.it{display:flex;flex-direction:column;overflow:hidden}
+.it .art{height:200px;background:var(--soft);border-bottom:3px solid var(--ink);display:grid;place-items:center;padding:22px;position:relative}
+.it .art svg{max-height:100%;max-width:100%;width:auto;height:100%}.it .art .car-art,.it .art .bowl-art,.it .art .plate-art{width:100%;height:auto}
+.it .tg{position:absolute;top:12px;left:12px;background:var(--surface);border:2px solid var(--ink);padding:2px 10px;border-radius:8px;font-weight:700;font-size:.8rem}
+.it .b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px;flex:1}
+.it h3{font-weight:700;font-size:1.08rem;line-height:1.25}.it small{font-weight:500;opacity:.75}
+.it .pr{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.it .pr b{font-family:'Archivo Black',sans-serif;font-size:1.2rem;font-weight:400;background:var(--accent2);padding:2px 8px;border:2px solid var(--ink);transform:rotate(-2deg)}
+.it .pr a{width:44px;height:44px;border:3px solid var(--ink);border-radius:10px;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.st{padding:26px;text-align:left}.st b{font-family:'Archivo Black',sans-serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:400;display:block;line-height:1}.st span{font-weight:700}
+.st:nth-child(2){background:var(--accent2)}
+.bub{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.bb p{padding:24px;font-size:1.08rem;font-weight:500}.who{display:flex;align-items:center;gap:12px;margin:18px 0 0 6px;font-weight:700}
+.who i{width:42px;height:42px;border-radius:50%;border:3px solid var(--ink);background:var(--accent2);display:grid;place-items:center;font-style:normal;font-family:'Archivo Black',sans-serif}
+.rs{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:22px}.rs div{padding:22px}.rs h3{font-weight:700;font-size:1.1rem;margin:12px 0 4px}.rs .ico{width:30px;height:30px;stroke-width:2.2}
+.loc{display:grid;grid-template-columns:1fr 1.3fr;gap:22px}.loc .info{padding:28px;display:flex;flex-direction:column;gap:14px}
+.loc .hrow{display:flex;justify-content:space-between;font-weight:700;border-bottom:2px dashed var(--ink);padding:10px 0}
+.mapbox{overflow:hidden;min-height:340px}.mapbox svg{width:100%;height:100%}
+.big{margin:96px 0 0;background:var(--accent);padding:clamp(30px,6vw,64px);text-align:center}
+.big h2{font-size:clamp(2.6rem,8vw,6.4rem);color:var(--accent-ink);margin-bottom:28px}
+footer{padding:44px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-weight:700}
+.hero-stack{position:relative;width:100%;height:360px;z-index:2}.hs{position:absolute;top:50%;left:50%;width:130px}
+.hs1{transform:translate(-118%,-46%) rotate(-14deg)}.hs2{transform:translate(-50%,-52%);width:150px;z-index:2}.hs3{transform:translate(18%,-46%) rotate(14deg)}
+.hero-car{width:92%;z-index:2;position:relative}.hero-food{display:flex;align-items:flex-end;width:84%;justify-content:center;z-index:2;position:relative}.hf1{width:40%}.hf2{width:64%;margin-left:-6%}
+@media(max-width:960px){.hgrid,.loc{grid-template-columns:1fr}.svc,.bub{grid-template-columns:1fr 1fr}.items{grid-template-columns:1fr 1fr}.rs{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.svc,.bub,.rs,.stats{grid-template-columns:1fr}.items{gap:14px}.it .art{height:140px;padding:12px}.it .b{padding:12px}.it h3{font-size:.95rem}.it .pr b{font-size:.95rem}.it .pr a{width:36px;height:36px}
+.box{box-shadow:4px 4px 0 var(--ink)}.hart{min-height:300px}.hero-stack{height:270px}.hs{width:100px}.hs2{width:114px}section{padding-top:72px}.hcopy{padding:22px}.tape span{font-size:1.1rem}}
+body{background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22170%22%20height%3D%22170%22%20viewBox%3D%220%200%20170%20170%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%231B0F0A%22%20stroke-opacity%3D%22.10%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M10%2026%20q8%20-9%2016%200%20t16%200%20t16%200%20t16%200%22/%3E%3Cpath%20d%3D%22M84%2070%20q8%20-9%2016%200%20t16%200%20t16%200%20t16%200%22/%3E%3Cpath%20d%3D%22M16%20118%20q8%20-9%2016%200%20t16%200%20t16%200%20t16%200%22/%3E%3Cpath%20d%3D%22M96%20146%20q8%20-9%2016%200%20t16%200%20t16%200%20t16%200%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%28126%2020%29%20rotate%2810%29%22%3E%3Cpath%20d%3D%22M0%200c10%202%2018%2010%2020%2022c-8-6-16-10-22-12z%22%20fill%3D%22%23E2412F%22%20fill-opacity%3D%22.5%22/%3E%3Cpath%20d%3D%22M0%200l-5-5%22%20stroke%3D%22%233a7d2c%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%2840%2066%29%20rotate%28-30%29%22%3E%3Cpath%20d%3D%22M0%200c10%202%2018%2010%2020%2022c-8-6-16-10-22-12z%22%20fill%3D%22%23E2412F%22%20fill-opacity%3D%22.5%22/%3E%3Cpath%20d%3D%22M0%200l-5-5%22%20stroke%3D%22%233a7d2c%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%28140%20112%29%20rotate%2840%29%22%3E%3Cpath%20d%3D%22M0%200c10%202%2018%2010%2020%2022c-8-6-16-10-22-12z%22%20fill%3D%22%23E2412F%22%20fill-opacity%3D%22.5%22/%3E%3Cpath%20d%3D%22M0%200l-5-5%22%20stroke%3D%22%233a7d2c%22%20stroke-opacity%3D%22.6%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22/%3E%3C/g%3E%3C/svg%3E");background-size:170px 170px}</style></head><body>
+<div class="ribbon">Contoh template. Nama usaha, harga, dan ulasan di halaman ini hanya ilustrasi.<a href="../../index.html" target="_top">Kembali ke katalog</a></div>
+<div class="wrap">
+<header class="nav"><a class="logo" href="#">Mie Ngebul</a><nav class="links"><a href="#layanan">Layanan</a><a href="#produk">Menu</a><a href="#kenapa">Cerita kami</a><a href="#lokasi">Lokasi</a></nav><a class="pb nav-cta" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat</a><button class="burger" aria-label="Buka menu" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></header>
+<main><div class="hero"><h1 class="d">Mie Ngebul</h1>
+<div class="hgrid"><div class="box hcopy"><p>Mie pedas level 0 sampai 5, mulai 13 ribu. Kuat sampai level berapa?</p><div class="mst"><div><b>5</b><span>level pedas</span></div><div><b>4,7</b><span>rating Google</span></div><div><b>13rb</b><span>harga mulai</span></div></div><div class="acts"><a class="pb" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat WhatsApp</a><a class="pb y" href="#produk">Lihat menu</a></div></div>
+<div class="box hart"><span class="stk a">Pedas nampol</span><span class="stk b">Mulai 13rb</span><div class="hero-food"><div class="hf1"><svg viewBox="0 0 180 240" class="cup-art" aria-hidden="true"><defs><linearGradient id="cp51" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6efe6"/><stop offset=".42" stop-color="#B0602C" stop-opacity=".55"/><stop offset="1" stop-color="#B0602C"/></linearGradient></defs>
+<rect x="104" y="4" width="10" height="70" rx="5" fill="#E2412F" opacity=".9" transform="rotate(14 109 40)"/>
+<path d="M36 64 Q90 30 144 64 Z" fill="#ffffff" opacity=".85" stroke="#00000018" stroke-width="2"/>
+<rect x="30" y="62" width="120" height="12" rx="6" fill="#ffffff" stroke="#00000018" stroke-width="2"/>
+<path d="M38 76 L142 76 L130 226 Q129 232 122 232 L58 232 Q51 232 50 226 Z" fill="url(#cp51)" stroke="#00000018" stroke-width="2"/>
+<rect x="64" y="110" width="22" height="22" rx="5" fill="#ffffff" opacity=".5" transform="rotate(-12 75 121)"/>
+<rect x="94" y="126" width="20" height="20" rx="5" fill="#ffffff" opacity=".4" transform="rotate(16 104 136)"/>
+<path d="M44 150 L136 150" stroke="#ffffff" stroke-opacity=".35" stroke-width="3"/>
+</svg></div><div class="hf2"><svg viewBox="0 0 240 180" class="bowl-art" aria-hidden="true">
+<ellipse cx="120" cy="150" rx="104" ry="20" fill="#000" opacity=".1"/>
+<circle cx="88" cy="74" r="26" fill="#E2412F"/><circle cx="128" cy="64" r="30" fill="#E2412F" opacity=".85"/><circle cx="160" cy="80" r="22" fill="#E2412F" opacity=".7"/>
+<path d="M70 62 q10 -22 26 -6" fill="none" stroke="#6aa84f" stroke-width="6" stroke-linecap="round"/>
+<path d="M146 54 q14 -16 24 2" fill="none" stroke="#6aa84f" stroke-width="6" stroke-linecap="round"/>
+<circle cx="112" cy="84" r="7" fill="#fff" opacity=".7"/><circle cx="142" cy="92" r="5" fill="#d23c2a"/>
+<path d="M20 88 H220 Q214 150 120 152 Q26 150 20 88Z" fill="#ffffff" stroke="#00000020" stroke-width="2"/>
+<path d="M32 104 H208" stroke="#E2412F" stroke-width="5" opacity=".5"/>
+</svg></div></div></div></div></div>
+</div><div class="tapew"><div class="tape" aria-hidden="true"><div><span>Pedas level 0 sampai 5</span><span>Mulai 13 ribu</span><span>Pesan antar</span><span>Buka sampai malam</span><span>Es teh jumbo</span><span>Pedas level 0 sampai 5</span><span>Mulai 13 ribu</span><span>Pesan antar</span><span>Buka sampai malam</span><span>Es teh jumbo</span></div></div></div><div class="wrap">
+<section id="layanan"><div class="sh"><h2 class="d">Layanan</h2><p>Semua bisa dipesan lewat WhatsApp. Lokasi kami di Ponorogo, gampang dicari.</p></div><div class="svc"><div class="box sv"><div class="top"><h3>Makan di tempat &amp; bungkus</h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></div><p>Tempat bersih dan luas. Mau dibungkus juga bisa, cepat.</p></div><div class="box sv"><div class="top"><h3>Pesan antar</h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg></div><p>Lewat WhatsApp, GoFood, atau ShopeeFood.</p></div><div class="box sv"><div class="top"><h3>Nasi kotak &amp; katering</h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="9" width="17" height="11.5" rx="1.5"/><path d="M3.5 13h17M12 9v11.5M12 9C10.5 5 6.5 5 7 7.5S12 9 12 9zm0 0c1.5-4 5.5-4 5-1.5S12 9 12 9z"/></svg></div><p>Untuk rapat, pengajian, dan syukuran mulai 20 porsi.</p></div><div class="box sv"><div class="top"><h3>Reservasi rombongan</h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></div><p>Arisan atau acara keluarga sampai 40 orang.</p></div><div class="box sv"><div class="top"><h3>Buka sampai malam</h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><p>Lapar tengah malam? Kami masih buka.</p></div></div></section>
+<section id="produk"><div class="sh"><h2 class="d">Menu favorit</h2><p>Harga belum termasuk pajak. Menu bisa dipesan antar lewat WhatsApp atau aplikasi ojek online.</p></div><div class="items"><article class="box it"><div class="art"><span class="tg">Makanan</span><svg viewBox="0 0 240 180" class="bowl-art" aria-hidden="true">
+<ellipse cx="120" cy="150" rx="104" ry="20" fill="#000" opacity=".1"/>
+<circle cx="88" cy="74" r="26" fill="#E2412F"/><circle cx="128" cy="64" r="30" fill="#E2412F" opacity=".85"/><circle cx="160" cy="80" r="22" fill="#E2412F" opacity=".7"/>
+<path d="M70 62 q10 -22 26 -6" fill="none" stroke="#6aa84f" stroke-width="6" stroke-linecap="round"/>
+<path d="M146 54 q14 -16 24 2" fill="none" stroke="#6aa84f" stroke-width="6" stroke-linecap="round"/>
+<circle cx="112" cy="84" r="7" fill="#fff" opacity=".7"/><circle cx="142" cy="92" r="5" fill="#d23c2a"/>
+<path d="M20 88 H220 Q214 150 120 152 Q26 150 20 88Z" fill="#ffffff" stroke="#00000020" stroke-width="2"/>
+<path d="M32 104 H208" stroke="#E2412F" stroke-width="5" opacity=".5"/>
+</svg></div><div class="b"><h3>Mie Ngebul Level 0-5</h3><small>Mie pedas, pangsit goreng</small>
+<div class="pr"><b>Rp13.000</b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20Mie%20Ngebul%20Level%200-5" target="_blank" rel="noopener noreferrer" aria-label="Pesan Mie Ngebul Level 0-5"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg></a></div></div></article><article class="box it"><div class="art"><span class="tg">Makanan</span><svg viewBox="0 0 240 180" class="bowl-art" aria-hidden="true">
+<ellipse cx="120" cy="150" rx="104" ry="20" fill="#000" opacity=".1"/>
+<circle cx="88" cy="74" r="26" fill="#E7A43C"/><circle cx="128" cy="64" r="30" fill="#E7A43C" opacity=".85"/><circle cx="160" cy="80" r="22" fill="#E7A43C" opacity=".7"/>
+<path d="M70 62 q10 -22 26 -6" fill="none" stroke="#6aa84f" stroke-width="6" stroke-linecap="round"/>
+<path d="M146 54 q14 -16 24 2" fill="none" stroke="#6aa84f" stroke-width="6" stroke-linecap="round"/>
+<circle cx="112" cy="84" r="7" fill="#fff" opacity=".7"/><circle cx="142" cy="92" r="5" fill="#d23c2a"/>
+<path d="M20 88 H220 Q214 150 120 152 Q26 150 20 88Z" fill="#ffffff" stroke="#00000020" stroke-width="2"/>
+<path d="M32 104 H208" stroke="#E7A43C" stroke-width="5" opacity=".5"/>
+</svg></div><div class="b"><h3>Mie Kuah Ayam Jamur</h3><small>Kuah kaldu, jamur, sawi</small>
+<div class="pr"><b>Rp14.000</b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20Mie%20Kuah%20Ayam%20Jamur" target="_blank" rel="noopener noreferrer" aria-label="Pesan Mie Kuah Ayam Jamur"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg></a></div></div></article><article class="box it"><div class="art"><span class="tg">Camilan</span><svg viewBox="0 0 240 180" class="plate-art" aria-hidden="true">
+<ellipse cx="120" cy="120" rx="108" ry="40" fill="#ffffff" stroke="#00000020" stroke-width="2"/>
+<ellipse cx="120" cy="116" rx="80" ry="27" fill="#00000008"/>
+<rect x="62" y="70" width="58" height="44" rx="10" fill="#F2C9A0" transform="rotate(-8 91 92)"/>
+<rect x="110" y="66" width="62" height="46" rx="10" fill="#F2C9A0" opacity=".85" transform="rotate(10 141 89)"/>
+<path d="M78 78 q20 -8 34 6" stroke="#f5d76e" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M124 76 q18 -6 34 8" stroke="#f5d76e" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg></div><div class="b"><h3>Dimsum Udang</h3><small>Isi 3, saus mentai</small>
+<div class="pr"><b>Rp12.000</b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20Dimsum%20Udang" target="_blank" rel="noopener noreferrer" aria-label="Pesan Dimsum Udang"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg></a></div></div></article><article class="box it"><div class="art"><span class="tg">Camilan</span><svg viewBox="0 0 240 180" class="plate-art" aria-hidden="true">
+<ellipse cx="120" cy="120" rx="108" ry="40" fill="#ffffff" stroke="#00000020" stroke-width="2"/>
+<ellipse cx="120" cy="116" rx="80" ry="27" fill="#00000008"/>
+<rect x="62" y="70" width="58" height="44" rx="10" fill="#D99A43" transform="rotate(-8 91 92)"/>
+<rect x="110" y="66" width="62" height="46" rx="10" fill="#D99A43" opacity=".85" transform="rotate(10 141 89)"/>
+<path d="M78 78 q20 -8 34 6" stroke="#f5d76e" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M124 76 q18 -6 34 8" stroke="#f5d76e" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg></div><div class="b"><h3>Pangsit Goreng</h3><small>Isi 5, saus sambal</small>
+<div class="pr"><b>Rp9.000</b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20Pangsit%20Goreng" target="_blank" rel="noopener noreferrer" aria-label="Pesan Pangsit Goreng"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg></a></div></div></article><article class="box it"><div class="art"><span class="tg">Minuman</span><svg viewBox="0 0 180 240" class="cup-art" aria-hidden="true"><defs><linearGradient id="cp49" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6efe6"/><stop offset=".42" stop-color="#B0602C" stop-opacity=".55"/><stop offset="1" stop-color="#B0602C"/></linearGradient></defs>
+<rect x="104" y="4" width="10" height="70" rx="5" fill="#E2412F" opacity=".9" transform="rotate(14 109 40)"/>
+<path d="M36 64 Q90 30 144 64 Z" fill="#ffffff" opacity=".85" stroke="#00000018" stroke-width="2"/>
+<rect x="30" y="62" width="120" height="12" rx="6" fill="#ffffff" stroke="#00000018" stroke-width="2"/>
+<path d="M38 76 L142 76 L130 226 Q129 232 122 232 L58 232 Q51 232 50 226 Z" fill="url(#cp49)" stroke="#00000018" stroke-width="2"/>
+<rect x="64" y="110" width="22" height="22" rx="5" fill="#ffffff" opacity=".5" transform="rotate(-12 75 121)"/>
+<rect x="94" y="126" width="20" height="20" rx="5" fill="#ffffff" opacity=".4" transform="rotate(16 104 136)"/>
+<path d="M44 150 L136 150" stroke="#ffffff" stroke-opacity=".35" stroke-width="3"/>
+</svg></div><div class="b"><h3>Es Teh Jumbo</h3><small>Gelas 1 liter</small>
+<div class="pr"><b>Rp5.000</b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20Es%20Teh%20Jumbo" target="_blank" rel="noopener noreferrer" aria-label="Pesan Es Teh Jumbo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg></a></div></div></article><article class="box it"><div class="art"><span class="tg">Minuman</span><svg viewBox="0 0 180 240" class="cup-art" aria-hidden="true"><defs><linearGradient id="cp50" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6efe6"/><stop offset=".42" stop-color="#E9C24B" stop-opacity=".55"/><stop offset="1" stop-color="#E9C24B"/></linearGradient></defs>
+<rect x="104" y="4" width="10" height="70" rx="5" fill="#E2412F" opacity=".9" transform="rotate(14 109 40)"/>
+<path d="M36 64 Q90 30 144 64 Z" fill="#ffffff" opacity=".85" stroke="#00000018" stroke-width="2"/>
+<rect x="30" y="62" width="120" height="12" rx="6" fill="#ffffff" stroke="#00000018" stroke-width="2"/>
+<path d="M38 76 L142 76 L130 226 Q129 232 122 232 L58 232 Q51 232 50 226 Z" fill="url(#cp50)" stroke="#00000018" stroke-width="2"/>
+<rect x="64" y="110" width="22" height="22" rx="5" fill="#ffffff" opacity=".5" transform="rotate(-12 75 121)"/>
+<rect x="94" y="126" width="20" height="20" rx="5" fill="#ffffff" opacity=".4" transform="rotate(16 104 136)"/>
+<path d="M44 150 L136 150" stroke="#ffffff" stroke-opacity=".35" stroke-width="3"/>
+</svg></div><div class="b"><h3>Es Lemon Tea</h3><small>Lemon segar</small>
+<div class="pr"><b>Rp8.000</b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20Es%20Lemon%20Tea" target="_blank" rel="noopener noreferrer" aria-label="Pesan Es Lemon Tea"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg></a></div></div></article></div></section>
+<section id="kenapa"><div class="stats"><div class="box st"><b>5</b><span>level pedas</span></div><div class="box st"><b>4,7</b><span>rating Google</span></div><div class="box st"><b>13rb</b><span>harga mulai</span></div></div><div class="rs"><div class="box"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg><h3>Bumbu dibuat sendiri</h3><p>Sambal dan bumbu diulek tiap pagi, tanpa penyedap berlebihan.</p></div><div class="box"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 9.5v5M17.5 9.5v5"/></svg><h3>Harga ramah kantong</h3><p>Kenyang tanpa bikin dompet tipis.</p></div><div class="box"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><h3>Penyajian cepat</h3><p>Pesanan biasanya siap kurang dari 10 menit.</p></div><div class="box"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><h3>Parkir luas</h3><p>Muat mobil dan motor, aman dengan penjaga.</p></div></div><div class="sh" style="margin-top:72px"><h2 class="d">Kata mereka</h2></div><div class="bub"><div><div class="box bb"><p>“Porsinya pas, sambalnya pedas tapi bikin nagih. Hampir tiap makan siang ke sini.”</p></div><div class="who"><i>N</i>Nadia, karyawan</div></div><div><div class="box bb"><p>“Pesan 50 nasi kotak untuk rapat sekolah, datang tepat waktu dan rasanya enak.”</p></div><div class="who"><i>P</i>Pak Yusuf, guru</div></div><div><div class="box bb"><p>“Harganya pas di kantong, porsinya kenyang. Pelayanannya cepat walau sedang ramai.”</p></div><div class="who"><i>A</i>Anggi, mahasiswa</div></div></div></section>
+<section id="lokasi"><div class="sh"><h2 class="d">Lokasi</h2></div><div class="loc"><div class="box info"><b style="font-size:1.3rem">Jl. Pahlawan No. 21, Ponorogo, Jawa Timur</b><div class="hrow"><span>Senin - Jumat</span><b>10.00 - 23.00</b></div><div class="hrow"><span>Sabtu - Minggu</span><b>08.00 - 24.00</b></div><a class="pb y" style="align-self:flex-start;margin-top:10px" href="https://maps.google.com" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Buka Maps</a></div><div class="box mapbox"><svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" class="map-art" aria-label="Ilustrasi peta lokasi" role="img">
+<rect width="600" height="380" fill="#FFE3B8"/>
+<g stroke="#FFFFFF" stroke-width="14" fill="none" stroke-linecap="round">
+<path d="M-20 260 Q180 220 300 240 T640 200"/><path d="M140 -20 L210 400"/><path d="M420 -20 Q390 180 470 400"/><path d="M-20 90 L640 130"/></g>
+<g stroke="#FFFFFF" stroke-width="6" fill="none" opacity=".8"><path d="M40 -10 L90 400"/><path d="M300 -10 L320 400"/><path d="M-10 330 L620 300"/><path d="M520 -10 L560 400"/></g>
+<rect x="230" y="150" width="70" height="50" rx="6" fill="#1B0F0A" opacity=".7"/><rect x="330" y="40" width="60" height="60" rx="6" fill="#1B0F0A" opacity=".7"/>
+<circle cx="80" cy="190" r="34" fill="#8fc98f" opacity=".45"/>
+<g transform="translate(300 190)"><circle r="26" fill="#E2412F" opacity=".3"/><path d="M0 -6 C-14 -36 -38 -30 -38 -52 A38 38 0 0 1 38 -52 C38 -30 14 -36 0 -6Z" transform="translate(0 0) scale(.7)" fill="#1B0F0A"/><circle cy="-36" r="9" fill="#FFFFFF"/></g>
+</svg></div></div></section>
+<div class="box big"><h2 class="d">Chat sekarang</h2><a class="pb w" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>WhatsApp admin</a></div></main>
+<footer><span>© 2026 Mie Ngebul</span><span>Ponorogo, Jawa Timur</span></footer></div>
+<a class="fab" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg></a>
+<script>
+document.querySelectorAll('.burger').forEach(function(b){b.addEventListener('click',function(){var n=b.closest('.nav');var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})});
+document.querySelectorAll('.links a').forEach(function(a){a.addEventListener('click',function(){var n=a.closest('.nav');if(n)n.classList.remove('open')})});
+</script></body></html>

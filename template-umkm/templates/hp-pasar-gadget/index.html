@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pasar Gadget | Ponorogo</title><meta name="description" content="Ratusan unit baru dan second, dari sejutaan sampai flagship. Filter katalog di bawah lalu chat admin untuk unit yang Anda suka."><meta name="color-scheme" content="light"><meta name="theme-color" content="#FFFFFF">
+<style>@font-face{font-family:'Bricolage';src:url('../../assets/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap}@font-face{font-family:'DM Sans';src:url('../../assets/fonts/dm-sans-latin-wght-normal.woff2') format('woff2');font-weight:100 1000;font-style:normal;font-display:swap}:root{--bg:#FFFFFF;--surface:#F5F6FA;--ink:#1A1D29;--muted:#5C6275;--accent:#FF8A3D;--accent-ink:#1A1D29;--accent2:#2948FF;--soft:#FFF0E5;--line:#E4E6EE;}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}svg{display:block}button{font:inherit;color:inherit}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+.ribbon{font:500 13px/1.45 system-ui,sans-serif;background:#1b1b1f;color:#f2f2f2;text-align:center;padding:8px 14px}
+.ribbon a{color:#fff;text-decoration:underline;text-underline-offset:2px;margin-left:6px;font-weight:600}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid currentColor;background:transparent;place-items:center;cursor:pointer;opacity:.85}
+.fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#1FAF5A;color:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.28);z-index:40}
+.fab .ico{width:28px;height:28px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.items>*,.cat>*,.svc>*,.bento>*{min-width:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:760px){.nav{position:relative}.links,.nav-cta{display:none!important}.burger{display:grid}
+.nav.open .links{display:flex!important;flex-direction:column;position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);color:var(--ink);padding:20px;border-radius:18px;gap:16px;z-index:50;box-shadow:0 24px 48px rgba(0,0,0,.2);border:1px solid var(--line)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3,.logo{font-family:'Bricolage',sans-serif;letter-spacing:-.035em}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem}
+.logo i{width:38px;height:38px;border-radius:50% 50% 50% 12px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-style:normal;font-size:.85rem}
+.links{display:flex;gap:6px;font-weight:500}.links a{padding:8px 14px;border-radius:999px}.links a:hover{background:var(--surface)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:14px;font-weight:700;background:var(--accent);color:var(--accent-ink);white-space:nowrap;border:0;cursor:pointer}
+.btn.dk{background:var(--ink);color:var(--bg)}.btn.ol{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:56px 0 30px}
+.rate{display:inline-flex;align-items:center;gap:8px;background:var(--surface);padding:8px 14px;border-radius:999px;font-size:.9rem;font-weight:500}
+.rate .ico{width:16px;height:16px;fill:#f2a81d;stroke:none}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.9rem);line-height:1;font-weight:800;margin:22px 0 20px;max-width:14ch}
+.hero p{font-size:1.12rem;color:var(--muted);max-width:46ch;margin-bottom:30px}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;align-items:center;gap:14px;margin-top:32px;font-size:.92rem;color:var(--muted)}
+.avs{display:flex}.avs i{width:36px;height:36px;border-radius:50%;border:3px solid var(--bg);margin-left:-10px;font-style:normal;display:grid;place-items:center;font-weight:700;font-size:.8rem;color:#fff}.avs i:first-child{margin-left:0}
+.blob{position:relative;aspect-ratio:1;border-radius:44% 56% 48% 52%/52% 42% 58% 48%;background:var(--accent);display:grid;place-items:center}
+.blob:before{content:"";position:absolute;inset:7%;border-radius:inherit;border:2px dashed color-mix(in srgb,var(--accent-ink) 35%,transparent)}
+.pc{position:absolute;background:var(--bg);border-radius:16px;padding:12px 16px;box-shadow:0 18px 40px rgba(0,0,0,.14);font-size:.88rem;z-index:3}
+.pc b{display:block;font-family:'Bricolage',sans-serif;font-size:1.05rem}.pc span{color:var(--muted)}
+.pc1{left:-4%;top:14%}.pc2{right:-2%;bottom:12%}
+section{padding-top:96px}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.sh h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.04;font-weight:800;max-width:16ch}.sh p{color:var(--muted);max-width:44ch}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.chips button{padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);font-weight:700;cursor:pointer;font-size:.92rem}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ci{border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;background:var(--bg);transition:box-shadow .2s}
+.ci:hover{box-shadow:0 16px 40px rgba(0,0,0,.08)}.ci[hidden]{display:none}
+.ci .art{height:220px;display:grid;place-items:center;padding:24px;position:relative}
+.ci .art svg{max-height:100%;max-width:100%;width:auto;height:100%}.ci .art .car-art,.ci .art .bowl-art,.ci .art .plate-art{width:100%;height:auto}
+.ci .tg{position:absolute;top:14px;left:14px;background:var(--bg);padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:700}
+.ci .b{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.ci h3{font-size:1.2rem;font-weight:700;letter-spacing:-.02em}.ci small{color:var(--muted)}
+.ci .pr{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:18px;gap:10px}
+.ci .pr b{font-family:'Bricolage',sans-serif;font-size:1.3rem}.ci .pr b small{font-size:.85rem}
+.ci .pr a{padding:10px 16px;border-radius:12px;background:var(--ink);color:var(--bg);font-weight:700;font-size:.9rem;display:inline-flex;gap:8px;align-items:center}
+.ci .pr a .ico{width:18px;height:18px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:var(--surface);border-radius:22px;padding:28px}
+.step i{width:52px;height:52px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-style:normal;font-family:'Bricolage',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:22px}
+.step h3{font-size:1.3rem;margin-bottom:6px}.step p{color:var(--muted)}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.sv{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.sv .ic{width:50px;height:50px;border-radius:14px;background:var(--soft);color:var(--accent2);display:grid;place-items:center;flex:none}
+.sv h3{font-size:1.15rem;margin-bottom:2px}.sv p{color:var(--muted)}
+.tq{columns:3;column-gap:18px}.tq div{break-inside:avoid;background:var(--surface);border-radius:22px;padding:24px;margin-bottom:18px}.tq p{font-size:1.02rem}.tq b{display:block;margin-top:14px;font-size:.92rem}
+.tq div:nth-child(2){background:var(--accent);color:var(--accent-ink)}
+.loc{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}.mapbox{border-radius:24px;overflow:hidden;min-height:340px}.mapbox svg{width:100%;height:100%}
+.info{background:var(--surface);border-radius:24px;padding:30px}.info .hrow{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}.info .hrow span{color:var(--muted)}
+footer{margin-top:96px;background:var(--ink);color:var(--bg)}
+footer .wrap{padding-top:60px;padding-bottom:40px}
+footer .fn{font-family:'Bricolage',sans-serif;font-weight:800;font-size:clamp(3rem,10vw,8rem);line-height:.9;letter-spacing:-.05em;color:var(--accent)}
+footer .fr{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:30px;opacity:.75;font-size:.92rem}
+.mbar{display:none}
+.hero-stack{position:relative;width:80%;height:80%}.hs{position:absolute;top:50%;left:50%;width:30%}
+.hs1{transform:translate(-118%,-46%) rotate(-12deg)}.hs2{transform:translate(-50%,-52%);width:34%;z-index:2}.hs3{transform:translate(18%,-46%) rotate(12deg)}
+.hero-car{width:92%;position:relative;z-index:2}.hero-food{display:flex;align-items:flex-end;width:78%;justify-content:center;position:relative;z-index:2}.hf1{width:40%}.hf2{width:62%;margin-left:-6%}
+@media(max-width:960px){.hero{grid-template-columns:1fr;gap:30px}.blob{max-width:460px;width:100%;justify-self:center}.cat{grid-template-columns:1fr 1fr}.svc{grid-template-columns:1fr}.tq{columns:2}.loc{grid-template-columns:1fr}}
+@media(max-width:600px){.cat{grid-template-columns:1fr 1fr;gap:12px}.ci .art{height:140px;padding:12px}.ci .b{padding:12px}.ci h3{font-size:1rem}.ci .pr{flex-direction:column;align-items:stretch}.ci .pr b{font-size:1.05rem}.ci .pr a{justify-content:center}
+.steps{grid-template-columns:1fr}.tq{columns:1}section{padding-top:72px}.hero{padding-top:34px}.pc{display:none}
+.mbar{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;position:fixed;left:0;right:0;bottom:0;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line);z-index:40}
+.mbar a{justify-content:center}body{padding-bottom:76px}}
+body{background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22160%22%20height%3D%22160%22%20viewBox%3D%220%200%20160%20160%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%231A1D29%22%20stroke-opacity%3D%22.12%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cg%20transform%3D%22translate%2820%2018%29%20rotate%28-12%29%22%3E%3Crect%20width%3D%2218%22%20height%3D%2232%22%20rx%3D%224%22/%3E%3Cpath%20d%3D%22M7%2027h4%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%2896%2022%29%20rotate%2810%29%22%3E%3Crect%20width%3D%2230%22%20height%3D%2215%22%20rx%3D%223%22/%3E%3Cpath%20d%3D%22M30%205v5%22/%3E%3Cpath%20d%3D%22M5%204v7M10%204v7M15%204v7%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%2830%2096%29%20rotate%288%29%22%3E%3Cpath%20d%3D%22M0%200h14l6%206v20H0z%22/%3E%3Crect%20x%3D%224%22%20y%3D%2210%22%20width%3D%2212%22%20height%3D%2210%22%20rx%3D%222%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%28110%20100%29%20rotate%28-8%29%22%3E%3Cpath%20d%3D%22M0%2014a12%2012%200%200%201%2024%200v8%22/%3E%3Crect%20x%3D%22-3%22%20y%3D%2216%22%20width%3D%227%22%20height%3D%2211%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2220%22%20y%3D%2216%22%20width%3D%227%22%20height%3D%2211%22%20rx%3D%223%22/%3E%3C/g%3E%3Cg%20transform%3D%22translate%2878%2064%29%22%3E%3Cpath%20d%3D%22M0%200v8M8%200v8M-4%208h16v6a8%208%200%200%201-16%200z%22/%3E%3C/g%3E%3C/g%3E%3Cg%20fill%3D%22%23FF8A3D%22%20fill-opacity%3D%22.35%22%3E%3Ccircle%20cx%3D%2270%22%20cy%3D%2230%22%20r%3D%222.5%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2270%22%20r%3D%222%22/%3E%3Ccircle%20cx%3D%22140%22%20cy%3D%2270%22%20r%3D%222.5%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%22140%22%20r%3D%222%22/%3E%3C/g%3E%3C/svg%3E");background-size:160px 160px}</style></head><body>
+<div class="ribbon">Contoh template. Nama usaha, harga, dan ulasan di halaman ini hanya ilustrasi.<a href="../../index.html" target="_top">Kembali ke katalog</a></div>
+<div class="top"><div class="wrap"><header class="nav"><a class="logo" href="#"><i>PG</i>Pasar Gadget</a><nav class="links"><a href="#layanan">Layanan</a><a href="#produk">Produk</a><a href="#kenapa">Kenapa kami</a><a href="#lokasi">Lokasi</a></nav><a class="btn nav-cta" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat admin</a><button class="burger" aria-label="Buka menu" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></header></div></div>
+<div class="wrap"><main>
+<div class="hero"><div><span class="rate"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8 6.8 19.5l1-5.8-4.2-4.1 5.8-.8z"/></svg><b>4,9</b> dari 800+ ulasan Google</span><h1>Cari HP sesuai budget, tinggal pilih.</h1><p>Ratusan unit baru dan second, dari sejutaan sampai flagship. Filter katalog di bawah lalu chat admin untuk unit yang Anda suka.</p>
+<div class="acts"><a class="btn" href="#produk">Lihat katalog</a><a class="btn ol" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Tanya admin</a></div>
+<div class="trust"><div class="avs"><i style="background:#E4572E">A</i><i style="background:#2E86AB">D</i><i style="background:#7B9E3F">R</i><i style="background:#9C51B6">N</i></div><span>Dipercaya ribuan pelanggan di Ponorogo dan sekitarnya</span></div></div>
+<div class="blob"><div class="hero-stack"><div class="hs hs1"><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph40" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2948FF"/><stop offset="1" stop-color="#2948FF" stop-opacity=".45"/></linearGradient></defs>
+<rect x="4" y="2" width="116" height="244" rx="24" fill="#E7C9C2" stroke="#00000022" stroke-width="2"/>
+<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
+<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph40)"/>
+<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
+<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
+<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
+<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
+<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
+</svg></div><div class="hs hs2"><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph41" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A3D"/><stop offset="1" stop-color="#FF8A3D" stop-opacity=".45"/></linearGradient></defs>
+<rect x="4" y="2" width="116" height="244" rx="24" fill="#2F5BEA" stroke="#ffffff22" stroke-width="2"/>
+<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
+<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph41)"/>
+<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
+<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
+<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
+<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
+<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
+</svg></div><div class="hs hs3"><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph42" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB86B"/><stop offset="1" stop-color="#FFB86B" stop-opacity=".45"/></linearGradient></defs>
+<rect x="4" y="2" width="116" height="244" rx="24" fill="#1E2A3A" stroke="#ffffff22" stroke-width="2"/>
+<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
+<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph42)"/>
+<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
+<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
+<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
+<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
+<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
+</svg></div></div><div class="pc pc1"><span>Redmi Note 14 8/256</span><b>Rp2.899.000</b></div><div class="pc pc2"><span>Garansi toko</span><b>30 hari</b></div></div></div>
+<section id="produk"><div class="sh"><h2>Produk pilihan minggu ini</h2><p>Harga sudah termasuk tempered glass dan pemasangan. Stok bisa berubah, tanya dulu lewat WhatsApp.</p></div><div class="chips" role="group" aria-label="Filter kategori"><button type="button" aria-pressed="true" data-f="*">Semua</button><button type="button" aria-pressed="false" data-f="Baru">Baru</button><button type="button" aria-pressed="false" data-f="Second">Second</button><button type="button" aria-pressed="false" data-f="Aksesoris">Aksesoris</button></div><div class="cat"><article class="ci" data-t="Baru"><div class="art" style="background:color-mix(in srgb,#2F5BEA 16%,var(--surface))"><span class="tg">Baru</span><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph34" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2948FF"/><stop offset="1" stop-color="#2948FF" stop-opacity=".45"/></linearGradient></defs>
+<rect x="4" y="2" width="116" height="244" rx="24" fill="#2F5BEA" stroke="#ffffff22" stroke-width="2"/>
+<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
+<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph34)"/>
+<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
+<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
+<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
+<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
+<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
+</svg></div><div class="b"><h3>Redmi Note 14 8/256</h3><small>Garansi resmi 1 tahun</small>
+<div class="pr"><b>Rp2.899.000<small></small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20Redmi%20Note%2014%208/256" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="Second"><div class="art" style="background:color-mix(in srgb,#E7C9C2 16%,var(--surface))"><span class="tg">Second</span><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph35" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2948FF"/><stop offset="1" stop-color="#2948FF" stop-opacity=".45"/></linearGradient></defs>
+<rect x="4" y="2" width="116" height="244" rx="24" fill="#E7C9C2" stroke="#00000022" stroke-width="2"/>
+<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
+<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph35)"/>
+<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
+<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
+<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
+<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
+<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
+</svg></div><div class="b"><h3>iPhone 13 128GB</h3><small>Mulus, baterai 88%</small>
+<div class="pr"><b>Rp6.350.000<small></small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20iPhone%2013%20128GB" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="Baru"><div class="art" style="background:color-mix(in srgb,#1E2A3A 16%,var(--surface))"><span class="tg">Baru</span><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph36" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2948FF"/><stop offset="1" stop-color="#2948FF" stop-opacity=".45"/></linearGradient></defs>
+<rect x="4" y="2" width="116" height="244" rx="24" fill="#1E2A3A" stroke="#ffffff22" stroke-width="2"/>
+<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
+<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph36)"/>
+<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
+<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
+<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
+<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
+<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
+</svg></div><div class="b"><h3>Samsung Galaxy A16 6/128</h3><small>Garansi resmi SEIN</small>
+<div class="pr"><b>Rp2.399.000<small></small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20Samsung%20Galaxy%20A16%206/128" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="Second"><div class="art" style="background:color-mix(in srgb,#6B4FA3 16%,var(--surface))"><span class="tg">Second</span><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph37" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2948FF"/><stop offset="1" stop-color="#2948FF" stop-opacity=".45"/></linearGradient></defs>
+<rect x="4" y="2" width="116" height="244" rx="24" fill="#6B4FA3" stroke="#ffffff22" stroke-width="2"/>
+<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
+<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph37)"/>
+<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
+<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
+<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
+<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
+<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
+</svg></div><div class="b"><h3>iPhone 11 64GB</h3><small>Fullset, iCloud aman</small>
+<div class="pr"><b>Rp3.650.000<small></small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20iPhone%2011%2064GB" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="Baru"><div class="art" style="background:color-mix(in srgb,#3F8F7A 16%,var(--surface))"><span class="tg">Baru</span><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph38" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2948FF"/><stop offset="1" stop-color="#2948FF" stop-opacity=".45"/></linearGradient></defs>
+<rect x="4" y="2" width="116" height="244" rx="24" fill="#3F8F7A" stroke="#ffffff22" stroke-width="2"/>
+<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
+<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph38)"/>
+<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
+<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
+<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
+<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
+<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
+</svg></div><div class="b"><h3>OPPO A3x 4/128</h3><small>Garansi resmi 1 tahun</small>
+<div class="pr"><b>Rp1.599.000<small></small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20OPPO%20A3x%204/128" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="Baru"><div class="art" style="background:color-mix(in srgb,#C9A24A 16%,var(--surface))"><span class="tg">Baru</span><svg viewBox="0 0 124 248" class="phone-art" aria-hidden="true"><defs><linearGradient id="ph39" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2948FF"/><stop offset="1" stop-color="#2948FF" stop-opacity=".45"/></linearGradient></defs>
+<rect x="4" y="2" width="116" height="244" rx="24" fill="#C9A24A" stroke="#00000022" stroke-width="2"/>
+<rect x="11" y="10" width="102" height="228" rx="17" fill="#0d0f14"/>
+<rect x="14" y="13" width="96" height="222" rx="14" fill="url(#ph39)"/>
+<rect x="46" y="18" width="32" height="9" rx="4.5" fill="#0d0f14"/>
+<rect x="24" y="50" width="52" height="9" rx="4.5" fill="#fff" opacity=".9"/>
+<rect x="24" y="66" width="34" height="6" rx="3" fill="#fff" opacity=".55"/>
+<rect x="24" y="150" width="76" height="58" rx="12" fill="#fff" opacity=".22"/>
+<circle cx="38" cy="122" r="12" fill="#fff" opacity=".35"/><circle cx="66" cy="122" r="12" fill="#fff" opacity=".25"/><circle cx="94" cy="122" r="12" fill="#fff" opacity=".18"/>
+</svg></div><div class="b"><h3>Vivo Y19s 6/128</h3><small>Bonus casing</small>
+<div class="pr"><b>Rp1.899.000<small></small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20Vivo%20Y19s%206/128" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="Aksesoris"><div class="art" style="background:color-mix(in srgb,#F2F2F2 16%,var(--surface))"><span class="tg">Aksesoris</span><svg viewBox="0 0 160 200" class="acc-art" aria-hidden="true">
+<rect x="30" y="20" width="100" height="160" rx="18" fill="#F2F2F2" stroke="#00000022" stroke-width="2"/>
+<rect x="66" y="12" width="28" height="12" rx="4" fill="#9aa0a6"/>
+<circle cx="66" cy="60" r="4" fill="#3ddc84"/><circle cx="80" cy="60" r="4" fill="#3ddc84"/><circle cx="94" cy="60" r="4" fill="#3ddc84" opacity=".35"/>
+<path d="M84 92l-14 24h12l-4 22 16-28H82z" fill="#1b1b1b" opacity=".8"/>
+</svg></div><div class="b"><h3>Powerbank 10.000 mAh</h3><small>Fast charging 22,5W</small>
+<div class="pr"><b>Rp149.000<small></small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20Powerbank%2010.000%20mAh" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article><article class="ci" data-t="Aksesoris"><div class="art" style="background:color-mix(in srgb,#2B2B2B 16%,var(--surface))"><span class="tg">Aksesoris</span><svg viewBox="0 0 160 200" class="acc-art" aria-hidden="true">
+<rect x="30" y="20" width="100" height="160" rx="18" fill="#2B2B2B" stroke="#00000022" stroke-width="2"/>
+<rect x="66" y="12" width="28" height="12" rx="4" fill="#9aa0a6"/>
+<circle cx="66" cy="60" r="4" fill="#3ddc84"/><circle cx="80" cy="60" r="4" fill="#3ddc84"/><circle cx="94" cy="60" r="4" fill="#3ddc84" opacity=".35"/>
+<path d="M84 92l-14 24h12l-4 22 16-28H82z" fill="#ffffff" opacity=".8"/>
+</svg></div><div class="b"><h3>TWS Bluetooth 5.3</h3><small>Garansi 3 bulan</small>
+<div class="pr"><b>Rp189.000<small></small></b><a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok%20TWS%20Bluetooth%205.3" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Pesan</a></div></div></article></div></section>
+<section><div class="sh"><h2>Cara pesan</h2></div><div class="steps"><div class="step"><i>1</i><h3>Pilih HP</h3><p>Lihat katalog atau kirim tipe yang Anda cari.</p></div><div class="step"><i>2</i><h3>Chat admin</h3><p>Kami kirim foto asli unit dan video kondisinya.</p></div><div class="step"><i>3</i><h3>Ambil atau COD</h3><p>Datang ke toko atau kami antar ke alamat Anda.</p></div></div></section>
+<section id="layanan"><div class="sh"><h2>Layanan lainnya</h2></div><div class="svc"><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></div><div><h3>HP baru &amp; second</h3><p>Unit resmi bergaransi, juga second pilihan yang sudah kami cek satu per satu.</p></div></div><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5a4 4 0 0 0-5 5L3.5 16.5a2 2 0 0 0 3 3l6-6a4 4 0 0 0 5-5l-2.3 2.3-2.4-.6-.6-2.4z"/></svg></div><div><h3>Servis ditunggu</h3><p>Ganti LCD, baterai, port cas, sampai HP mati total. Kerusakan ringan bisa ditunggu.</p></div></div><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/></svg></div><div><h3>Tukar tambah</h3><p>Bawa HP lama, kami taksir di tempat, sisanya tinggal tambah.</p></div></div><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20v-3M10 20v-7M15 20V9M20 20V4"/></svg></div><div><h3>Pulsa &amp; paket data</h3><p>Semua operator, token listrik, dan top up e-wallet.</p></div></div><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v4M15 3v4M6.5 7h11v4a5.5 5.5 0 0 1-11 0V7zM12 16.5V21"/></svg></div><div><h3>Aksesoris lengkap</h3><p>Casing, charger ori, TWS, powerbank, dan kabel data.</p></div></div><div class="sv"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.8-3.3 8.1-7.5 9.5-4.2-1.4-7.5-4.7-7.5-9.5V6L12 3z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg></div><div><h3>Garansi toko</h3><p>HP second bergaransi toko 30 hari. Servis bergaransi 14 hari.</p></div></div></div></section>
+<section id="kenapa"><div class="sh"><h2>Kata pelanggan</h2></div><div class="tq"><div><p>“Beli iPhone second di sini, kondisinya persis seperti di foto. Baterainya juga awet.”</p><b>Dimas, mahasiswa</b></div><div><p>“LCD HP saya pecah, ditunggu satu jam sudah beres. Harganya juga masuk akal.”</p><b>Bu Rini, pedagang</b></div><div><p>“Tukar tambah HP lama, taksirannya jujur. Admin cepat balas chat.”</p><b>Fajar, ojol</b></div></div></section>
+<section id="lokasi"><div class="sh"><h2>Lokasi kami</h2></div><div class="loc"><div class="mapbox"><svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" class="map-art" aria-label="Ilustrasi peta lokasi" role="img">
+<rect width="600" height="380" fill="#FFF0E5"/>
+<g stroke="#F5F6FA" stroke-width="14" fill="none" stroke-linecap="round">
+<path d="M-20 260 Q180 220 300 240 T640 200"/><path d="M140 -20 L210 400"/><path d="M420 -20 Q390 180 470 400"/><path d="M-20 90 L640 130"/></g>
+<g stroke="#F5F6FA" stroke-width="6" fill="none" opacity=".8"><path d="M40 -10 L90 400"/><path d="M300 -10 L320 400"/><path d="M-10 330 L620 300"/><path d="M520 -10 L560 400"/></g>
+<rect x="230" y="150" width="70" height="50" rx="6" fill="#E4E6EE" opacity=".7"/><rect x="330" y="40" width="60" height="60" rx="6" fill="#E4E6EE" opacity=".7"/>
+<circle cx="80" cy="190" r="34" fill="#8fc98f" opacity=".45"/>
+<g transform="translate(300 190)"><circle r="26" fill="#FF8A3D" opacity=".3"/><path d="M0 -6 C-14 -36 -38 -30 -38 -52 A38 38 0 0 1 38 -52 C38 -30 14 -36 0 -6Z" transform="translate(0 0) scale(.7)" fill="#1A1D29"/><circle cy="-36" r="9" fill="#F5F6FA"/></g>
+</svg></div><div class="info"><h3 style="font-size:1.4rem">Pasar Gadget</h3><p style="color:var(--muted);margin:6px 0 18px">Jl. Pahlawan No. 21, Ponorogo, Jawa Timur</p><div class="hrow"><span>Senin - Sabtu</span><b>09.00 - 21.00</b></div><div class="hrow"><span>Minggu</span><b>10.00 - 20.00</b></div><p style="margin-top:22px"><a class="btn dk" href="https://maps.google.com" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Buka Maps</a></p></div></div></section>
+</main></div>
+<footer><div class="wrap"><div class="fn">Pasar Gadget</div><div class="fr"><span>© 2026 Pasar Gadget, Ponorogo</span><span>WhatsApp 0812-3456-7890</span></div></div></footer>
+<div class="mbar"><a class="btn ol" href="tel:+6281234567890"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h3l1.5 4-2 1.3a10 10 0 0 0 4.7 4.7l1.3-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4 5.5a2 2 0 0 1 2-2z"/></svg>Telepon</a><a class="btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat WhatsApp</a></div>
+<script>(function(){var bs=document.querySelectorAll(".chips button"),cs=document.querySelectorAll(".ci");bs.forEach(function(b){b.addEventListener("click",function(){bs.forEach(function(x){x.setAttribute("aria-pressed",x===b)});var f=b.dataset.f;cs.forEach(function(c){c.hidden=!(f==="*"||c.dataset.t===f)})})})})();</script>
+<script>
+document.querySelectorAll('.burger').forEach(function(b){b.addEventListener('click',function(){var n=b.closest('.nav');var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})});
+document.querySelectorAll('.links a').forEach(function(a){a.addEventListener('click',function(){var n=a.closest('.nav');if(n)n.classList.remove('open')})});
+</script></body></html>

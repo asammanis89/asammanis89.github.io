@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wira Trans Premium | Madiun</title><meta name="description" content="Layanan mobil premium dengan sopir untuk dinas, tamu perusahaan, dan acara keluarga di Madiun Raya."><meta name="color-scheme" content="light"><meta name="theme-color" content="#EEF0EC">
+<style>@font-face{font-family:'Fraunces';src:url('../../assets/fonts/fraunces-latin-wght-normal.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}@font-face{font-family:'Fraunces';src:url('../../assets/fonts/fraunces-latin-wght-italic.woff2') format('woff2');font-weight:100 900;font-style:italic;font-display:swap}@font-face{font-family:'Instrument';src:url('../../assets/fonts/instrument-sans-latin-wght-normal.woff2') format('woff2');font-weight:400 700;font-style:normal;font-display:swap}:root{--bg:#EEF0EC;--surface:#FFFFFF;--ink:#16251E;--muted:#5D6A62;--accent:#1E3A2F;--accent-ink:#EEF0EC;--accent2:#C9A45C;--soft:#DFE5DF;--line:#D2D9D3;}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}svg{display:block}button{font:inherit;color:inherit}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+.ribbon{font:500 13px/1.45 system-ui,sans-serif;background:#1b1b1f;color:#f2f2f2;text-align:center;padding:8px 14px}
+.ribbon a{color:#fff;text-decoration:underline;text-underline-offset:2px;margin-left:6px;font-weight:600}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid currentColor;background:transparent;place-items:center;cursor:pointer;opacity:.85}
+.fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#1FAF5A;color:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.28);z-index:40}
+.fab .ico{width:28px;height:28px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.items>*,.cat>*,.svc>*,.bento>*{min-width:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:760px){.nav{position:relative}.links,.nav-cta{display:none!important}.burger{display:grid}
+.nav.open .links{display:flex!important;flex-direction:column;position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);color:var(--ink);padding:20px;border-radius:18px;gap:16px;z-index:50;box-shadow:0 24px 48px rgba(0,0,0,.2);border:1px solid var(--line)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+body{font-family:'Instrument',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:1.02rem}
+h1,h2,h3,.logo,.serif{font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-.02em;font-variation-settings:"opsz" 144}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0;gap:18px;border-bottom:1px solid var(--line)}
+.logo{font-size:1.5rem;font-style:italic}
+.links{display:flex;gap:34px;font-size:.95rem}.links a:hover{text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:.95rem;white-space:nowrap}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:end;padding:64px 0 56px}
+.hero h1{font-size:clamp(3rem,7.4vw,6.6rem);line-height:.96;letter-spacing:-.035em}
+.hero p{font-size:1.15rem;max-width:44ch;color:var(--muted);margin:28px 0 32px}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.arch{border-radius:999px 999px 28px 28px;background:var(--soft);aspect-ratio:3/4;display:grid;place-items:center;padding:30px;position:relative;overflow:hidden}
+.arch:after{content:"";position:absolute;inset:14px;border:1px solid var(--line);border-radius:999px 999px 20px 20px;pointer-events:none}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts div{padding:22px 0}.facts div+div{padding-left:28px;border-left:1px solid var(--line)}
+.facts b{display:block;font-family:'Fraunces',serif;font-weight:400;font-size:2.2rem;line-height:1.1}.facts span{color:var(--muted);font-size:.92rem}
+section{padding-top:110px}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:42px}
+h2{font-size:clamp(2.2rem,4.6vw,3.8rem);line-height:1.02;letter-spacing:-.03em}
+.sh p{color:var(--muted);max-width:46ch}
+.row{display:grid;grid-template-columns:70px 1fr 1.1fr;gap:28px;align-items:center;padding:28px 0;border-top:1px solid var(--line)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row .ic{width:52px;height:52px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--ink);display:grid;place-items:center}
+.row h3{font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.1}.row p{color:var(--muted)}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:72px}
+.feat:nth-child(even) .fa{order:2}
+.fa{background:var(--soft);border-radius:28px;aspect-ratio:5/4;display:grid;place-items:center;padding:12%}
+.fa svg{max-width:100%;max-height:100%;width:auto;height:100%}.fa .car-art,.fa .bowl-art,.fa .plate-art{width:100%;height:auto}
+.feat em{font-family:'Fraunces',serif;font-style:italic;color:var(--muted);font-size:1.1rem}
+.feat h3{font-size:clamp(2rem,3.6vw,3rem);line-height:1.05;margin:8px 0 10px}
+.feat .pr{font-family:'Fraunces',serif;font-size:1.8rem;margin:18px 0 22px}.feat .pr small{font-size:1rem;color:var(--muted)}
+.more{display:grid;grid-template-columns:1fr 1fr;gap:6px 56px}
+.mi{display:flex;align-items:baseline;gap:12px;padding:14px 0}
+.mi span{white-space:nowrap}.mi i{flex:1;border-bottom:1px dotted var(--muted);transform:translateY(-4px);opacity:.6}.mi b{font-weight:600;white-space:nowrap}
+.mi small{display:block;color:var(--muted)}
+.pull{background:var(--accent);color:var(--accent-ink);border-radius:34px;padding:72px clamp(26px,6vw,90px);position:relative}
+.pull blockquote{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.6rem,3.2vw,2.7rem);line-height:1.22;max-width:30ch;min-height:4.8em}
+.pull cite{display:block;margin-top:28px;font-style:normal;opacity:.75}
+.qnav{position:absolute;right:clamp(20px,4vw,48px);bottom:clamp(20px,4vw,48px);display:flex;gap:10px}
+.qnav button{width:48px;height:48px;border-radius:50%;border:1px solid currentColor;background:transparent;display:grid;place-items:center;cursor:pointer;color:var(--accent-ink)}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.why h3{font-size:1.4rem;margin:16px 0 6px}.why p{color:var(--muted);font-size:.96rem}.why .ico{width:28px;height:28px;stroke-width:1.4}
+.locg{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:stretch}
+.locg .hrow{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+.locg address{font-style:normal;font-family:'Fraunces',serif;font-size:1.7rem;line-height:1.25;margin:10px 0 26px}
+.mapbox{border-radius:28px;overflow:hidden;min-height:360px}.mapbox svg{width:100%;height:100%}
+.end{text-align:center;padding:120px 0 90px}.end h2{max-width:20ch;margin:0 auto 34px}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+.hero-stack{position:relative;width:100%;height:100%}.hs{position:absolute;top:50%;left:50%;width:38%}
+.hs1{transform:translate(-118%,-44%) rotate(-10deg)}.hs2{transform:translate(-50%,-50%);width:44%;z-index:2}.hs3{transform:translate(18%,-44%) rotate(10deg)}
+.hero-car{width:110%}.hero-food{display:flex;flex-direction:column;align-items:center;width:100%}.hf1{width:56%}.hf2{width:96%;margin-top:-10%}
+@media(max-width:900px){.hero,.sh,.feat,.locg{grid-template-columns:1fr}.feat:nth-child(even) .fa{order:0}.hero{gap:36px;padding-top:40px}.arch{max-width:360px;width:100%;justify-self:center}
+.why{grid-template-columns:1fr 1fr}.more{grid-template-columns:1fr}.feat{gap:26px;margin-bottom:56px}}
+@media(max-width:600px){.row{grid-template-columns:52px 1fr;gap:14px 18px}.row p{grid-column:2}.row .ic{width:44px;height:44px}.facts{grid-template-columns:1fr}.facts div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+section{padding-top:76px}.why{grid-template-columns:1fr}.pull{padding:44px 24px 96px;border-radius:24px}.end{padding:80px 0 60px}.mi span{white-space:normal}}
+body{background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2260%22%20height%3D%2230%22%20viewBox%3D%220%200%2060%2030%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23C9A45C%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%221.1%22%3E%3Cpath%20d%3D%22M0%2030%20A30%2030%200%200%201%2060%2030%22/%3E%3Cpath%20d%3D%22M10%2030%20A20%2020%200%200%201%2050%2030%22/%3E%3Cpath%20d%3D%22M20%2030%20A10%2010%200%200%201%2040%2030%22/%3E%3Cpath%20d%3D%22M-30%200%20A30%2030%200%200%201%2030%200%22/%3E%3Cpath%20d%3D%22M-20%200%20A20%2020%200%200%201%2020%200%22/%3E%3Cpath%20d%3D%22M-10%200%20A10%2010%200%200%201%2010%200%22/%3E%3Cpath%20d%3D%22M30%200%20A30%2030%200%200%201%2090%200%22/%3E%3Cpath%20d%3D%22M40%200%20A20%2020%200%200%201%2080%200%22/%3E%3Cpath%20d%3D%22M50%200%20A10%2010%200%200%201%2070%200%22/%3E%3Cpath%20d%3D%22M-60%2030%20A30%2030%200%200%201%200%2030%22/%3E%3Cpath%20d%3D%22M-50%2030%20A20%2020%200%200%201%20-10%2030%22/%3E%3Cpath%20d%3D%22M-40%2030%20A10%2010%200%200%201%20-20%2030%22/%3E%3Cpath%20d%3D%22M60%2030%20A30%2030%200%200%201%20120%2030%22/%3E%3Cpath%20d%3D%22M70%2030%20A20%2020%200%200%201%20110%2030%22/%3E%3Cpath%20d%3D%22M80%2030%20A10%2010%200%200%201%20100%2030%22/%3E%3C/g%3E%3C/svg%3E");background-size:60px 30px}</style></head><body>
+<div class="ribbon">Contoh template. Nama usaha, harga, dan ulasan di halaman ini hanya ilustrasi.<a href="../../index.html" target="_top">Kembali ke katalog</a></div>
+<div class="wrap">
+<header class="nav"><a class="logo" href="#">Wira Trans Premium</a><nav class="links"><a href="#layanan">Layanan</a><a href="#produk">Armada</a><a href="#kenapa">Kenapa kami</a><a href="#lokasi">Lokasi</a></nav><a class="btn nav-cta" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan" target="_blank" rel="noopener noreferrer">Hubungi kami</a><button class="burger" aria-label="Buka menu" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></header>
+<main>
+<div class="hero"><div><h1>Perjalanan tenang dengan sopir yang paham jalan.</h1><p>Layanan mobil premium dengan sopir untuk dinas, tamu perusahaan, dan acara keluarga di Madiun Raya.</p><div class="acts"><a class="btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat WhatsApp</a><a class="btn line" href="#produk">Lihat pilihan</a></div></div>
+<div class="arch"><div class="hero-car"><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="132" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M18 108 Q16 80 40 74 L70 70 L98 34 Q104 28 116 28 L232 28 Q246 28 254 38 L276 72 L292 78 Q306 84 306 104 L306 112 L18 112Z" fill="#1E3A2F" stroke="#ffffff20" stroke-width="2"/>
+<path d="M82 70 L104 38 Q108 34 116 34 L168 34 L168 70Z" fill="#1d2733" opacity=".88"/><path d="M176 70 L176 34 L230 34 Q240 34 246 42 L264 70Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="86" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="88" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 104 H296" stroke="#ffffff20" stroke-width="2"/>
+<circle cx="84" cy="112" r="21" fill="#1b1f24"/><circle cx="84" cy="112" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="112" r="21" fill="#1b1f24"/><circle cx="246" cy="112" r="9" fill="#c9ced6"/>
+</svg></div></div></div>
+<div class="facts"><div><b>25</b><span>unit armada</span></div><div><b>3.000+</b><span>perjalanan</span></div><div><b>24 jam</b><span>siap dihubungi</span></div></div>
+<section id="layanan"><div class="sh"><h2>Layanan kami</h2><p>Dari Madiun untuk Madiun Raya. Semua layanan bisa dipesan lewat WhatsApp, tanpa perlu datang lebih dulu.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L19 4M16 7l2.5 2.5M13.5 9.5l2 2"/></svg></div><h3>Lepas kunci</h3><p>Sewa harian kalau Anda ingin menyetir sendiri. Syaratnya KTP, SIM A, dan jaminan.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.2"/><path d="M9.8 12H3.5M14.2 12h6.3M12 14.2v6.3"/></svg></div><h3>Dengan sopir</h3><p>Sopir hafal rute Jawa Timur dan Jawa Tengah. Ada paket all in termasuk BBM.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4L3 11l6.5 2.5L12 20l3-5.5L21 4z"/><path d="M9.5 13.5L21 4"/></svg></div><h3>Antar jemput bandara</h3><p>Juanda, Adi Soemarmo, dan stasiun kereta. Dijemput tepat waktu.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></div><h3>Paket wisata</h3><p>Telaga Sarangan, Ponorogo, Jogja, sampai Bromo. Tinggal pilih tujuan.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14.5" r="6"/><path d="M9.5 4.5L12 3l2.5 1.5L12 8.5z"/></svg></div><h3>Mobil pengantin</h3><p>Lengkap dengan hiasan bunga untuk hari bahagia Anda.</p></div><div class="row"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 12.5h18"/></svg></div><h3>Kontrak bulanan</h3><p>Harga khusus untuk kantor, instansi, dan proyek.</p></div></section>
+<section id="produk"><div class="sh"><h2>Pilih armada</h2><p>Harga per 24 jam untuk lepas kunci. Paket dengan sopir dan BBM bisa ditanyakan ke admin.</p></div><div class="feat"><div class="fa"><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="132" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M18 108 Q16 80 40 74 L70 70 L98 34 Q104 28 116 28 L232 28 Q246 28 254 38 L276 72 L292 78 Q306 84 306 104 L306 112 L18 112Z" fill="#C8CDD3" stroke="#00000030" stroke-width="2"/>
+<path d="M82 70 L104 38 Q108 34 116 34 L168 34 L168 70Z" fill="#1d2733" opacity=".88"/><path d="M176 70 L176 34 L230 34 Q240 34 246 42 L264 70Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="86" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="88" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 104 H296" stroke="#00000030" stroke-width="2"/>
+<circle cx="84" cy="112" r="21" fill="#1b1f24"/><circle cx="84" cy="112" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="112" r="21" fill="#1b1f24"/><circle cx="246" cy="112" r="9" fill="#c9ced6"/>
+</svg></div><div><em>MPV</em><h3>Toyota Avanza</h3><p style="color:var(--muted)">7 kursi, manual/matic</p>
+<div class="pr">Rp350.000<small>/hari</small></div><a class="btn line" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan%20Toyota%20Avanza" target="_blank" rel="noopener noreferrer">Pesan</a></div></div><div class="feat"><div class="fa"><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="132" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M18 108 Q16 80 40 74 L70 70 L98 34 Q104 28 116 28 L232 28 Q246 28 254 38 L276 72 L292 78 Q306 84 306 104 L306 112 L18 112Z" fill="#F4F4F2" stroke="#00000030" stroke-width="2"/>
+<path d="M82 70 L104 38 Q108 34 116 34 L168 34 L168 70Z" fill="#1d2733" opacity=".88"/><path d="M176 70 L176 34 L230 34 Q240 34 246 42 L264 70Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="86" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="88" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 104 H296" stroke="#00000030" stroke-width="2"/>
+<circle cx="84" cy="112" r="21" fill="#1b1f24"/><circle cx="84" cy="112" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="112" r="21" fill="#1b1f24"/><circle cx="246" cy="112" r="9" fill="#c9ced6"/>
+</svg></div><div><em>MPV</em><h3>Mitsubishi Xpander</h3><p style="color:var(--muted)">7 kursi, matic</p>
+<div class="pr">Rp450.000<small>/hari</small></div><a class="btn line" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan%20Mitsubishi%20Xpander" target="_blank" rel="noopener noreferrer">Pesan</a></div></div><div class="feat"><div class="fa"><svg viewBox="0 0 324 148" class="car-art" aria-hidden="true">
+<ellipse cx="162" cy="132" rx="146" ry="9" fill="#000" opacity=".12"/>
+<path d="M18 108 Q16 80 40 74 L70 70 L98 34 Q104 28 116 28 L232 28 Q246 28 254 38 L276 72 L292 78 Q306 84 306 104 L306 112 L18 112Z" fill="#2C2F36" stroke="#ffffff20" stroke-width="2"/>
+<path d="M82 70 L104 38 Q108 34 116 34 L168 34 L168 70Z" fill="#1d2733" opacity=".88"/><path d="M176 70 L176 34 L230 34 Q240 34 246 42 L264 70Z" fill="#1d2733" opacity=".88"/>
+<rect x="286" y="86" width="16" height="8" rx="3" fill="#ffe58a"/>
+<rect x="18" y="88" width="10" height="7" rx="2" fill="#ff5b4a"/>
+<path d="M30 104 H296" stroke="#ffffff20" stroke-width="2"/>
+<circle cx="84" cy="112" r="21" fill="#1b1f24"/><circle cx="84" cy="112" r="9" fill="#c9ced6"/>
+<circle cx="246" cy="112" r="21" fill="#1b1f24"/><circle cx="246" cy="112" r="9" fill="#c9ced6"/>
+</svg></div><div><em>Premium</em><h3>Toyota Innova Reborn</h3><p style="color:var(--muted)">7 kursi, diesel</p>
+<div class="pr">Rp600.000<small>/hari</small></div><a class="btn line" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan%20Toyota%20Innova%20Reborn" target="_blank" rel="noopener noreferrer">Pesan</a></div></div><div class="more"><div class="mi"><span>Honda Brio<small>5 kursi, irit BBM</small></span><i></i><b>Rp300.000/hari</b></div><div class="mi"><span>Toyota Fortuner<small>7 kursi, 4x2 diesel</small></span><i></i><b>Rp1.200.000/hari</b></div><div class="mi"><span>Toyota Hiace Commuter<small>15 kursi, dengan sopir</small></span><i></i><b>Rp1.100.000/hari</b></div></div></section>
+<section id="kenapa"><div class="pull"><blockquote id="qt">“Sewa Innova dengan sopir untuk mudik. Sopirnya sabar dan hafal jalan tikus.”</blockquote><cite id="qc">Pak Hendra, karyawan swasta</cite>
+<div class="qnav"><button type="button" data-d="-1" aria-label="Ulasan sebelumnya"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" data-d="1" aria-label="Ulasan berikutnya"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+<div class="why" style="margin-top:72px"><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><h3>Unit tahun muda</h3><p>Semua armada rutin servis di bengkel resmi.</p></div><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg><h3>Bersih dan wangi</h3><p>Mobil dicuci dan dicek sebelum diserahkan ke Anda.</p></div><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><h3>Diantar ke rumah</h3><p>Mobil bisa diantar dan dijemput di alamat Anda.</p></div><div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><h3>Admin 24 jam</h3><p>Butuh mendadak tengah malam? Tetap kami layani.</p></div></div></section>
+<section id="lokasi"><div class="locg"><div><h2>Kunjungi kami</h2><address>Jl. Pahlawan No. 21, Madiun, Jawa Timur</address><div class="hrow"><span>Setiap hari</span><b>24 jam</b></div><div class="hrow"><span>Kantor</span><b>07.00 - 21.00</b></div><p style="margin-top:28px"><a class="btn line" href="https://maps.google.com" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>Petunjuk arah</a></p></div><div class="mapbox"><svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" class="map-art" aria-label="Ilustrasi peta lokasi" role="img">
+<rect width="600" height="380" fill="#DFE5DF"/>
+<g stroke="#FFFFFF" stroke-width="14" fill="none" stroke-linecap="round">
+<path d="M-20 260 Q180 220 300 240 T640 200"/><path d="M140 -20 L210 400"/><path d="M420 -20 Q390 180 470 400"/><path d="M-20 90 L640 130"/></g>
+<g stroke="#FFFFFF" stroke-width="6" fill="none" opacity=".8"><path d="M40 -10 L90 400"/><path d="M300 -10 L320 400"/><path d="M-10 330 L620 300"/><path d="M520 -10 L560 400"/></g>
+<rect x="230" y="150" width="70" height="50" rx="6" fill="#D2D9D3" opacity=".7"/><rect x="330" y="40" width="60" height="60" rx="6" fill="#D2D9D3" opacity=".7"/>
+<circle cx="80" cy="190" r="34" fill="#8fc98f" opacity=".45"/>
+<g transform="translate(300 190)"><circle r="26" fill="#1E3A2F" opacity=".3"/><path d="M0 -6 C-14 -36 -38 -30 -38 -52 A38 38 0 0 1 38 -52 C38 -30 14 -36 0 -6Z" transform="translate(0 0) scale(.7)" fill="#16251E"/><circle cy="-36" r="9" fill="#FFFFFF"/></g>
+</svg></div></div></section>
+<div class="end"><h2>Mobil siap di depan rumah Anda.</h2><a class="btn" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat WhatsApp</a></div>
+</main><footer><span>© 2026 Wira Trans Premium</span><span>Jl. Pahlawan No. 21, Madiun, Jawa Timur</span></footer></div>
+<a class="fab" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20ketersediaan" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg></a>
+<script>(function(){var q=[["Sewa Innova dengan sopir untuk mudik. Sopirnya sabar dan hafal jalan tikus.", "Pak Hendra, karyawan swasta"], ["Mobil pengantinnya cantik, hiasannya rapi. Datang sebelum jam yang dijanjikan.", "Mbak Laras, pengantin"], ["Hiace untuk rombongan kampus, AC dingin dan harganya bersaing.", "Rizky, panitia study tour"]],i=0,t=document.getElementById("qt"),c=document.getElementById("qc");
+document.querySelectorAll(".qnav button").forEach(function(b){b.addEventListener("click",function(){i=(i+ +b.dataset.d+q.length)%q.length;t.textContent="\u201c"+q[i][0]+"\u201d";c.textContent=q[i][1]})})})();</script>
+<script>
+document.querySelectorAll('.burger').forEach(function(b){b.addEventListener('click',function(){var n=b.closest('.nav');var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)})});
+document.querySelectorAll('.links a').forEach(function(a){a.addEventListener('click',function(){var n=a.closest('.nav');if(n)n.classList.remove('open')})});
+</script></body></html>
