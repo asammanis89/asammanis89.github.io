@@ -45,7 +45,7 @@ function swatches(t){var cs=[t.accent].concat(P.filter(function(c){return c.toLo
 cl.innerHTML=cs.map(function(c){return '<button type="button" class="sw" style="--c:'+c+'" data-c="'+c+'" aria-label="Warna '+c+'"></button>'}).join("")+'<label class="sw cu" aria-label="Pilih warna sendiri"><input type="color" value="'+t.accent+'"></label>';
 cl.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){setA(b.dataset.c)})});cl.querySelector("input").addEventListener("input",function(ev){setA(ev.target.value)})}
 function load(){var h=location.hash.slice(1),n=L.findIndex(function(t){return t.slug===h});if(n!==i&&acc&&n>=0&&L[n].slug!==h)acc=null;i=n<0?0:n;var t=L[i];
-fr.src="templates/"+t.slug+"/index.html?v=1794761230"+(acc?"&accent="+acc.slice(1):"");document.getElementById("nm").textContent=t.name;document.getElementById("sb").textContent=t.catLabel+", gaya "+t.style+" ("+(i+1)+"/"+L.length+")";
+fr.src="templates/"+t.slug+"/index.html?v=1794761397"+(acc?"&accent="+acc.slice(1):"");document.getElementById("nm").textContent=t.name;document.getElementById("sb").textContent=t.catLabel+", gaya "+t.style+" ("+(i+1)+"/"+L.length+")";
 document.title=t.name+" | Demo template";document.getElementById("adm").href="admin.html?t="+t.slug;swatches(t);cl.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.c.toLowerCase()===(acc||t.accent).toLowerCase())});wa()}
 fr.addEventListener("load",function(){if(acc)try{fr.contentWindow.postMessage({accent:acc},"*")}catch(e){}});
 function go(d){acc=null;location.hash=L[(i+d+L.length)%L.length].slug}
