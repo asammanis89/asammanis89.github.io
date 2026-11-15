@@ -37,8 +37,6 @@ img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:non
 .btn:active{transform:scale(.98)}
 .btn-a{background:var(--accent);color:var(--ai);box-shadow:0 10px 28px -12px var(--aglow)}.btn-a:hover{background:var(--a700);color:#fff}
 .btn-d{background:var(--ink);color:var(--bg)}.btn-o{background:transparent;box-shadow:inset 0 0 0 1px var(--line);color:var(--ink)}.btn-o:hover{box-shadow:inset 0 0 0 1px var(--ink)}
-.dot{position:relative;width:9px;height:9px;border-radius:50%;background:#22C55E;flex:none}.dot:after{content:"";position:absolute;inset:0;border-radius:50%;background:#22C55E;animation:pulse 2s ease-out infinite}
-@keyframes pulse{to{transform:scale(2.8);opacity:0}}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:1.05rem}
 .logo i{overflow:hidden;width:36px;height:36px;border-radius:11px;background:var(--accent);color:var(--ai);display:grid;place-items:center;font-style:normal;font-size:.8rem;font-weight:800;letter-spacing:0}
 .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:transparent;place-items:center;cursor:pointer}
@@ -68,7 +66,6 @@ background:color-mix(in oklab,var(--accent) calc(100% - var(--k)*28%),#334155)}.
 .sc{min-width:200px}.sc-h{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.8rem;color:var(--muted);font-weight:600}
 .sc-h em{font-style:normal;color:#16A34A;background:#16a34a1a;padding:2px 8px;border-radius:999px;font-size:.72rem}
 .sc>b{display:block;font-size:2rem;letter-spacing:-.04em;line-height:1.1;margin:6px 0 10px;font-weight:700}.bars{width:100%;height:44px}
-.live{display:flex;align-items:center;gap:12px}.live small{display:block;font-size:.74rem;color:var(--muted);font-weight:600;line-height:1.2}.live b{font-size:.95rem}
 .pc{display:flex;flex-direction:column;min-width:0}.pc[hidden]{display:none}
 .pc-img{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--a100)}.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .pc:hover .pc-img img{transform:scale(1.04)}
@@ -181,7 +178,7 @@ body :not(.nav,.head,.mnav,header,.island,.bar){-webkit-backdrop-filter:none!imp
 <div class="wrap"><header class="nav "><a class="logo" href="#"><i><svg class="lgs" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 12a.5.5 0 1 1-1 0 2.5 2.5 0 0 1 5 0 4.5 4.5 0 0 1-9 0 6.5 6.5 0 0 1 13 0 8.5 8.5 0 0 1-17 0"/></svg></i><b data-biz="name">Vortex Phone</b></a>
 <nav class="links"><a href="#layanan">Layanan</a><a href="#produk">Produk</a><a href="#ulasan">Ulasan</a><a href="#lokasi">Lokasi</a></nav><a class="btn btn-a nav-cta" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat admin</a>
 <button class="burger" aria-label="Buka menu" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></header>
-<main><section class="hero"><div><span class="pill hx" style="--i:0"><span class="dot"></span>Teknisi standby: 3 orang</span>
+<main><section class="hero"><div>
 <h1 class="hx" style="--i:1">Flagship impian, harga lebih masuk akal.</h1><p class="lead hx" style="--i:2">iPhone dan Samsung seri atas, baru dan second, dicek teliti dan bergaransi.</p>
 <div class="acts hx" style="--i:3"><a class="btn btn-a" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat WhatsApp</a><a class="btn btn-o" href="#produk">Lihat produk</a></div></div>
 <div class="orbit hx" style="--i:4"><div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div><div class="core"><img class="" src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=700&q=72&h=700" srcset="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=560&q=72&h=560 560w, https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=700&q=72&h=700 700w" sizes="(max-width: 600px) 92vw, 50vw" alt="Vortex Phone" fetchpriority="high" decoding="async"></div><span class="spec s1 flt">Garansi <b>30 hari</b></span><span class="spec s2 flt">Cek <b>30 titik</b></span><span class="spec s3 flt">Servis <b>1 jam</b></span><span class="spec s4 flt">COD <b>dalam kota</b></span></div>
