@@ -49,6 +49,7 @@ background:color-mix(in oklab,var(--accent) calc(100% - var(--k)*28%),#334155)}.
 .tq{display:flex;flex-direction:column;gap:16px}.tq blockquote{font-size:1.02rem;line-height:1.6}.tq figcaption{display:flex;align-items:center;gap:12px;margin-top:auto}
 .tq figcaption i{margin:0;border:0}.tq figcaption b{display:block;font-size:.92rem;line-height:1.2}.tq figcaption small{color:var(--muted)}
 .ribbon{font:500 12.5px/1.4 system-ui,sans-serif;background:#0b0b0c;color:#e8e8e8;text-align:center;padding:7px 12px;position:relative;z-index:60}.ribbon a{color:#fff;text-decoration:underline;margin-left:6px}
+.emb .ribbon,.emb .fab{display:none}html.emb{scrollbar-width:none}html.emb::-webkit-scrollbar{display:none}
 .fab{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:#1FAF5A;color:#fff;display:grid;place-items:center;box-shadow:0 12px 28px rgba(0,0,0,.3);z-index:50}.fab .ico{width:26px;height:26px}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
 .sec{padding-top:110px}.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}.sh p{color:var(--muted);max-width:46ch}
@@ -133,7 +134,7 @@ footer .logo b{color:#fff}.copy{border-top:1px solid rgba(255,255,255,.1);text-a
 <div><h4>Belanja</h4><a href="#produk">Baru</a><a href="#produk">Second</a><a href="#produk">Aksesoris</a></div><div><h4>Kontak</h4><p>Jl. Pahlawan No. 21, Ponorogo</p><p>WhatsApp 0812-3456-7890</p></div></div><div class="copy">© 2026 Pasar Gadget</div></footer>
 <div class="mbar"><a class="btn btn-o" href="tel:+6281234567890" style="background:#fff"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h3l1.5 4-2 1.3a10 10 0 0 0 4.7 4.7l1.3-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4 5.5a2 2 0 0 1 2-2z"/></svg>Telepon</a><a class="btn btn-a" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20tanya%20stok" target="_blank" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A7.8 7.8 0 1 1 8.6 18.6l-4.1.9z"/><path d="M9.2 9.3c.3 2.4 2.1 4.4 4.6 5l1-1.2-1.6-1-.8.6a3.6 3.6 0 0 1-1.8-1.8l.6-.8-1-1.6-1 .8z"/></svg>Chat WhatsApp</a></div>
 <script>
-(function(){var R=document.documentElement;
+(function(){var R=document.documentElement;try{if(window.self!==window.top)R.classList.add('emb')}catch(e){R.classList.add('emb')}
 function lum(h){h=h.replace('#','');var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);return (0.299*r+0.587*g+0.114*b)/255}
 window.setAccent=function(c){if(!/^#?[0-9a-f]{6}$/i.test(c))return;if(c[0]!=='#')c='#'+c;R.style.setProperty('--accent',c);R.style.setProperty('--ai',lum(c)>.62?'#0b0b0c':'#ffffff')};
 try{var q=new URLSearchParams(location.search).get('accent');if(q)setAccent(q)}catch(e){}
