@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
-<title>Demo template | Ardha Web & VPS</title><style>@font-face{font-family:'Schibsted Grotesk';src:url('assets/fonts/schibsted-grotesk-latin-wght-normal.woff2') format('woff2');font-weight:400 900;font-style:normal;font-display:swap}
+<title>Demo template | Ardha Web & VPS</title><meta property="og:type" content="website"><meta property="og:title" content="Contoh website untuk usaha Anda"><meta property="og:description" content="Lihat langsung tampilan website konter HP, rental mobil, dan kuliner. Warna bisa dipilih, ada halaman admin untuk ubah harga dan foto sendiri."><meta property="og:image" content="https://asammanis89.github.io/template-umkm/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><style>@font-face{font-family:'Schibsted Grotesk';src:url('assets/fonts/schibsted-grotesk-latin-wght-normal.woff2') format('woff2');font-weight:400 900;font-style:normal;font-display:swap}
 *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
 body{font-family:'Schibsted Grotesk',system-ui,sans-serif;background:#060913;color:#EAF0FF;display:flex;flex-direction:column;overflow:hidden}
 a{color:inherit;text-decoration:none}button,input{font:inherit;color:inherit;cursor:pointer}
@@ -51,13 +51,14 @@ function fit(){var s=S[v],pad=v==="d"?0:24,aw=st.clientWidth-(innerWidth<760?20:
 if(v==="d"){k=Math.min(1,aw/w);h=ah/k}else{h=s[1]+pad;k=Math.min(1,aw/w,ah/h)}dv.style.width=w+"px";dv.style.height=h+"px";dv.style.transform="scale("+k+")"}
 function view(x){v=x;dv.className="dev "+x;document.querySelectorAll(".seg button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===x)});fit()}
 function setA(c){acc=c;try{fr.contentWindow.postMessage({accent:c},"*")}catch(e){}cl.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.c.toLowerCase()===c.toLowerCase())});wa()}
-function op(){var t=L[i];document.getElementById("op").href="templates/"+t.slug+"/index.html"+(acc&&acc.toLowerCase()!==t.accent.toLowerCase()?"?accent="+acc.slice(1):"")}
+var QV=(new URLSearchParams(location.search).get("nama")||"").trim().slice(0,40),QN=QV?"&nama="+encodeURIComponent(QV):"";
+function op(){var t=L[i];document.getElementById("op").href="templates/"+t.slug+"/index.html?v=1"+(acc&&acc.toLowerCase()!==t.accent.toLowerCase()?"&accent="+acc.slice(1):"")+QN}
 function wa(){op();var t=L[i];document.getElementById("wa").href="https://wa.me/"+W+"?text="+encodeURIComponent("Halo Ardha, saya tertarik template website "+t.name+" (gaya "+t.style+", warna "+(acc||t.accent).toUpperCase()+").")}
 function swatches(t){var cs=[t.accent].concat(P.filter(function(c){return c.toLowerCase()!==t.accent.toLowerCase()}).slice(0,4));
 cl.innerHTML=cs.map(function(c){return '<button type="button" class="sw" style="--c:'+c+'" data-c="'+c+'" aria-label="Warna '+c+'"></button>'}).join("")+'<label class="sw cu" aria-label="Pilih warna sendiri"><input type="color" value="'+t.accent+'"></label>';
 cl.querySelectorAll("button").forEach(function(b){b.addEventListener("click",function(){setA(b.dataset.c)})});cl.querySelector("input").addEventListener("input",function(ev){setA(ev.target.value)})}
 function load(){var h=location.hash.slice(1),n=L.findIndex(function(t){return t.slug===h});if(n!==i&&acc&&n>=0&&L[n].slug!==h)acc=null;i=n<0?0:n;var t=L[i];
-fr.src="templates/"+t.slug+"/index.html?v=1794837707"+(acc?"&accent="+acc.slice(1):"");document.getElementById("nm").textContent=t.name;document.getElementById("sb").textContent=t.catLabel+", gaya "+t.style+" ("+(i+1)+"/"+L.length+")";
+fr.src="templates/"+t.slug+"/index.html?v=1794838020"+(acc?"&accent="+acc.slice(1):"")+QN;document.getElementById("nm").textContent=QV||t.name;document.getElementById("sb").textContent=t.catLabel+", gaya "+t.style+" ("+(i+1)+"/"+L.length+")";
 document.title=t.name+" | Demo template";document.getElementById("adm").href="admin.html?t="+t.slug;op();swatches(t);cl.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.c.toLowerCase()===(acc||t.accent).toLowerCase())});wa()}
 fr.addEventListener("load",function(){if(acc)try{fr.contentWindow.postMessage({accent:acc},"*")}catch(e){}});
 function go(d){acc=null;location.hash=L[(i+d+L.length)%L.length].slug}
