@@ -260,15 +260,20 @@ function openD(it){var f=$('#itf');$('#dt').textContent=it?'Ubah produk':'Tambah
 // ---------- spesifikasi produk sesuai jenis usaha ----------
 var SPEC={hp:{tag:'Kondisi',f:[['brand','Merek','list',['Samsung','Apple','Xiaomi','OPPO','vivo','realme','Infinix','Tecno','POCO']],['ram','RAM','sel',[2,3,4,6,8,12,16],' GB'],['rom','Memori internal','sel',[32,64,128,256,512,1024],' GB']]},
  rental:{tag:'Tipe mobil',f:[['seat','Jumlah kursi','sel',[4,5,6,7,8,12,15]],['trans','Transmisi','sel',['Manual','Matic','Manual & Matic']],['drv','Layanan','sel',['Lepas kunci','Dengan sopir','Bisa keduanya']]]},
- kuliner:{tag:'Kategori',f:[['sub','Jenis menu','list',['Kopi','Non-kopi','Teh','Jus','Mie','Nasi','Sate','Lauk','Camilan']]]}};
+ kuliner:{tag:'Kategori',f:[['sub','Jenis menu','list',['Kopi','Non-kopi','Teh','Jus','Mie','Nasi','Sate','Lauk','Camilan']]]},
+ umroh:{tag:'Jenis paket',f:[['dur','Durasi (hari)','num'],['month','Bulan berangkat','month'],['air','Maskapai','list',['Saudia','Garuda Indonesia','Lion Air']],['hotel','Hotel','list',[]],['seat','Sisa kursi','num']]},
+ wo:{tag:'Jenis',f:[['kind','Jenis acara','sel',['Akad','Resepsi','Lengkap','Catering','Dekorasi']],['cap','Kapasitas tamu','num'],['pp','Harga per orang (catering)','num']]},
+ kos:{tag:'Tipe kamar',f:[['type','Tipe kamar','sel',['Standar','AC','Pasutri']],['gender','Khusus','sel',['Putra','Putri','Campur']],['free','Kamar kosong','num'],['night','Harga per malam','num']]},
+ bengkel:{tag:'Kendaraan',f:[['veh','Jenis kendaraan','sel',['Motor','Mobil']],['dur','Perkiraan durasi','list',['±15 menit','±30 menit','±1 jam','±2 jam']],['min','Harga mulai','num'],['max','Harga sampai','num']]}};
 function catOf(){return DB[slug].cat||''}
-function specTxt(it){var a=it.a||{},c=catOf();if(c==='hp')return [a.brand,a.ram&&a.rom?a.ram+'/'+(a.rom>=1024?'1 TB':a.rom+' GB'):''].filter(Boolean).join(' · ');if(c==='rental')return [a.seat?a.seat+' kursi':'',a.trans,a.drv].filter(Boolean).join(' · ');return a.sub||''}
+function specTxt(it){var a=it.a||{},c=catOf();if(c==='hp')return [a.brand,a.ram&&a.rom?a.ram+'/'+(a.rom>=1024?'1 TB':a.rom+' GB'):''].filter(Boolean).join(' · ');if(c==='rental')return [a.seat?a.seat+' kursi':'',a.trans,a.drv].filter(Boolean).join(' · ');if(c==='umroh')return [a.dur?a.dur+' hari':'',a.seat!=null?a.seat+' kursi':''].filter(Boolean).join(' · ');if(c==='wo')return a.kind||'';if(c==='kos')return [a.type,a.gender,a.free!=null?a.free+' kosong':''].filter(Boolean).join(' · ');if(c==='bengkel')return [a.veh,a.dur].filter(Boolean).join(' · ');return a.sub||''}
 function specForm(a){a=a||{};var c=SPEC[catOf()];$('#tagl').textContent=c?c.tag:'Kategori';if(!c){$('#specf').innerHTML='';return}
  $('#specf').innerHTML=c.f.map(function(f){var k=f[0],v=a[k]==null?'':String(a[k]);
+  if(f[2]==='num'||f[2]==='month')return '<label class="fld"><span>'+f[1]+'</span><input type="'+(f[2]==='num'?'number':'month')+'" min="0" name="sp_'+k+'" value="'+esc(v)+'"></label>';
   if(f[2]==='sel')return '<label class="fld"><span>'+f[1]+'</span><select name="sp_'+k+'"><option value="">Pilih</option>'+f[3].map(function(o){var lab=k==='rom'&&o>=1024?'1 TB':o+(f[4]||'');return '<option value="'+o+'"'+(String(o)===v?' selected':'')+'>'+lab+'</option>'}).join('')+'</select></label>';
   var seen=[];D.items.forEach(function(x){var y=x.a&&x.a[k];if(y&&seen.indexOf(y)<0)seen.push(y)});f[3].forEach(function(y){if(seen.indexOf(y)<0)seen.push(y)});
   return '<label class="fld"><span>'+f[1]+'</span><input name="sp_'+k+'" value="'+esc(v)+'" list="dl_'+k+'" placeholder="Pilih atau ketik"><datalist id="dl_'+k+'">'+seen.map(function(y){return '<option value="'+esc(y)+'">'}).join('')+'</datalist></label>'}).join('')}
-function readSpec(){var a={},c=SPEC[catOf()];if(!c)return a;c.f.forEach(function(f){var el=$('#itf')['sp_'+f[0]];if(!el)return;var v=el.value.trim();if(v)a[f[0]]=f[2]==='sel'&&!isNaN(v)?Number(v):v});return a}
+function readSpec(){var a={},c=SPEC[catOf()],o=edit>=0&&D.items[edit]&&D.items[edit].a;if(o&&typeof o==='object')for(var k in o){if(typeof o[k]==='object')a[k]=o[k]}if(!c)return a;c.f.forEach(function(f){var el=$('#itf')['sp_'+f[0]];if(!el)return;var v=el.value.trim();if(v)a[f[0]]=(f[2]==='sel'||f[2]==='num')&&!isNaN(v)?Number(v):v});return a}
 // ---------- foto produk: galeri, kamera, seret, tempel, link/Drive ----------
 var pick=$('#pick');
 function msg(t,c){var m=$('#pmsg');m.textContent=t;m.className='pmsg'+(c?' '+c:'')}
