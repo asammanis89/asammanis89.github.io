@@ -60,7 +60,7 @@ cl.querySelectorAll("button").forEach(function(b){b.addEventListener("click",fun
 function sbt(){var t=L[i],en=window.LANG&&LANG()==="en";document.getElementById("sb").textContent=(en?CATL(t.catLabel)+", "+STY(t.style)+" style":t.catLabel+", gaya "+t.style)+" ("+(i+1)+"/"+L.length+")"}
 window.__vload=function(){sbt();wa()};
 function load(){var h=location.hash.slice(1),n=L.findIndex(function(t){return t.slug===h});if(n!==i&&acc&&n>=0&&L[n].slug!==h)acc=null;i=n<0?0:n;var t=L[i];
-fr.src="templates/"+t.slug+"/index.html?v=1794892908"+(acc?"&accent="+acc.slice(1):"")+QN;document.getElementById("nm").textContent=QV||t.name;sbt();
+fr.src="templates/"+t.slug+"/index.html?v=1794892942"+(acc?"&accent="+acc.slice(1):"")+QN;document.getElementById("nm").textContent=QV||t.name;sbt();
 document.title=t.name+" | Demo template";document.getElementById("adm").href="admin.html?t="+t.slug;op();swatches(t);cl.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.c.toLowerCase()===(acc||t.accent).toLowerCase())});wa()}
 fr.addEventListener("load",function(){if(acc)try{fr.contentWindow.postMessage({accent:acc},"*")}catch(e){}});
 function go(d){acc=null;location.hash=L[(i+d+L.length)%L.length].slug}
@@ -77,5 +77,5 @@ window.setLang=function(l,save){l=l==='en'?'en':'id';R.lang=l;walk(document.body
  document.querySelectorAll('.lang').forEach(function(b){b.dataset.lang=l;b.setAttribute('aria-label',l==='en'?'Ganti ke Bahasa Indonesia':'Switch to English')});
  if(save)try{localStorage.setItem('lang',l)}catch(e){}document.dispatchEvent(new Event('langchange'))};
 document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.lang');if(b)setLang(LANG()==='en'?'id':'en',1)});
-var s='id';try{s=localStorage.getItem('lang')||'id'}catch(e){}if(s==='en')setLang('en')})();
+var s='id';try{var q=new URLSearchParams(location.search).get('lang');s=q==='en'||q==='id'?q:(localStorage.getItem('lang')||'id')}catch(e){}if(s==='en')setLang('en')})();
 ;if(LANG()==="en")__vload();document.addEventListener("langchange",function(){__vload()});</script></body></html>
