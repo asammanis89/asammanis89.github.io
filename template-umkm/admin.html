@@ -211,7 +211,7 @@ html[data-theme=light] .side{background:#fff}html[data-theme=light] .btn.r{backg
 <div style="display:flex;gap:8px;margin-top:8px"><button class="btn a" type="submit">Simpan</button><button class="btn g" type="button" data-x>Batal</button></div></form></div>
 <div class="toast" id="toast">Tersimpan</div>
 <script>(function(){function hide(f){var t=f.querySelector('.ch-tip');if(t)t.hidden=true;f.querySelectorAll('.ch-act').forEach(function(x){x.classList.remove('ch-act')})}
-function show(s){var f=s.closest('.ch'),t=f.querySelector('.ch-tip');hide(f);s.classList.add('ch-act');t.innerHTML='<b>'+s.dataset.v+'</b>'+s.dataset.l;t.hidden=false;
+function show(s){var f=s.closest('.ch'),t=f.querySelector('.ch-tip');hide(f);s.classList.add('ch-act');t.textContent='';var tb=document.createElement('b');tb.textContent=s.dataset.v;t.append(tb,s.dataset.l||'');t.hidden=false;
 var fr=f.getBoundingClientRect(),sr=s.getBoundingClientRect(),x=sr.left+sr.width/2-fr.left,w=t.offsetWidth/2;x=Math.max(w,Math.min(fr.width-w,x));t.style.left=x+'px';
 t.style.top=(f.classList.contains('ch-b')?sr.top+sr.height-s.firstChild.offsetHeight-fr.top:parseFloat(s.style.getPropertyValue('--y'))/100*(fr.height-26))+'px'}
 document.addEventListener('pointerover',function(ev){var s=ev.target.closest&&ev.target.closest('.ch-hit>span');if(s&&ev.pointerType==='mouse')show(s)});
@@ -220,8 +220,8 @@ document.addEventListener('pointerdown',function(ev){var s=ev.target.closest&&ev
 (function(){
 var P=["#2563EB", "#16A34A", "#DC2626", "#F59E0B", "#7C3AED", "#0EA5E9", "#DB2777", "#111827"],q=new URLSearchParams(location.search),slug=q.get('t')||'',DB={},D=null,cur=null,edit=-1;
 var $=function(s){return document.querySelector(s)},esc=function(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
-function lum(h){h=h.replace('#','');return (0.299*parseInt(h.substr(0,2),16)+0.587*parseInt(h.substr(2,2),16)+0.114*parseInt(h.substr(4,2),16))/255}
-function paint(c){document.documentElement.style.setProperty('--accent',c);document.documentElement.style.setProperty('--ai',lum(c)>.62?'#0b0b0c':'#fff')}
+function lum(h){h=h.replace('#','');return [0,2,4].reduce(function(a,i,k){var c=parseInt(h.substr(i,2),16)/255;c=c<=.04045?c/12.92:Math.pow((c+.055)/1.055,2.4);return a+c*[.2126,.7152,.0722][k]},0)}
+function paint(c){document.documentElement.style.setProperty('--accent',c);document.documentElement.style.setProperty('--ai',lum(c)>.1875?'#0b0b0c':'#fff')}
 function key(){return 'tpl:'+slug}
 function save(msg){try{localStorage.setItem(key(),JSON.stringify(D))}catch(e){render();toast('Memori browser penuh. Pakai foto lewat link, atau hapus beberapa foto.');return}render();toast(msg||'Tersimpan')}
 function toast(m,undo){var t=$('#toast');t.textContent=m;t.classList.toggle('act',!!undo);if(undo){var b=document.createElement('button');b.type='button';b.textContent='Batalkan';b.onclick=function(){undo();t.classList.remove('on','act')};t.appendChild(b)}t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('on','act')},undo?6000:1800)}
