@@ -47,7 +47,7 @@ var L=[{"slug": "hp-ruang-gawai", "name": "Ruang Gawai", "cat": "hp", "catLabel"
 var S={d:[1280,800],t:[820,1180],m:[390,844]},v=innerWidth<760?"m":"d",i=0,acc=null;
 var dv=document.getElementById("dv"),fr=document.getElementById("fr"),st=document.getElementById("st"),cl=document.getElementById("cl");
 try{var q=new URLSearchParams(location.search).get("accent");if(q&&/^[0-9a-f]{6}$/i.test(q))acc="#"+q}catch(e){}
-function fit(){var s=S[v],pad=v==="d"?0:24,aw=st.clientWidth-(innerWidth<760?20:40),ah=st.clientHeight-(innerWidth<760?20:40),w=s[0]+pad,h,k;
+function fit(){var s=S[v],pad=v==="d"?0:24,cs=getComputedStyle(st),aw=st.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight),ah=st.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom),w=s[0]+pad,h,k;
 if(v==="d"){k=Math.min(1,aw/w);h=ah/k}else{h=s[1]+pad;k=Math.min(1,aw/w,ah/h)}dv.style.width=w+"px";dv.style.height=h+"px";dv.style.transform="scale("+k+")"}
 function view(x){v=x;dv.className="dev "+x;document.querySelectorAll(".seg button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===x)});fit()}
 function setA(c){acc=c;try{fr.contentWindow.postMessage({accent:c},"*")}catch(e){}cl.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.c.toLowerCase()===c.toLowerCase())});wa()}
@@ -60,7 +60,7 @@ cl.querySelectorAll("button").forEach(function(b){b.addEventListener("click",fun
 function sbt(){var t=L[i],en=window.LANG&&LANG()==="en";document.getElementById("sb").textContent=(en?CATL(t.catLabel)+", "+STY(t.style)+" style":t.catLabel+", gaya "+t.style)+" ("+(i+1)+"/"+L.length+")"}
 window.__vload=function(){sbt();wa()};
 function load(){var h=location.hash.slice(1),n=L.findIndex(function(t){return t.slug===h});if(n!==i&&acc&&n>=0&&L[n].slug!==h)acc=null;i=n<0?0:n;var t=L[i];
-fr.src="templates/"+t.slug+"/index.html?v=1794973602"+(acc?"&accent="+acc.slice(1):"")+QN;document.getElementById("nm").textContent=QV||t.name;sbt();
+fr.src="templates/"+t.slug+"/index.html?v=1795015536"+(acc?"&accent="+acc.slice(1):"")+QN;document.getElementById("nm").textContent=QV||t.name;sbt();
 document.title=t.name+" | Demo template";document.getElementById("adm").href="admin.html?t="+t.slug;op();swatches(t);cl.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.c.toLowerCase()===(acc||t.accent).toLowerCase())});wa()}
 fr.addEventListener("load",function(){if(acc)try{fr.contentWindow.postMessage({accent:acc},"*")}catch(e){}});
 function go(d){acc=null;location.hash=L[(i+d+L.length)%L.length].slug}

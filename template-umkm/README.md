@@ -1,4 +1,4 @@
-# Katalog Template Website UMKM
+# Katalog Desain Website
 
 15 template company profile (Konter HP, Rental Mobil, Kuliner & Kafe), 5 gaya per kategori. Warna utama bisa dipilih langsung dari kartu atau halaman demo.
 
