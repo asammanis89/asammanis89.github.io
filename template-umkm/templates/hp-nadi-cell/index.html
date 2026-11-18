@@ -4,7 +4,7 @@
 <script>(function(R){try{var s=location.search,c=navigator.connection||{},n=navigator,v=sessionStorage.getItem('lite');
 if(/[?&]lite=0/.test(s)){v='0';sessionStorage.setItem('lite','0')}if(/[?&]lite=1/.test(s))v='1';
 if(v===null)v=(c.saveData||/(^|-)2g|3g/.test(c.effectiveType||'')||(n.deviceMemory&&(n.deviceMemory<=2||(n.hardwareConcurrency<=4&&/Android|Mobi/.test(n.userAgent)))))?'1':'';
-if(v==='1')R.classList.add('lite')}catch(e){}})(document.documentElement);var R=document.documentElement;R.classList.add('js');try{if(self!==top||/[?&]shot=/.test(location.search))R.classList.add('emb')}catch(e){R.classList.add('emb')}window.__V="1794967038";window.__SLUG="hp-nadi-cell";window.__CAT="hp";window.__HRS=[["Senin - Sabtu", "09.00 - 21.00"], ["Minggu", "10.00 - 20.00"]]</script>
+if(v==='1')R.classList.add('lite')}catch(e){}})(document.documentElement);var R=document.documentElement;R.classList.add('js');try{if(self!==top||/[?&]shot=/.test(location.search))R.classList.add('emb')}catch(e){R.classList.add('emb')}window.__V="1794968219";window.__SLUG="hp-nadi-cell";window.__CAT="hp";window.__HRS=[["Senin - Sabtu", "09.00 - 21.00"], ["Minggu", "10.00 - 20.00"]]</script>
 <style>@font-face{font-family:'Jakarta';src:url('../../assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap}:root{--accent:#1D4ED8;--ai:#ffffff}
 html{overflow-x:clip}
 .js :is(.sh,.pc,.svc,.tile,.tq,.st,.step,.row,.col,.why>div,.kp>div,.kpis>div,.usp>div,.faq details,.loc>*,.two>*,.facts>div,.gal>div,.quote,.dark,.qk,.promo,.feat,.fleet tr,.mcard,.plate,.spec,.bnt>*,.cta,.band,.end){opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*70ms)}
@@ -41,7 +41,7 @@ img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:non
 .logo i{overflow:hidden;width:36px;height:36px;border-radius:11px;background:var(--accent);color:var(--ai);display:grid;place-items:center;font-style:normal;font-size:.8rem;font-weight:800;letter-spacing:0}
 .burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:transparent;place-items:center;cursor:pointer}
 .stars{display:flex;gap:2px;color:#F5B301}.stars .ico{width:15px;height:15px;fill:currentColor;stroke:none}
-.opn{display:inline-flex;align-items:center;gap:8px;margin:4px 0 10px;padding:6px 12px;border-radius:999px;font-size:.85rem;font-weight:700;color:#16a34a;background:#16a34a1f}.opn.cl{color:#e11d48;background:#e11d481f}.opn i{width:8px;height:8px;border-radius:50%;background:currentColor}
+.opn{display:inline-flex;align-items:center;gap:8px;margin:4px 0 10px;padding:6px 12px;border-radius:999px;font-size:.85rem;font-weight:700;color:#16a34a;color:color-mix(in oklab,#16a34a 45%,currentColor);background:#16a34a1f}.opn.cl{color:#e11d48;color:color-mix(in oklab,#e11d48 55%,currentColor);background:#e11d481f}.opn i{width:8px;height:8px;border-radius:50%;background:currentColor}
 .mapb{margin-top:18px}.logo i img{width:100%;height:100%;object-fit:cover}
 .cart{position:fixed;left:50%;bottom:16px;translate:-50% 0;z-index:70;width:min(520px,calc(100% - 24px));background:#0f172a;color:#fff;border-radius:20px;box-shadow:0 24px 50px -16px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.14);padding:10px;display:none}
 .cart.on{display:block;animation:cin .35s cubic-bezier(.2,.8,.2,1)}@keyframes cin{from{transform:translateY(30px);opacity:0}}
@@ -87,7 +87,7 @@ background:color-mix(in oklab,var(--accent) calc(100% - var(--k)*28%),#334155)}.
 .tq figcaption i{margin:0;border:0}.tq figcaption b{display:block;font-size:.92rem;line-height:1.2}.tq figcaption small{color:var(--muted)}
 .logo i .lgs{width:58%;height:58%}
 .mnav{position:fixed;inset:0;z-index:300;background:color-mix(in oklab,var(--bg) 93%,transparent);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);display:flex;flex-direction:column;justify-content:center;padding:90px 28px 40px;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
-.mnav.on{opacity:1;visibility:visible}.mnav nav{display:flex;flex-direction:column;gap:4px}
+.mnav.on{opacity:1;visibility:visible;transition:opacity .35s}.mnav nav{display:flex;flex-direction:column;gap:4px}
 .mnav nav a{font-size:2.3rem;font-weight:700;letter-spacing:-.035em;color:var(--ink);padding:4px 0;opacity:0;transform:translateY(26px);transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--n)*70ms + 60ms)}
 .mnav.on nav a{opacity:1;transform:none}.mnav nav a:hover{color:var(--accent)}
 .mnav .mclose{position:absolute;top:18px;right:18px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);display:grid;place-items:center;cursor:pointer}
@@ -258,7 +258,7 @@ document.querySelectorAll('.burger').forEach(function(b){b.addEventListener('cli
  var lg=n.querySelector('.logo'),cta=n.querySelector('.nav-cta');
  ov.innerHTML=(lg?'<div class="mtop">'+lg.outerHTML+'</div>':'')+'<button class="mclose" type="button" aria-label="Tutup menu"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><nav>'+
   [].map.call(n.querySelectorAll('.links a'),function(a,i){return '<a href="'+a.getAttribute('href')+'" style="--n:'+i+'">'+a.textContent+'</a>'}).join('')+'</nav>'+(cta?'<a class="btn btn-a mcta" target="_blank" rel="noopener" href="'+cta.href+'">'+cta.innerHTML+'</a>':'');
- ov.dataset.o='1';requestAnimationFrame(function(){ov.classList.add('on')});R.style.overflow='hidden';b.setAttribute('aria-expanded','true');setTimeout(function(){var c=ov.querySelector('.mclose');c&&c.focus()},50)})});
+ ov.dataset.o='1';void ov.offsetWidth;ov.classList.add('on');var c0=ov.querySelector('.mclose');c0&&c0.focus();R.style.overflow='hidden';b.setAttribute('aria-expanded','true');setTimeout(function(){var c=ov.querySelector('.mclose');c&&c.focus()},50)})});
 document.querySelectorAll('form.bk').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();var t=f.dataset.msg+'.';
 f.querySelectorAll('input,select').forEach(function(i){if(i.value)t+='\n'+i.name+': '+i.value});window.open('https://wa.me/'+f.dataset.wa+'?text='+encodeURIComponent(t),'_blank','noopener')})});
 
